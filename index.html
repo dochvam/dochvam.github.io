@@ -4,46 +4,45 @@
 	<script src="https://use.fontawesome.com/771d17dbb7.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
 	</script>
+	<script src="./js/webscript.js"></script>
+
+	<script type="text/javascript">
+        window.onload = initial_slide;
+    </script>
+
 </head>
 <body style="margin:0">
-	<script>
-		highlight_present = function () {
-			if ($(".bluemarker").hasClass("blue")) $(".bluemarker").removeClass("blue");
-			else $(".bluemarker").addClass("blue");
-		};
-
-		
-
-	</script>
 	<div class="outer-container">
-		<div class="left-half">
-			<h1 class="name"> BENJAMIN <br> GOLDSTEIN </h1>
-			<h3 class="subname">benjamin.goldstein@american.edu</h3>
-			<h3 class="datelink"><a onclick="highlight_present()">Current</a></h3>
-		</div>
-		<div class="right-half">
-			<div class="main-resume">
-				<h2>Education</h2>
-				<div class="position" style="margin-top:20pt">
-					<img class="position-image" src="images/AU-logo-gray.png" alt="duke_logo">
-					<div>
-						<h2>American University</h2>
-						<div class="position-date">
-							<span class="position-role"><i>Environmental Sci BS, Philosophy BA</i></span>
-							<span><b>Expected May 2018</b></span>
-						</div>
+	<div class="left-half">
+		<h1 class="name"> BENJAMIN <br> GOLDSTEIN </h1>
+		<h3 class="subname">benjamin.goldstein@american.edu</h3>
+		<h3 class="datelink"><a onclick="highlight_present()">Current</a></h3>
+		<h3 class="datelink"><a onclick="initial_slide()">Begin</a></h3>
+
+	</div>
+
+	<div id="rh" class="right-half">
+		<div class="main-resume">
+			<h2>Education</h2>
+			<div class="position" style="margin-top:20pt">
+				<img class="position-image" src="images/AU-logo-gray.png" alt="duke_logo">
+				<div>
+					<h2>American University</h2>
+					<div class="position-date">
+						<span class="position-role"><i>Environmental Sci BS, Philosophy BA</i></span>
+						<span><b>Expected May 2018</b></span>
 					</div>
 				</div>
-
-				<h2>Honors and Awards</h2>
-					<ul style="list-style:none">
-						<li><b>Dean's List</b>, American University</li>
-						<li class="bluemarker"><b>Fulbright UK Summer Awardee</b>, Fulbright Institute</li>
-						<li><b>Outstanding Leadership in the Honors Community</b>, AU Honors</li>
-						<li><b>Outstanding Honors Sophomore</b>, AU Honors</li>
-					</ul>
-				<h2>Research Experience</h2>
 			</div>
+
+			<h2>Honors and Awards</h2>
+				<ul style="list-style:none">
+					<li><b>Dean's List</b>, American University</li>
+					<li class="bluemarker"><b>Fulbright UK Summer Awardee</b>, Fulbright Institute</li>
+					<li><b>Outstanding Leadership in the Honors Community</b>, AU Honors</li>
+					<li><b>Outstanding Honors Sophomore</b>, AU Honors</li>
+				</ul>
+			<h2>Research Experience</h2>
 		</div>
 	</div>
 </body>

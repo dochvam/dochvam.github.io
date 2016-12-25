@@ -53,8 +53,8 @@ a:active {
  }
 
  .right-half {
-  width:100%;
   height:100%;
+  width:200%;
   color:#1C0F13;
   background-color:#ADD9F4;
  }
@@ -113,8 +113,8 @@ a:active {
     height:100px;">
 }
 
-.datelink {
-
+.giveWidth {
+  width:100%;
 }
 
 .bluemarker{
