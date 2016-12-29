@@ -7,6 +7,7 @@ highlight_present = function () {
 
 initial_slide = function () {
 	$(".right-half").addClass("new-item");
+	$(".boundary").addClass("bound-width")
 };
 
 fade_in_title = function () {
