@@ -190,6 +190,10 @@ a:visited {
   animation: flexGrow 2000ms ease forwards;
 }
 
+.list_body {
+  margin-left:40;
+}
+
 .remove-item {
   flex: 1;
 
@@ -207,6 +211,12 @@ a:visited {
         -ms-animation: fadein 2s; /* Internet Explorer */
          -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
+}
+
+.msg_head:hover {
+    text-decoration: underline;
+}
+.msg_body {
 }
 
 @keyframes fadein {
