@@ -181,6 +181,7 @@ a:visited {
   /* 0 does not work so we have to use a small number */
   /* Start our small */
   flex: .00001;
+  padding-right:8%;
 
   /*background: rgba(0, 0, 0, .4);*/
 
