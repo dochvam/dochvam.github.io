@@ -47,19 +47,62 @@ a:visited {
   width:30;
  }
 
-
  .subname {
  	text-align:center;
  	margin:0;
-  font-weight: normal;
-  color:BLACK;
+  color:transparent;
+ }
+ .subname:hover{
+  text-decoration:underline;
  }
 
- .resCategory {
- 	display:flex;
-    width:100%;
-    margin:10pt;
+
+ /*v categories*/
+ .environmental { }
+ .environmental-link:hover {
+  color:#008238;
+  cursor:pointer;
  }
+ .environmental-active {
+  color:#008238;
+ }
+ .contains-environmental { }
+
+
+ .csc { }
+ .csc-link:hover {
+  color:#7F001B;
+  cursor:pointer;
+ }
+ .csc-active {
+  color:#7F001B;
+ }
+ .contains-csc { }
+
+ .philosophy { }
+ .philosophy-link:hover {
+  color:#009E96;
+  cursor:pointer;
+ }
+ .philosophy-active {
+  color:#009E96
+ }
+ .contains-philosophy { }
+
+ .leadership { }
+ .leadership-link:hover {
+  color:#6B177A;
+  cursor:pointer;
+ }
+ .leadership-active {
+  color:#6B177A
+ }
+ .contains-leadership { }
+
+ /*^ categories*/
+
+ /*next color: #E03616*/
+
 
  .outer-container {
   display:flex;
@@ -215,6 +258,7 @@ a:visited {
 
 .msg_head:hover {
     text-decoration: underline;
+    cursor:default;
 }
 .msg_body {
 }

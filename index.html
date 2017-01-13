@@ -11,7 +11,7 @@
 
 	<script type="text/javascript">
         window.onload = fade_in_title;
-        document.onload = setTimeout(initial_slide, 1000);
+        document.onload = setTimeout(initial_slide, 1500);
     </script>
 
 </head>
@@ -20,16 +20,25 @@
 <!--     <div class="flex-item hover-collapse-item">I will collapse on hover</div>
  -->	<div class="left-half">
 		<h1 class="name"> BENJAMIN <br> GOLDSTEIN </h1>
-		<h3 class="subname">benjamin.goldstein@american.edu</h3>
+		<h3 class="subname" style="font-weight: normal" onmouseover="this.style.cursor='pointer'" onclick="location.href='mailto:benjamin.goldstein@american.edu'">benjamin.goldstein@american.edu</h3>
+		<br>
+		<br>
+		<h3 class="subname" style="font-weight:normal; text-decoration:none">Click to learn more about:</h3>
+		<h3 class="subname environmental environmental-link" onclick = "activate_environmental();">Environmental Science</h3>
+		<h3 class="subname csc csc-link" onclick = "activate_csc();">Computer Science</h3>
+		<h3 class="subname philosophy philosophy-link" onclick = "activate_philosophy();">Philosophy</h3>
+		<h3 class="subname leadership leadership-link" onclick="activate_leadership();">Leadership</h3>
+
+
+
 		<!-- <h3 class="datelink"><a onclick="highlight_present()">Current</a></h3> -->
 	</div>
 	<div class="boundary"> </div>
 	<div id="rh" class="flex-item right-half">
 		<div class="main-resume">
-
 			<h2 class>Who am I?</h2>
 				<ul style="list-style:none">
-					<li>I am a third-year Environmental Science, Philosophy, and Computer Science student at American University. I'm interested in the intersections between Earth systems and big data or modeling—I believe that ecology will make its greatest strides to date as the field incorporates the incredible technolgical advancements. I love chatting politics, watching TV, and building my own websites on a whim. I sing a cappella, I like Vonnegut, and I love to cook.</li>
+					<li>I am a third-year <span class = "environmental"> Environmental Science </span>, <span class="philosophy">Philosophy</span>, and <span class="csc">Computer Science</span> student at American University. I'm interested in the <span class = "environmental csc">intersections between Earth systems and big data or modeling</span>—I believe that ecology will make its greatest strides to date as the field incorporates the incredible technolgical advancements. I love chatting politics, reading and discussing issues of game theory and systems behaviors, and <span class="csc">building my own websites on a whim</span>. I sing a cappella, I like Vonnegut, and I love to cook.</li>
 				</ul>
 			<h2>Education</h2>
 			<div class="position" style="margin-top:20pt">
@@ -37,7 +46,7 @@
 				<div>
 					<h2>American University</h2>
 					<div class="position-date">
-						<span class="position-role"><i>Environmental Sci BS, Philosophy BA</i> - GPA 3.95</span>
+						<span class="position-role"><i><span class = "environmental">Environmental Sci BS</span>, Philosophy BA</i> - GPA 3.95</span>
 						<span><b>Expected May 2018</b></span>
 					</div>
 				</div>
@@ -46,26 +55,26 @@
 			<h2>Honors and Awards</h2>
 				<ul style="list-style:none">
 					<li><b>Dean's List</b>, American University</li>
-					<li class="bluemarker"><b>Fulbright UK Summer Awardee</b>, Fulbright Institute</li>
-					<li><b>Outstanding Leadership in the Honors Community</b>, AU Honors</li>
+					<li class="environmental leadership"><b>Fulbright UK Summer Awardee</b>, Fulbright Institute and University of Exeter</li>
+					<li class="leadership"><b>Outstanding Leadership in the Honors Community</b>, AU Honors</li>
 					<li><b>Outstanding Honors Sophomore</b>, AU Honors</li>
 				</ul>
 			<h2>Research Experience</h2>
 				<div class="list_body">
-					<div class="msg_head"><b>Climate migration policy in Southeast Asia</b>, <a href="http://www.american.edu/honors" >AU Honors</a>. </div>
-					<div class="msg_body">Conducted a long-term research project and produced 45-page paper on the geophysical drivers, models, and international policy of climate-related migration and displacement, using the Mekong and Ganges-Brahmaputra-Meghna deltas as case studies. Collaborative effort with four other students under Dr. Paul Wapner. Currently preparing to submit for publication. </div>
+					<div class="msg_head environmental leadership"><b>Climate migration policy in Southeast Asia</b>, <a href="http://www.american.edu/honors" >AU Honors</a>. </div>
+					<div class="msg_body contains-environmental contains-leadership">Conducted a long-term research project and produced 45-page paper on the geophysical drivers, models, and international policy of climate-related migration and displacement, using the Mekong and Ganges-Brahmaputra-Meghna deltas as case studies. Collaborative effort with four other students under Dr. Paul Wapner. Currently preparing to submit for publication. </div>
 
-					<div class="msg_head"><b>Seagrasses in Guam: A Decade of Change</b>, <a href="http://www.american.edu/cas/environmental"> American University Environmental Science</a>. </div>
-					<div class="msg_body"> Used ArcGIS to evaluate satellite 8-band imagery and ground data to compare total seagrass extent in Guam between 2004 and 2015. Presented poster at Discover Science AU. </div>
+					<div class="msg_head environmental csc"><b>Seagrasses in Guam: A Decade of Change</b>, <a href="http://www.american.edu/cas/environmental"> American University Environmental Science</a>. </div>
+					<div class="msg_body contains-environmental contains-csc"> Used ArcGIS to evaluate satellite 8-band imagery and ground data to compare total seagrass extent in Guam between 2004 and 2015. Presented poster at Discover Science AU. </div>
 
-					<div class="msg_head"><b>Manell-Geus Resource Inventory Project</b>, <a href="http://www.guammarinelab.org/">University of Guam</a>.</div>
-					<div class="msg_body"> Independently contracted research opportunity. Used ArcGIS to evaluate satellite 8-band imagery and ground data to create a comprehensive assessment of coral, mangrove, and seagrass extent in the Manell-Geus watershed for a formal report to The Nature Conservancy. Assessments were made using both ground-truthed GPS data and an analysis of Worldview-2 imagery. </div>
+					<div class="msg_head environmental csc"><b>Manell-Geus Resource Inventory Project</b>, <a href="http://www.guammarinelab.org/">University of Guam</a>.</div>
+					<div class="msg_body contains-environmental contains-csc"> Independently contracted research opportunity. Used ArcGIS to evaluate satellite 8-band imagery and ground data to create a comprehensive assessment of coral, mangrove, and seagrass extent in the Manell-Geus watershed for a formal report to The Nature Conservancy. Assessments were made using both ground-truthed GPS data and an analysis of Worldview-2 imagery. </div>
 
-					<div class="msg_head"><b>Carbon content of Guam’s seagrasses</b>, <a href="http://www.american.edu/cas/environmental">American University Environmental Science</a>. </div>
-					<div class="msg_body"> Independent laboratory research. Sort seagrass and sediment samples taken off coast of Guam, develop procedure, and conduct analysis of carbon content. </div>
+					<div class="msg_head environmental"><b>Carbon content of Guam’s seagrasses</b>, <a href="http://www.american.edu/cas/environmental">American University Environmental Science</a>. </div>
+					<div class="msg_body contains-environmental"> Independent laboratory research. Sort seagrass and sediment samples taken off coast of Guam, develop procedure, and conduct analysis of carbon content. </div>
 
-					<div class="msg_head"><b>Baseline Sputum Parameters in Normals, Asthmatics, COPD, Atopics, Smokers and Ex-Smokers</b>, <a href="https://www.med.unc.edu/cemalb">UNC Center for Environmental Medicine</a>. </div>
-					<div class="msg_body"> Collected samples and processed data for wide-scale data analysis of sputum in a variety of cohorts. Co-authorship on poster presented at American Academy of Allergy, Asthma, and Immunology in 2016. Part of internship in UNC's Sample Acquisition and Repository Core. </div>
+					<div class="msg_head environmental"><b>Baseline Sputum Parameters in Normals, Asthmatics, COPD, Atopics, Smokers and Ex-Smokers</b>, <a href="https://www.med.unc.edu/cemalb">UNC Center for Environmental Medicine</a>. </div>
+					<div class="msg_body contains-environmental"> Collected samples and processed data for wide-scale data analysis of sputum in a variety of cohorts. Co-authorship on poster presented at American Academy of Allergy, Asthma, and Immunology in 2016. Part of internship in UNC's Sample Acquisition and Repository Core. </div>
 
 
 
@@ -73,14 +82,14 @@
 
 			<h2>Skills</h2>
 				<ul style="list-style:none">
-					<li><b>Laboratory</b>: Biohazard Level 2, HIPAA, CITI certifications</li>
-					<li><b>Computer</b>: Proficient in Microsoft Excel, basic ArcGIS, Python (intermediate), and Java (intermediate)</li>
+					<li><b>Laboratory</b>: <span class="environmental"> Biohazard Level 2 </span>, HIPAA, CITI certifications</li>
+					<li class="csc"><b>Computer</b>: Proficient in Microsoft Excel, <span class="environmental"> basic ArcGIS </span>, Python (intermediate), and Java (intermediate)</li>
 				</ul>
 			<h2>Employment</h2>
 				<div class="list_body">
-					<div class="msg_head"><b>Teaching Assistant</b>, <i>American University Honors Department</i> (August 2016-Present) </div>
-					<ul class="msg_body" style="list-style: white">
-						<li>Lead discussion groups, out-of-class workshops, and office hours for 47 Honors students in the enrolled in the course Thinking About Emotion: From Physiology to Ethics. </li>
+					<div class="msg_head philosophy leadership"><b>Teaching Assistant</b>, <i>American University Honors Department</i> (August 2016-Present) </div>
+					<ul class="msg_body contains-philosophy contains-leadership" style="list-style: white">
+						<li>Lead discussion groups, out-of-class workshops, and office hours for 47 Honors students in the enrolled in the course "Thinking About Emotion: From Physiology to Ethics." </li>
 						<li>Provide a bridge between professors’ expectations and student understanding, fostering engagement with complex philosophical, literary, and scientific topics concerning the study of emotion.</li>
 						<li>Perform technical duties on Blackboard and around the classroom for professors and the Honors department.</li>
 					</ul>
@@ -91,16 +100,16 @@
 						<li>Protect and regulate the use of equipment valued over $100,000 in total.</li>
 					</ul>
 
-					<div class="msg_head"><b>Laboratory Technician</b>, <i>University of North Carolina (UNC) Center for Environmental Medicine</i> (May-August 2015, May-August 2016) </div>
-					<ul class="msg_body">
+					<div class="msg_head environmental"><b>Laboratory Technician</b>, <i>University of North Carolina (UNC) Center for Environmental Medicine</i> (May-August 2015, May-August 2016) </div>
+					<ul class="msg_body contains-environmental">
 						<li>Handled and processed 10-20 human sputum, nasal lavage, and blood samples per week for 6-10 research studies, collecting data on viability, cell count, and immune cell ratios for comparison to subject conditions such as smoking habits and disease history for UNC’s Asthma and Lung Biology Sample Acquisition and Repository Core.</li>
 						<li>Designed and carried out experimental procedures investigating proportions and relative sizes of M1 and M2 macrophages in human sputum.</li>
 						<li>Entered data collected during procedures and performed analysis of sputum databases.</li>
 					</ul>
 
 
-					<div class="msg_head"><b>Weekend Retreat Staff Member</b>, <i>Washington Hebrew Congregation</i> (May-August 2015, May-August 2016) </div>
-					<ul class="msg_body">
+					<div class="msg_head leadership"><b>Weekend Retreat Staff Member</b>, <i>Washington Hebrew Congregation</i> (May-August 2015, May-August 2016) </div>
+					<ul class="msg_body contains-leadership">
 						<li>Lead programs in youth development and Jewish values for group of 20-50 Jewish high school freshmen.</li>
 						<li>Teach self-esteem, relationships with religion, sex education, and other topics from Jewish perspective.</li>
 					</ul>
