@@ -25,3 +25,5 @@ output:
   html_document: 
     theme: cosmo
     css: 'style.css'
+    includes:
+      in_header: header.html

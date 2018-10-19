@@ -1,3 +1,8 @@
 ---
 title: "About me"
 ---
+
+<img src="images/Animated_glider_emblem.gif" style="width:33%; margin-right: 20px" align="right">
+
+\n\n\n\n
+Identity currently under construction. Come back soon.

@@ -5,7 +5,7 @@ output:
     includes:
       in_header: header.html
 ---
-<img src="images/me.jpg" style="width:33%; border:10px solid; margin-right: 20px" align="right">
+<img src="images/me.jpg" style="width:33%; margin-right: 20px" align="right">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 I am a Ph.D. student in Environmental Science, Policy, and Management at UC Berkeley. Through contributions to statistical ecology, I build tools and develop methods to allow humans to learn more about what Earth's other animals are up to. In the long term, I will contribute to conservation and wildlife management efforts to stop the human-caused mass extinction currently threatening the balance of the biosphere.

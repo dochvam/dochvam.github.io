@@ -1,6 +1,7 @@
 ---
 title: "Research"
 ---
+<img src="images/Guam_Banner.jpg" style="width:125%; margin-right: 20px" align="center">
 
 ### Ongoing
 My dissertation at UC Berkeley focuses on the ecological relevance of "citizen science" databases like [eBird](ebird.org) and [iNaturalist](inaturalist.org).
