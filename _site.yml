@@ -1,0 +1,29 @@
+name: "Ben Goldstein"
+output_dir: "."
+navbar: 
+  title: "Ben Goldstein"
+  left: 
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Research"
+      icon: fa-binoculars
+      href: research.html
+    - text: "CV"
+      icon: fa-graduation-cap
+      href: cv.html
+    - text: "About me"
+      icon: fa-street-view
+      href: aboutme.html
+  right:
+    - icon: fa-send fa-lg
+      href: contact.html
+    - icon: fa-github fa-lg
+      href: http://github.com/dochvam
+
+output: 
+  html_document: 
+    theme: cosmo
+    css: 'style.css'
+    includes:
+      in_header: header.html
