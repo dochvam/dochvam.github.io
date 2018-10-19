@@ -9,14 +9,40 @@ American University
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BS, Environmental Science (2018), minor Computer Science  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BA, Philosophy (2018)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*GPA 3.94, [AU Honors](https://www.american.edu/learning-communities/honors/) alumnus, Dean's List 8 semesters*
-  
+
+-----
+
 ### Publications
 
+LaRoche CK, **Goldstein BR**, Cybulski JD., Raymundo LJ., Aoki LR., Kim K (2018). Decade of change in Enhalus acoroides seagrass meadows in Guam, Mariana Islands. *Marine and Freshwater Research*, -.
+
+
+Raymundo LJ, **Goldstein BR**, Baker D, Kim K, McIlroy S, Thompson P, Lapacek V, Duprey N, Cybulski J, LaRoche CK, Geeraert, N (2018). Atlas of the nearshore shallow benthic habitats within the Manell-Geus Habitat Focus Area. *Univ. of Guam Marine Lab Tech. Rep*. 163. 63 pp.
+
+-----
 
 ### Fellowships and Awards
-Data Science for the 21st Century NSF Research Trainee (2018-2020)  
-Fulbright UK Summer Scholar (2016)  
 
-## Skills
+NSF NRT Fellow, [Data Science in the 21st Century](http://ds421.berkeley.edu/) (2018-2020)
 
-## Work
+Fulbright UK Summer Scholar (2016)
+
+Pearson Award, American University Department of Philosophy and Religion (2018)
+
+Outstanding Leadership in the Honors Community (2016)
+
+-----
+
+### Skills
+
+Programming: R, Python, Java, ArcGIS/QGIS
+
+-----
+
+### Work
+
+Research Student, [Joint Global Change Research Center]() (2017-2018)
+
+Teaching Assistant, [American University Honors Department]() (2016-2018)
+
+Laboratory Technician, [UNC Center for Environmental Medicine]() (2015-2016)
