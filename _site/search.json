@@ -2,19 +2,19 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "About me",
+      "title": "About this website",
       "description": "Some additional details about the website",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-01-31T13:20:15-08:00"
+      "last_modified": "2022-01-31T14:06:24-08:00"
     },
     {
       "path": "index.html",
       "title": "Ben R. Goldstein",
-      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "description": "Ecology PhD candidate at UC Berkeley\n",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-01-31T13:20:16-08:00"
+      "contents": "\r\nI am a Ph.D. candidate in the Department of Environmental Science, Policy, and Management (ESPM) at UC Berkeley. I study quantitative ecology with a focus on species distribution modeling, developing and applying statistical methods to understand how wild animal populations vary over time and space. My advisor is Perry de Valpine.\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-01-31T14:12:33-08:00"
     },
     {
       "path": "Research.html",
@@ -22,7 +22,7 @@
       "description": "An overview of my ecology research.",
       "author": [],
       "contents": "\r\nParticipatory science\r\nI am interested in using\r\nSelect publication: Identifying engaging bird species and traits with community science data\r\nSpecies distribution modeling\r\nAgroecology\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-01-31T13:37:36-08:00"
+      "last_modified": "2022-01-31T14:06:24-08:00"
     }
   ],
   "collections": []

@@ -1,7 +1,7 @@
 ---
 title: "Ben R. Goldstein"
 description: |
-  Welcome to the website. I hope you enjoy it!
+  Ecology PhD candidate at UC Berkeley
 site: distill::distill_website
 ---
 
