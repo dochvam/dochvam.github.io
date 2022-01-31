@@ -1,0 +1,20 @@
+---
+title: "Ben R. Goldstein"
+description: |
+  Welcome to the website. I hope you enjoy it!
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+```
+
+
+I am a Ph.D. candidate in the Department of Environmental Science, Policy, and Management (ESPM) at UC Berkeley. I study quantitative ecology with a focus on species distribution modeling, developing and applying statistical methods to understand how wild animal populations vary over time and space. My advisor is Perry de Valpine.
+
+
+

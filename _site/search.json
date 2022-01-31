@@ -1,0 +1,29 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About me",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-01-31T13:20:15-08:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Ben R. Goldstein",
+      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-01-31T13:20:16-08:00"
+    },
+    {
+      "path": "Research.html",
+      "title": "Research",
+      "description": "An overview of my ecology research.",
+      "author": [],
+      "contents": "\r\nParticipatory science\r\nI am interested in using\r\nSelect publication: Identifying engaging bird species and traits with community science data\r\nSpecies distribution modeling\r\nAgroecology\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-01-31T13:37:36-08:00"
+    }
+  ],
+  "collections": []
+}

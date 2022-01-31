@@ -1,0 +1,40 @@
+---
+title: "Intro to nimbleEcology: site-occupancy models"
+description: |
+  An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework.
+author:
+  - name: Unknown
+date: 2022-01-31
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+
+In this post:
+
+- What is nimbleEcology?
+- What is a site-occupancy model?
+- 
+
+
+# nimbleEcology
+
+
+
+# The site-occupancy model
+
+
+
+### Why occupancy?
+
+
+
+
+

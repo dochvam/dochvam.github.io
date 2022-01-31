@@ -1,0 +1,12 @@
+---
+title: "About this website"
+description: |
+  Some additional details about the website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+I built this website using `distill` for R markdown.
+ 

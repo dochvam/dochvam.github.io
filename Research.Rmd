@@ -1,0 +1,31 @@
+---
+title: "Research"
+description: |
+  An overview of my ecology research.
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Participatory science
+
+In my doctoral research, I've focused on  (sometimes called "participatory science" or "community science").
+
+#### Select publication: Identifying engaging bird species and traits with community science data
+
+
+### Species distribution modeling
+
+One pillar of wildlife research is understanding how wildlife populations are arranged on the landscape. The field of research concerned with how wild animals are distributed in space and time, and how those distributions relate to environmental characteristics like habitat type, temperature, and human impacts is called *species distribution modeling*. 
+
+
+
+### Software development
+
+
+### Agroecology
+
+
+
+
