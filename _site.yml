@@ -13,8 +13,10 @@ navbar:
       href: research.html
     - text: "CV"
       href: cv.html
-    - text: "About Me"
-      href: about.html
+    - text: "Contact Me"
+      href: contact.html
     - icon: fab fa-github
       href: https://github.com/dochvam
+    - icon: fab fa-twitter
+      href: https://twitter.com/Ben_R_Goldstein
 output: distill::distill_article

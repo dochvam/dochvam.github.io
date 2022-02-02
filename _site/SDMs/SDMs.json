@@ -1,0 +1,19 @@
+[
+  {
+    "path": "SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/",
+    "title": "Intro to nimbleEcology: site-occupancy models",
+    "description": "An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework.",
+    "author": [
+      {
+        "name": "Unknown",
+        "url": {}
+      }
+    ],
+    "date": "2022-01-31",
+    "categories": [],
+    "contents": "\r\nIn this post:\r\nWhat is nimbleEcology?\r\nWhat is a site-occupancy model?\r\n\r\nnimbleEcology\r\nThe site-occupancy model\r\nWhy occupancy?\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2022-02-02T10:28:20-08:00",
+    "input_file": {}
+  }
+]

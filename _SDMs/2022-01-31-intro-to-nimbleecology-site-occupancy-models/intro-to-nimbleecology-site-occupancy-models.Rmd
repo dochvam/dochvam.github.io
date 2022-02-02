@@ -3,7 +3,7 @@ title: "Intro to nimbleEcology: site-occupancy models"
 description: |
   An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework.
 author:
-  - name: Unknown
+  - name: Ben R Goldstein
 date: 2022-01-31
 output:
   distill::distill_article:
@@ -15,26 +15,59 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-
-
 In this post:
 
-- What is nimbleEcology?
 - What is a site-occupancy model?
-- 
-
-
-# nimbleEcology
-
-
+- How can I use nimbleEcology to implement this model?
+  - And why should I?
+- Examples of extending the occupancy model with nimbleEcology
+  - Adding random effects
+- Concluding thoughts and additional reading
 
 # The site-occupancy model
 
+### Goals
+
+We use occupancy models
+
+In the occupancy model, we assume that each "site" is in fact occupied or unoccupied, but that we can't 
+
+(I put "site" in quotation marks because the "site" need not be strictly spatial--for example, we could treat the occupancy status of a single location in different years as independent. Because the assumption that occupancy status doesn't change is called "closure," we can also call this unit a "unit of closure.")
+
+Why occupancy?
+
+### Structure
+
+The dominant and simplest occupancy model
+
+Let's start by putting down some statistical equations.
+
+$$y_{ij} \sim \text{Bernoulli}(z_i * p_{ij})$$
+$$z_i \sim \text{Bernoulli}(\psi_i)$$
+$$\text{logit}(psi_{i}) = x_{ij}^T\beta$$
+$$\text{logit}(p_{ij}) = w_{ij}^T\gamma$$
 
 
-### Why occupancy?
+where $i$ and $j$ index site and replicate visit, respectively; $y_{ij}$ is a single detection or nondetection (1 or 0) at site $i$, replicate $j$; $z_i$ is a latent state 
+
+
+Let's break that down.
+
+In the first equation, we describe the probability distribution for our detection-nondetection observations, $y_{ij}$. We say that each data point is Bernoulli-distributed: we have a probability of $z_i * p_{ij}$ of seeing the animal. Since we either see it or we don't, the probability of not seeing the animal is $1 - z_i * p_{ij}$. 
+
+The latent state is $z_i$, representing that site $i$ is either occupied or not. If the site is unoccupied, we have no chance of seeing the animal. In that case, $z_i = 0$ and the probability of $y_ij = 1$ is also 0. Think of $z_i$ as a switch that turns the probability of seeing the animal on or off. The "conditional probability of detection," i.e. the probability that we see the animal when it's present on a given observation, is $p_ij$. It's conditional because it only affects the data likelihood when $z_i =1$.
+
+In the second equation, we define the distribution for the latent state $z_i$.
 
 
 
+
+
+### Assumptions
+
+
+
+
+# 
 
 

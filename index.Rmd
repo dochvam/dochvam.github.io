@@ -13,8 +13,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+<!-- ::: {style="float:right;position: relative"} -->
+<!-- ![](images/BsxWU7Yi_400x400.jpg){width="287"} -->
+<!-- ::: -->
 
-I am a Ph.D. candidate in the Department of Environmental Science, Policy, and Management (ESPM) at UC Berkeley. I study quantitative ecology with a focus on species distribution modeling, developing and applying statistical methods to understand how wild animal populations vary over time and space. My advisor is Perry de Valpine.
+Hello! I am a Ph.D. candidate in the Department of Environmental Science, Policy, and Management (ESPM) at UC Berkeley. I study quantitative ecology with a focus on species distribution modeling, developing and applying statistical methods to understand how wild animal populations vary over time and space. My advisor is Perry de Valpine.
 
-
-
+On this website, you'll find a description of my research interests, my CV, and a blog I'm hoping to update with species distribution model tutorials and interesting things I come across in my work.

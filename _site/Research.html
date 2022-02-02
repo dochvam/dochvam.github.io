@@ -109,7 +109,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["Research"]},{"type":"character","attributes":{},"value":["An overview of my ecology research."]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Research"]},{"type":"character","attributes":{},"value":["An overview of my ecology research.\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2037,7 +2037,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11.15/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2066,15 +2066,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
 <a href="index.html" class="title">Ben R. Goldstein</a>
+<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
 <a href="blog.html">Blog</a>
 <a href="research.html">Research</a>
 <a href="cv.html">CV</a>
-<a href="about.html">About Me</a>
+<a href="contact.html">Contact Me</a>
 <a href="https://github.com/dochvam">
 <i class="fab fa-github" aria-hidden="true"></i>
+</a>
+<a href="https://twitter.com/Ben_R_Goldstein">
+<i class="fab fa-twitter" aria-hidden="true"></i>
 </a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
@@ -2093,11 +2097,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
 <div class="d-article">
-<h3 id="participatory-science">Participatory science</h3>
-<p>I am interested in using</p>
-<h5 id="select-publication-identifying-engaging-bird-species-and-traits-with-community-science-data">Select publication: Identifying engaging bird species and traits with community science data</h5>
-<h3 id="species-distribution-modeling">Species distribution modeling</h3>
-<h3 id="agroecology">Agroecology</h3>
+<h2 id="participatory-science">Participatory science</h2>
+<p>In my doctoral research, I analyze biodiversity data from participatory science platforms (sometimes called “citizen science” or “community science”). Participatory science is a paradigm by which data are generated on a volunteer basis by anyone who wants to get involved in a decentralized manner. In ecology, participatory data are often opportunistic (meaning, unscheduled) observations of plants or animals. Prominent platforms of interest include <a href="inaturalist.org">iNaturalist</a> and <a href="eBird.org">eBird</a>.</p>
+<p>I am interested in these data along two dimensions. The first of these is: how can we make use of participatory observations of wildlife to better understand the distributions of those wildlife on the landscape? While data submitted to platforms like iNaturalist and eBird are tempting—there’s a ton of data, and it’s all free to access—the lack of a rigorous sampling structure means that understanding the wildlife without introducing human bias is a statistical challenge.</p>
+<p>The second dimension is: what can we learn about human observers from the observations they submit? Participatory science records contain as much information about the people making them (in the aggregate) as they do about the species being observed. For example, we can work with eBird data to ask: when and where are people birding? Are people more likely to travel further from population centers in the summer? Do people prefer more colorful species and individuals, or are they more likely to record a rare species than a common one? Questions about observers’ behaviors and preferences seem disconnected from ecology, but in order to handle participatory data correctly we need to deeply understand the process by which they’re generated.</p>
+<h4 id="select-publication-identifying-engaging-bird-species-and-traits-preprint">Select publication: Identifying engaging bird species and traits (preprint)</h4>
+<p><a href="https://www.biorxiv.org/content/10.1101/2021.06.05.446577v1">In this preprint</a>, my colleagues and I estimate species-level bias in iNaturalist bird reports compared to eBird. We produce an “overreporting index” for each of 472 species in the United States and interpret that index as a measure of how “engaging” a species is. Colorful, rare, and large birds were more engaging, as epitomized by the overall most engaging bird: the feral Indian peafowl.</p>
+<h2 id="species-distribution-modeling">Species distribution modeling</h2>
+<p>Understanding how wildlife populations are arranged on the landscape is one of the main goals of wildlife research. “Species distribution modeling” is a term that encompasses research into how wild animals are distributed in space and time, and how those distributions relate to environmental characteristics like habitat type, temperature, and human impacts.</p>
+<p>Going from data to inference–for example, from a series of surveys of animal counts to a statistical picture of how those animals use different habitat types–involves statistical modeling.</p>
+<p>In my research, I develop statistical solutions for modeling species distributions with data generated in a variety of ways including camera trapping and participatory science. I’m interested in methodological questions about how models operate in general, as well as empirical applications of these models.</p>
+<p>Check out the Blog page on this website for more info on species distribution modeling.</p>
+<h4 id="select-publication-effects-of-wildfire-diversity-on-california-mammals">Select publication: Effects of wildfire diversity on California mammals</h4>
+<p><a href="doi.org/10.1111/ddi.13374">In this project</a>, led by collaborator Dr. Brett Furnas at the California Department of Fish and Wildlife, we analyze a camera trap dataset to understand how mammalian carnivores respond to wildfire in California. I helped implement Dr. Furnas’ statistical models in a Bayesian framework to generate robust estimates of species’ occupancy distributions.</p>
+<p>Check out <a href="https://www.kqed.org/science/1978094/see-california-wildlife-return-to-hidden-cameras-courtesy-of-hidden-cameras">this article in KQED</a> covering the paper.</p>
+<h2 id="software-development">Software development</h2>
+<p>I worked as a member of the NIMBLE development team under my advisor and co-creator of NIMBLE, Dr. Perry de Valpine. <a href="r-nimble.org">NIMBLE</a> is an R extension for building and estimating arbitrary statistical models.</p>
+<p>I wrote and maintain the <a href="https://cran.r-project.org/web/packages/nimbleEcology/index.html">nimbleEcology</a> auxiliary package, which provides additional tools for implementing common models in ecology such as the N-mixture model, the site-occupancy model, and the hidden Markov distribution for multi-state models.</p>
+<h2 id="agroecology">Agroecology</h2>
+<p>I’ve had the opportunity to collaborate with colleagues at UC Berkeley to apply my expertise in spatial statistics to a number of interest agricultural problems. As a statistical consultant with <a href="https://landcore.org/">Land Core</a>, I’m working to improve our understanding of the effect of conservation agricultural practices like low-intensity tillage and crop rotation on mitigating risk for farmers.</p>
+<h4 id="select-publication-drivers-of-crop-rotation-in-the-midwest">Select publication: Drivers of crop rotation in the Midwest</h4>
+<p>In this project, led by my colleague Yvonne Socolar, we look for patterns in where Midwestern famers do and don’t rotate their crops using a novel Rotational Complexity Index (RCI). The robustness of this study’s conclusions depended on a spatial block bootstrap for uncertainty quantification in the presence of spatial autocorrelation.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -2114,7 +2134,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
-<p>© Copyright 2022 Ben R. Goldstein</p>
+<p>© Copyright 2022-01-31 by Ben R. Goldstein</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

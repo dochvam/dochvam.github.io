@@ -1,0 +1,13 @@
+---
+title: "Contact Me"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+If you have any questions about my research, something I've written on the blog, how to access full text of articles, or collaborating, please shoot me an email:
+
+ben.goldstein@berkeley.edu
+
