@@ -2,7 +2,7 @@ name: "dochvam.github.io"
 title: "Ben R. Goldstein"
 description: |
   Ben R. Goldstein
-output_dir: "_site"
+output_dir: "."     # root of master branch
 navbar:
   right:
     - text: "Home"
