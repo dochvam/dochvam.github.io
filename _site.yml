@@ -10,7 +10,7 @@ navbar:
     - text: "Blog"
       href: blog.html
     - text: "Research"
-      href: research.html
+      href: Research.html
     - text: "CV"
       href: cv.html
     - text: "Contact Me"
