@@ -440,8 +440,8 @@ around with this .Rmd file, and to copy and use this code freely.
 Relevant papers and books:
 
 -   [Original MacKenzie et al. 2002
-    paper](doi.org/10.1890/0012-9658(2002)083[2248:ESORWD]2.0.CO;2) on
-    site-occupancy model
+    paper](doi.org/10.1890/0012-9658(2002)083%5B2248:ESORWD%5D2.0.CO;2)
+    on site-occupancy model
 -   [Ponisio et al. 2020](doi.org/10.1002/ece3.6053) paper marginalizing
     distributions in NIMBLE
 -   [Occupancy Estimation and Modeling
