@@ -1,4 +1,4 @@
 ---
-title: "Blog posts"
+title: "Blog"
 listing: SDMs
 ---
