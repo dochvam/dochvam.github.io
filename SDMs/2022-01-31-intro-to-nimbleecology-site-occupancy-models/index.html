@@ -113,12 +113,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Intro to nimbleEcology: site-occupancy models"]},{"type":"character","attributes":{},"value":["An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Ben R Goldstein"]}]}]},{"type":"character","attributes":{},"value":["2022-01-31"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Intro to nimbleEcology: site-occupancy models"]},{"type":"character","attributes":{},"value":["An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Ben R Goldstein"]}]}]},{"type":"character","attributes":{},"value":["2022-01-31"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["markdown"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["wrap"]}},"value":[{"type":"integer","attributes":{},"value":[72]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["intro-to-nimbleecology-site-occupancy-models_files/anchor-4.2.2/anchor.min.js","intro-to-nimbleecology-site-occupancy-models_files/bowser-1.9.3/bowser.min.js","intro-to-nimbleecology-site-occupancy-models_files/distill-2.2.21/template.v2.js","intro-to-nimbleecology-site-occupancy-models_files/figure-html5/unnamed-chunk-13-1.png","intro-to-nimbleecology-site-occupancy-models_files/header-attrs-2.11.15/header-attrs.js","intro-to-nimbleecology-site-occupancy-models_files/jquery-3.6.0/jquery-3.6.0.js","intro-to-nimbleecology-site-occupancy-models_files/jquery-3.6.0/jquery-3.6.0.min.js","intro-to-nimbleecology-site-occupancy-models_files/jquery-3.6.0/jquery-3.6.0.min.map","intro-to-nimbleecology-site-occupancy-models_files/popper-2.6.0/popper.min.js","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy-bundle.umd.min.js","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy-light-border.css","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy.css","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy.umd.min.js","intro-to-nimbleecology-site-occupancy-models_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["images/swift.png","intro-to-nimbleecology-site-occupancy-models_files/anchor-4.2.2/anchor.min.js","intro-to-nimbleecology-site-occupancy-models_files/bowser-1.9.3/bowser.min.js","intro-to-nimbleecology-site-occupancy-models_files/distill-2.2.21/template.v2.js","intro-to-nimbleecology-site-occupancy-models_files/figure-html5/unnamed-chunk-13-1.png","intro-to-nimbleecology-site-occupancy-models_files/header-attrs-2.11.15/header-attrs.js","intro-to-nimbleecology-site-occupancy-models_files/jquery-3.6.0/jquery-3.6.0.js","intro-to-nimbleecology-site-occupancy-models_files/jquery-3.6.0/jquery-3.6.0.min.js","intro-to-nimbleecology-site-occupancy-models_files/jquery-3.6.0/jquery-3.6.0.min.map","intro-to-nimbleecology-site-occupancy-models_files/popper-2.6.0/popper.min.js","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy-bundle.umd.min.js","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy-light-border.css","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy.css","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy.umd.min.js","intro-to-nimbleecology-site-occupancy-models_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2428,7 +2428,6 @@ d-appendix d-footnote-list a.footnote-backlink {
 <li><a href="#overiview-of-the-site-occupancy-model">Overiview of the site-occupancy model</a>
 <ul>
 <li><a href="#structure">Structure</a></li>
-<li><a href="#assumptions">Assumptions</a></li>
 </ul></li>
 <li><a href="#what-is-nimbleecology">What is nimbleEcology?</a>
 <ul>
@@ -2441,32 +2440,34 @@ d-appendix d-footnote-list a.footnote-backlink {
 </nav>
 </div>
 <h1 id="overiview-of-the-site-occupancy-model">Overiview of the site-occupancy model</h1>
-<p>(If you’re just here for the nimbleEcology implementation, and feel comfortable with occupancy models, you can skip ahead to the next section.)</p>
-<p>In species distribuiton modeling, we’re often interested in whether animals’ presence on the landscape is influenced by or correlated with</p>
-<p>Occupancy models are used to</p>
-<p>In the occupancy model, we assume that each “site” is in fact occupied or unoccupied, but that we can’t</p>
-<p>Why occupancy?</p>
-<p>(I put “site” in quotation marks because the “site” need not be strictly spatial–for example, we could treat the occupancy status of a single location in different years as independent. Because the assumption that occupancy status doesn’t change is called “closure,” we can also call this unit a “unit of closure.”)</p>
+<p><em>If you’re here for the nimbleEcology implementation, and feel comfortable with occupancy models, you can skip ahead to the next section.</em></p>
+<p>In species distribuiton modeling, we’re often interested in whether animals’ presence on the landscape is influenced by or correlated with a spatiotemporal factor. For example, we might be interested in whether a species prefers dense or sparse tree cover, whether a species’ range is growing or declining over time, or whether a management strategy is actually working to</p>
+<p>Site-occupancy models are a type of statistical structure that allow us to ask these questions when our detection process is imperfect.</p>
 <h3 id="structure">Structure</h3>
-<p>The dominant and simplest occupancy model</p>
-<p>Let’s start by putting down some statistical equations.</p>
-<p><span class="math display">\[y_{ij} \sim \text{Bernoulli}(z_i * p_{ij})\]</span> <span class="math display">\[z_i \sim \text{Bernoulli}(\psi_i)\]</span> <span class="math display">\[\text{logit}(psi_{i}) = x_{ij}^T\beta\]</span> <span class="math display">\[\text{logit}(p_{ij}) = w_{ij}^T\gamma\]</span></p>
-<p>where <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> index site and replicate visit, respectively; <span class="math inline">\(y_{ij}\)</span> is a single detection or nondetection (1 or 0) at site <span class="math inline">\(i\)</span>, replicate <span class="math inline">\(j\)</span>; <span class="math inline">\(z_i\)</span> is a latent state</p>
-<p>Let’s break that down.</p>
-<p>In the first equation, we describe the probability distribution for our detection-nondetection observations, <span class="math inline">\(y_{ij}\)</span>. We say that each data point is Bernoulli-distributed: we have a probability of <span class="math inline">\(z_i * p_{ij}\)</span> of seeing the animal. Since we either see it or we don’t, the probability of not seeing the animal is <span class="math inline">\(1 - z_i * p_{ij}\)</span>.</p>
-<p>The latent state is <span class="math inline">\(z_i\)</span>, representing that site <span class="math inline">\(i\)</span> is either occupied or not. If the site is unoccupied, we have no chance of seeing the animal. In that case, <span class="math inline">\(z_i = 0\)</span> and the probability of <span class="math inline">\(y_ij = 1\)</span> is also 0. Think of <span class="math inline">\(z_i\)</span> as a switch that turns the probability of seeing the animal on or off. The “conditional probability of detection,” i.e. the probability that we see the animal when it’s present on a given observation, is <span class="math inline">\(p_ij\)</span>. It’s conditional because it only affects the data likelihood when <span class="math inline">\(z_i =1\)</span>.</p>
-<p>In the second equation, we define the distribution for the latent state <span class="math inline">\(z_i\)</span>.</p>
-<p>If this is confusing, there’s a ton</p>
-<h3 id="assumptions">Assumptions</h3>
+<p>Let’s start by putting down some statistical equations for the simplest hierarchical site-occupancy model.</p>
+<p><span class="math display">\[y_{ij} \sim \text{Bernoulli}(z_i * p_{ij})\]</span> <span class="math display">\[z_i \sim \text{Bernoulli}(\psi_i)\]</span> <span class="math display">\[\text{logit}(\psi_{i}) = x_{i}^T\beta\]</span> <span class="math display">\[\text{logit}(p_{ij}) = w_{ij}^T\gamma\]</span></p>
+<p>where <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> index site and replicate visit, respectively; <span class="math inline">\(y_{ij}\)</span> is a single detection or nondetection (1 or 0) at site <span class="math inline">\(i\)</span>, replicate <span class="math inline">\(j\)</span>; <span class="math inline">\(z_i\)</span> is a latent state representing occupancy; <span class="math inline">\(\psi_i\)</span> is the probability that site <span class="math inline">\(i\)</span> is occupied; <span class="math inline">\(p_{ij}\)</span> is an observation-specific conditional detection probability; <span class="math inline">\(x_i\)</span> and <span class="math inline">\(w_{ij}\)</span> are vectors of covariates of interest; and <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span> are vectors of coefficients representing the effect of covariates on occupancy and detection, respectively.</p>
+<p>Phew. Let’s break that down.</p>
+<p>In the <strong>first equation</strong>, we describe the probability distribution for our detection-nondetection observations, <span class="math inline">\(y_{ij}\)</span>. We say that each data point is Bernoulli-distributed: we have a probability of <span class="math inline">\(z_i * p_{ij}\)</span> of seeing the animal. Since we either see it or we don’t, the probability of not seeing the animal is <span class="math inline">\(1 - z_i * p_{ij}\)</span>.</p>
+<p>In the occupancy model, we assume that each “site” is in fact occupied or unoccupied, but that we can’t observe this condition perfectly. (I put “site” in quotation marks because the “site” need not be strictly spatial–for example, we could treat the occupancy status of a single location in different years as independent. Because the assumption that occupancy status doesn’t change is called “closure,” we can also call this unit a “unit of closure.”) In our <strong>second equation</strong>, we represent this with the latent state <span class="math inline">\(z_i\)</span>, which has a value of 1 if site <span class="math inline">\(i\)</span> is occupied and 0 if it is not. If the site is unoccupied, we have no chance of seeing the animal. In that case, <span class="math inline">\(z_i = 0\)</span> and the probability of <span class="math inline">\(y_ij = 1\)</span> is also 0. Think of <span class="math inline">\(z_i\)</span> as a switch that turns the probability of seeing the animal on or off. The “conditional probability of detection,” i.e. the probability that we see the animal when it’s present on a given observation, is <span class="math inline">\(p_ij\)</span>. It’s conditional because it only affects the data likelihood when <span class="math inline">\(z_i =1\)</span>. In the second equation, we define the distribution for the latent state <span class="math inline">\(z_i\)</span>, which has a probability of <span class="math inline">\(\psi_i\)</span>.</p>
+<p>The <strong>third equation</strong> links our probability of occupancy, <span class="math inline">\(\psi_i\)</span>, to covariates. We say that, on the logit scale (which is a popular but arbitrary transformation from <span class="math inline">\((-\infty, \infty)\)</span> to <span class="math inline">\((0, 1)\)</span>), <span class="math inline">\(\psi_i\)</span> is a linear combination of some observed data describing our site, <span class="math inline">\(x_{i}\)</span>, with coefficients <span class="math inline">\(\beta\)</span>. We want to estimate <span class="math inline">\(\beta\)</span> to get confidence or credible intervals on those effects.</p>
+<p>The <strong>fourth equation</strong> replicates this logit-link structure for our detection probability, <span class="math inline">\(p\)</span>, and some covariates <span class="math inline">\(w\)</span> with coefficients <span class="math inline">\(\gamma\)</span>.</p>
+<p>There are many other, much more comprehensive explanations of the occupancy model out there, including entire textbooks. I link some of these at the end of the post.</p>
 <h1 id="what-is-nimbleecology">What is nimbleEcology?</h1>
+<p>nimbleEcology is an R package that makes it easier to implement some common ecological models in the general statistical software NIMBLE.</p>
+<p>The package provides a series of distributions that you can use in NIMBLE models, similar to familiar distributions like <code>dpois()</code> or <code>dbinom()</code>. This will become clear with the example in this blog post, where I show how the entire occupancy hierarchical probability distribution for the occupancy model can be written with <code>y ~ dOcc_v(...)</code>.</p>
 <h3 id="why-should-i-use-it">Why should I use it?</h3>
 <ul>
-<li>It’s easily modifiable</li>
-<li>It’s fairly efficient</li>
-<li>We can easily use either MLE or Bayesian methodology</li>
+<li><strong>Less risk of coding errors</strong>. We went ahead and implemented the occupancy distribution so you don’t have to. This saves lines of code and hopefully reduces some of the headache that inevitably comes from debugging a new model.</li>
+<li><strong>It’s easily modifiable</strong>. Implementing models in nimbleEcology, compared to something like unmarked, makes it easier to modify and customize your model when you’re ready to get fancy.</li>
+<li><strong>It’s fairly efficient</strong>. nimbleEcology uses marginalized distributions, saving memory and sometimes (but not always) increasing computational efficiency.</li>
+<li><strong>Swap between MLE or Bayesian methodology</strong>. This maybe isn’t a <em>need</em> so much as an interesting feature, but with NIMBLE you have access to both maximum likelihood and Bayesian (MCMC) estimation with very few changes to the model code.</li>
 </ul>
 <h1 id="implementing-the-occupancy-model-with-nimbleecology">Implementing the occupancy model with nimbleEcology</h1>
-<p>In this section, I showcase the use of nimbleEcology for implementing an occupancy distribution</p>
+<figure>
+<img src="images/swift.png" alt="Swift photo (c) J Tanner 2022. https://macaulaylibrary.org/asset/409111121" /><figcaption aria-hidden="true">Swift photo (c) J Tanner 2022. <a href="https://macaulaylibrary.org/asset/409111121" class="uri">https://macaulaylibrary.org/asset/409111121</a></figcaption>
+</figure>
+<p>In this section, I showcase the use of nimbleEcology for implementing an occupancy model with simulated data.</p>
 <p>Let’s say we have some data we collected in a study on how the occupancy of a bird, the white-throated swift. I have my detection/nondetection data in a matrix called “obs”. We surveyed 200 sites three times each, and recorded whether or not we observed swifts during those surveys.</p>
 <p>Here are the first six rows in the data:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2712,7 +2713,7 @@ RW sampler (7)
 |-------------|-------------|-------------|-------------|
 |-------------------------------------------------------|</code></pre>
 </div>
-<p>We can plot some of our chains to see how they mixed. Let’s start with the effect of elevation on occupancy, which is <code>beta[2]</code> (because <code>beta[1]</code> is the intercept).</p>
+<p>We can plot some of our chains to see how they mixed, for example the logit-scale effect of elevation on occupancy, which is <code>beta[2]</code> (because <code>beta[1]</code> is the intercept).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>[</span>, <span class='st'>"beta[2]"</span><span class='op'>]</span><span class='op'>)</span>
@@ -2727,24 +2728,33 @@ RW sampler (7)
 
 <span class='va'>summary</span><span class='op'>$</span><span class='va'>param</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-R-functions.html'>c</a></span><span class='op'>(</span><span class='st'>"Intercept (occu)"</span>, <span class='st'>"Elev (occu)"</span>, <span class='st'>"Forest (occu)"</span>,
                    <span class='st'>"Intercept (det)"</span>, <span class='st'>"Elev (det)"</span>, <span class='st'>"Forest (det)"</span>, <span class='st'>"Wind (det)"</span><span class='op'>)</span>
+
+<span class='va'>summary</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-R-functions.html'>c</a></span><span class='op'>(</span><span class='st'>"param"</span>, <span class='st'>"mean"</span>, <span class='st'>"2.5%"</span>, <span class='st'>"97.5%"</span><span class='op'>)</span><span class='op'>]</span>
 </code></pre>
 </div>
+<pre><code>                    param        mean       2.5%       97.5%
+beta[1]  Intercept (occu)  0.27558912 -0.3995926  1.42759930
+beta[2]       Elev (occu)  0.87816447 -0.4128858  2.23862643
+beta[3]     Forest (occu) -1.82784288 -3.4780877 -0.62010363
+gamma[1]  Intercept (det) -0.81601934 -1.3094703 -0.35864626
+gamma[2]       Elev (det)  0.50585592 -0.1835229  1.26530091
+gamma[3]     Forest (det)  0.03689909 -0.7124781  0.69144787
+gamma[4]       Wind (det) -0.50269720 -0.9427505 -0.07756671</code></pre>
 </div>
-<p>We found a negative effect</p>
+<p>We found a negative effect of forest cover on occupancy, and a negative effect of wind speed on detection. Nice.</p>
 <h1 id="next-time">Next time…</h1>
 <p>Stay tuned for two follow up posts. In the first, I’ll discuss easy ways to extend the occupancy model in NIMBLE to showcase the flexibility of this tool. Then, I’ll showcase an N-mixture model, and we’ll explore a case where marginalizing over a latent state can dramatically improve computation time.</p>
 <p>Thanks for reading! Hit the “contact me” button at the top of the page if you have any questions or feedback.</p>
 <h1 id="citations-and-additional-reading">Citations and additional reading</h1>
 <p>All the code in this exercise is available in the Github repository for this blog, specifically here. Please feel free to download and play around with this .Rmd file, and to copy and use this code freely.</p>
-<p>Relevant papers:</p>
+<p>Relevant papers and books:</p>
 <ul>
-<li>Original Royle paper on occupancy</li>
-<li>Ponisio et al.</li>
-<li>Occupancy Estimation and Modeling book</li>
-<li>AHMIE book</li>
+<li><a href="doi.org/10.1890/0012-9658(2002)083%5B2248:ESORWD%5D2.0.CO;2">Original MacKenzie et al. 2002 paper</a> on site-occupancy model</li>
+<li><a href="doi.org/10.1002/ece3.6053">Ponisio et al. 2020</a> paper marginalizing distributions in NIMBLE</li>
+<li><a href="https://www.sciencedirect.com/book/9780124071971/occupancy-estimation-and-modeling">Occupancy Estimation and Modeling textbook</a> by MacKenzie et al.</li>
 </ul>
-<p>As always, check out the NIMBLE User Manual and the NIMBLE examples page for more NIMBLE stuff.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>As always, check out the <a href="https://r-nimble.org/manuals/NimbleUserManual.pdf">NIMBLE User Manual</a> and the <a href="https://r-nimble.org/examples">NIMBLE examples page</a> for more NIMBLE stuff.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

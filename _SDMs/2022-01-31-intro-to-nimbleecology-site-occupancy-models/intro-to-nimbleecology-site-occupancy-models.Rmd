@@ -9,69 +9,119 @@ output:
   distill::distill_article:
     self_contained: false
     toc: true
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 # Overiview of the site-occupancy model
 
-(If you're just here for the nimbleEcology implementation, and feel comfortable with occupancy models, you can skip ahead to the next section.)
+*If you're here for the nimbleEcology implementation, and feel
+comfortable with occupancy models, you can skip ahead to the next
+section.*
 
+In species distribuiton modeling, we're often interested in whether
+animals' presence on the landscape is influenced by or correlated with a
+spatiotemporal factor. For example, we might be interested in whether a
+species prefers dense or sparse tree cover, whether a species' range is
+growing or declining over time, or whether a management strategy is
+actually working to
 
-In species distribuiton modeling, we're often interested in whether animals' presence on the landscape is influenced by or correlated with 
-
-Occupancy models are used to 
-
-In the occupancy model, we assume that each "site" is in fact occupied or unoccupied, but that we can't 
-
-Why occupancy?
-
-(I put "site" in quotation marks because the "site" need not be strictly spatial--for example, we could treat the occupancy status of a single location in different years as independent. Because the assumption that occupancy status doesn't change is called "closure," we can also call this unit a "unit of closure.")
-
+Site-occupancy models are a type of statistical structure that allow us
+to ask these questions when our detection process is imperfect.
 
 ### Structure
 
-The dominant and simplest occupancy model
-
-Let's start by putting down some statistical equations.
+Let's start by putting down some statistical equations for the simplest
+hierarchical site-occupancy model.
 
 $$y_{ij} \sim \text{Bernoulli}(z_i * p_{ij})$$
 $$z_i \sim \text{Bernoulli}(\psi_i)$$
-$$\text{logit}(psi_{i}) = x_{ij}^T\beta$$
+$$\text{logit}(\psi_{i}) = x_{i}^T\beta$$
 $$\text{logit}(p_{ij}) = w_{ij}^T\gamma$$
 
+where $i$ and $j$ index site and replicate visit, respectively; $y_{ij}$
+is a single detection or nondetection (1 or 0) at site $i$, replicate
+$j$; $z_i$ is a latent state representing occupancy; $\psi_i$ is the
+probability that site $i$ is occupied; $p_{ij}$ is an
+observation-specific conditional detection probability; $x_i$ and
+$w_{ij}$ are vectors of covariates of interest; and $\beta$ and $\gamma$
+are vectors of coefficients representing the effect of covariates on
+occupancy and detection, respectively.
 
-where $i$ and $j$ index site and replicate visit, respectively; $y_{ij}$ is a single detection or nondetection (1 or 0) at site $i$, replicate $j$; $z_i$ is a latent state 
+Phew. Let's break that down.
 
+In the **first equation**, we describe the probability distribution for
+our detection-nondetection observations, $y_{ij}$. We say that each data
+point is Bernoulli-distributed: we have a probability of $z_i * p_{ij}$
+of seeing the animal. Since we either see it or we don't, the
+probability of not seeing the animal is $1 - z_i * p_{ij}$.
 
-Let's break that down.
+In the occupancy model, we assume that each "site" is in fact occupied
+or unoccupied, but that we can't observe this condition perfectly. (I
+put "site" in quotation marks because the "site" need not be strictly
+spatial--for example, we could treat the occupancy status of a single
+location in different years as independent. Because the assumption that
+occupancy status doesn't change is called "closure," we can also call
+this unit a "unit of closure.") In our **second equation**, we represent
+this with the latent state $z_i$, which has a value of 1 if site $i$ is
+occupied and 0 if it is not. If the site is unoccupied, we have no
+chance of seeing the animal. In that case, $z_i = 0$ and the probability
+of $y_ij = 1$ is also 0. Think of $z_i$ as a switch that turns the
+probability of seeing the animal on or off. The "conditional probability
+of detection," i.e. the probability that we see the animal when it's
+present on a given observation, is $p_ij$. It's conditional because it
+only affects the data likelihood when $z_i =1$. In the second equation,
+we define the distribution for the latent state $z_i$, which has a
+probability of $\psi_i$.
 
-In the first equation, we describe the probability distribution for our detection-nondetection observations, $y_{ij}$. We say that each data point is Bernoulli-distributed: we have a probability of $z_i * p_{ij}$ of seeing the animal. Since we either see it or we don't, the probability of not seeing the animal is $1 - z_i * p_{ij}$. 
+The **third equation** links our probability of occupancy, $\psi_i$, to
+covariates. We say that, on the logit scale (which is a popular but
+arbitrary transformation from $(-\infty, \infty)$ to $(0, 1)$), $\psi_i$
+is a linear combination of some observed data describing our site,
+$x_{i}$, with coefficients $\beta$. We want to estimate $\beta$ to get
+confidence or credible intervals on those effects.
 
-The latent state is $z_i$, representing that site $i$ is either occupied or not. If the site is unoccupied, we have no chance of seeing the animal. In that case, $z_i = 0$ and the probability of $y_ij = 1$ is also 0. Think of $z_i$ as a switch that turns the probability of seeing the animal on or off. The "conditional probability of detection," i.e. the probability that we see the animal when it's present on a given observation, is $p_ij$. It's conditional because it only affects the data likelihood when $z_i =1$.
+The **fourth equation** replicates this logit-link structure for our
+detection probability, $p$, and some covariates $w$ with coefficients
+$\gamma$.
 
-In the second equation, we define the distribution for the latent state $z_i$.
-
-If this is confusing, there's a ton 
-
-
-
-### Assumptions
-
-
-
+There are many other, much more comprehensive explanations of the
+occupancy model out there, including entire textbooks. I link some of
+these at the end of the post.
 
 # What is nimbleEcology?
 
+nimbleEcology is an R package that makes it easier to implement some
+common ecological models in the general statistical software NIMBLE.
+
+The package provides a series of distributions that you can use in
+NIMBLE models, similar to familiar distributions like `dpois()` or
+`dbinom()`. This will become clear with the example in this blog post,
+where I show how the entire occupancy hierarchical probability
+distribution for the occupancy model can be written with
+`y ~ dOcc_v(...)`.
+
 ### Why should I use it?
 
-
-* It's easily modifiable
-* It's fairly efficient
-* We can easily use either MLE or Bayesian methodology
+-   **Less risk of coding errors**. We went ahead and implemented the
+    occupancy distribution so you don't have to. This saves lines of
+    code and hopefully reduces some of the headache that inevitably
+    comes from debugging a new model.
+-   **It's easily modifiable**. Implementing models in nimbleEcology,
+    compared to something like unmarked, makes it easier to modify and
+    customize your model when you're ready to get fancy.
+-   **It's fairly efficient**. nimbleEcology uses marginalized
+    distributions, saving memory and sometimes (but not always)
+    increasing computational efficiency.
+-   **Swap between MLE or Bayesian methodology**. This maybe isn't a
+    *need* so much as an interesting feature, but with NIMBLE you have
+    access to both maximum likelihood and Bayesian (MCMC) estimation
+    with very few changes to the model code.
 
 # Implementing the occupancy model with nimbleEcology
 
@@ -114,18 +164,25 @@ obsLevelData[, , "windLevel"] <- dat$wind
 
 ```
 
-In this section, I showcase the use of nimbleEcology for implementing an occupancy distribution 
+![Swift photo (c) J Tanner 2022.
+<https://macaulaylibrary.org/asset/409111121>](images/swift.png)
 
+In this section, I showcase the use of nimbleEcology for implementing an
+occupancy model with simulated data.
 
-
-Let's say we have some data we collected in a study on how the occupancy of a bird, the white-throated swift. I have my detection/nondetection data in a matrix called "obs". We surveyed 200 sites three times each, and recorded whether or not we observed swifts during those surveys.
+Let's say we have some data we collected in a study on how the occupancy
+of a bird, the white-throated swift. I have my detection/nondetection
+data in a matrix called "obs". We surveyed 200 sites three times each,
+and recorded whether or not we observed swifts during those surveys.
 
 Here are the first six rows in the data:
 
 ```{r}
 head(obs)
 ```
-We detected the swift at four of the first six sites. Here are a few more summary statistics:
+
+We detected the swift at four of the first six sites. Here are a few
+more summary statistics:
 
 ```{r}
 # Total number of sites with detections ("naive occupancy")
@@ -135,15 +192,23 @@ sum(rowSums(obs) > 0)
 mean(obs[rowSums(obs) > 0, ])
 ```
 
-
-We want to know how the elevation and amount of forest cover impact the occupancy of our swifts in the study area. We measured elevation and forest cover at each of our sites. Here's the first six sites' data:
+We want to know how the elevation and amount of forest cover impact the
+occupancy of our swifts in the study area. We measured elevation and
+forest cover at each of our sites. Here's the first six sites' data:
 
 ```{r}
 head(siteLevelData)
 ```
+
 (In the previous section, each row of these data are an $x_i$.)
 
-We're using an occupancy model because we think our data contains false negatives--i.e., sometimes we didn't see a swift at an occupied site. We think that sometimes, high wind conditions could reduce our ability to see swifts. And we also don't want to rule out the possibility that detection probabilities vary with elevation or tree cover. Disambiguating the effects of a single variable on **both** detection and probability is one of the main benefits of th occupancy model.
+We're using an occupancy model because we think our data contains false
+negatives--i.e., sometimes we didn't see a swift at an occupied site. We
+think that sometimes, high wind conditions could reduce our ability to
+see swifts. And we also don't want to rule out the possibility that
+detection probabilities vary with elevation or tree cover.
+Disambiguating the effects of a single variable on **both** detection
+and probability is one of the main benefits of th occupancy model.
 
 Here's data from the first six sites for our three detection variables.
 
@@ -153,7 +218,11 @@ head(obsLevelData[,,"forestCover"])
 head(obsLevelData[,,"windLevel"])
 ```
 
-For the sake of simplicity, we'll assume that our sites are random and representative of the study area, that we have good reason to believe we aren't recording false positive observations, and that we don't think our detection process is variable except due to the factors we're considering (wind, forest cover, and elevation).
+For the sake of simplicity, we'll assume that our sites are random and
+representative of the study area, that we have good reason to believe we
+aren't recording false positive observations, and that we don't think
+our detection process is variable except due to the factors we're
+considering (wind, forest cover, and elevation).
 
 Let's get to modeling!
 
@@ -162,14 +231,18 @@ library(nimble)
 library(nimbleEcology)
 ```
 
+First, to use NIMBLE, we're going to define a `nimbleCode` object. This
+code object uses a pseudo-code language, blending .
 
-First, to use NIMBLE, we're going to define a `nimbleCode` object. This code object uses a pseudo-code language, blending .
-
-NIMBLE uses a declarative language, meaning order doesn't matter. A consequence of this is that you can't overwrite values. Instead of stepping through lines of code, think of `nimbleCode` as defining relationships between variables (nodes).
+NIMBLE uses a declarative language, meaning order doesn't matter. A
+consequence of this is that you can't overwrite values. Instead of
+stepping through lines of code, think of `nimbleCode` as defining
+relationships between variables (nodes).
 
 For a more in-depth overview of the NIMBLE code language
 
-Ok, enough stalling. Here's the NIMBLE code for our model, with comments.
+Ok, enough stalling. Here's the NIMBLE code for our model, with
+comments.
 
 ```{r}
 
@@ -221,30 +294,37 @@ occuCode <- nimbleCode({
 
 ```
 
-Some of this code might look unfamiliar to folks who have done Bayesian occupancy
-modeling before. I've gone out of my way to make things generalizable, using
-`inprod()` over, for example, `intercept + elev[i] * b1 + forest[i] * b2`.
-My motivation for doing this is that it's super generalizable, and I'll be able
-to add or remove covariates without making any changes to my code.
+Some of this code might look unfamiliar to folks who have done Bayesian
+occupancy modeling before. I've gone out of my way to make things
+generalizable, using `inprod()` over, for example,
+`intercept + elev[i] * b1 + forest[i] * b2`. My motivation for doing
+this is that it's super generalizable, and I'll be able to add or remove
+covariates without making any changes to my code.
 
-Note that because we're using nimbleEcology, we've "marginalized over" the latent
-state $z$ and it's not in the model. This is a good thing for a couple reasons: it reduces the amount of RAM needed, which can be important for large datasets; it slightly speeds up mixing time in some cases; and it saves some lines of code. However, there are often cases where we **want** $z$, such as if we want a posterior distribution on the number of occupied sites. In that case we shouldn't use nimbleEcology (but NIMBLE will do fine).
+Note that because we're using nimbleEcology, we've "marginalized over"
+the latent state $z$ and it's not in the model. This is a good thing for
+a couple reasons: it reduces the amount of RAM needed, which can be
+important for large datasets; it slightly speeds up mixing time in some
+cases; and it saves some lines of code. However, there are often cases
+where we **want** $z$, such as if we want a posterior distribution on
+the number of occupied sites. In that case we shouldn't use
+nimbleEcology (but NIMBLE will do fine).
 
-The next step in the NIMBLE workflow is to define a NIMBLE model object. This turns
-our code, which describes a series of nodes and the relationships between them, 
-into an actual object composed of that structure.
+The next step in the NIMBLE workflow is to define a NIMBLE model object.
+This turns our code, which describes a series of nodes and the
+relationships between them, into an actual object composed of that
+structure.
 
 All the data wrangling I have to do is just to get my inputs in the same
 form as I've described them.
 
-Because I'm using `inprod()` I need to make sure my data have intercept columns
-first.
+Because I'm using `inprod()` I need to make sure my data have intercept
+columns first.
 
 ```{r}
 siteLevelData$intercept <- 1
 obsLevelData[,, "intercept"] <- 1
 ```
-
 
 ```{r}
 occu_model <- nimbleModel(
@@ -272,9 +352,8 @@ occu_model <- nimbleModel(
 
 That's it! We now have a nimbleModel object.
 
-One of my favorite things about working in NIMBLE is that we can play with and
-query the nimbleModel.
-
+One of my favorite things about working in NIMBLE is that we can play
+with and query the nimbleModel.
 
 ```{r}
 # Peek inside the model: what are the data values for the 22nd site?
@@ -287,9 +366,14 @@ occu_model$occuCovars[22,] # Intercept, elevation, tree cover
 occu_model$calculate()
 
 ```
-If we wanted to, we could modify data or initial values at this stage, but not constants, which are "baked in" to the model when its built.
 
-I'll go quickly over this next part, since using MCMC with NIMBLE is better explained elsewhere. Briefly, we're going to build an MCMC object and then compile the whole thing so we're ready to do some MCMC sampling.
+If we wanted to, we could modify data or initial values at this stage,
+but not constants, which are "baked in" to the model when its built.
+
+I'll go quickly over this next part, since using MCMC with NIMBLE is
+better explained elsewhere. Briefly, we're going to build an MCMC object
+and then compile the whole thing so we're ready to do some MCMC
+sampling.
 
 ```{r}
 mcmc <- buildMCMC(occu_model)
@@ -301,9 +385,9 @@ complist <- compileNimble(occu_model, mcmc)
 complist$occu_model$obs[22,]
 ```
 
-
-Now let's do some MCMC sampling. 10,000 MCMC samples on 2 chains is a bit overkill
-for this model, but it's quick--this takes about 20 seconds to run on my machine.
+Now let's do some MCMC sampling. 10,000 MCMC samples on 2 chains is a
+bit overkill for this model, but it's quick--this takes about 20 seconds
+to run on my machine.
 
 ```{r}
 samples <- runMCMC(complist$mcmc, 
@@ -314,13 +398,13 @@ samples <- runMCMC(complist$mcmc,
                    samplesAsCodaMCMC = TRUE)
 ```
 
-We can plot some of our chains to see how they mixed. Let's start with the effect of elevation on occupancy, which is `beta[2]` (because `beta[1]` is the intercept).
+We can plot some of our chains to see how they mixed, for example the
+logit-scale effect of elevation on occupancy, which is `beta[2]`
+(because `beta[1]` is the intercept).
 
 ```{r}
 plot(samples[, "beta[2]"])
 ```
-
-
 
 I like the package `MCMCvis` for MCMC summaries.
 
@@ -329,34 +413,42 @@ summary <- MCMCvis::MCMCsummary(samples)
 
 summary$param <- c("Intercept (occu)", "Elev (occu)", "Forest (occu)",
                    "Intercept (det)", "Elev (det)", "Forest (det)", "Wind (det)")
+
+summary[, c("param", "mean", "2.5%", "97.5%")]
 ```
 
-
-We found a negative effect 
-
+We found a negative effect of forest cover on occupancy, and a negative
+effect of wind speed on detection. Nice.
 
 # Next time...
 
-Stay tuned for two follow up posts. In the first, I'll discuss easy ways to extend
-the occupancy model in NIMBLE to showcase the flexibility of this tool. Then,
-I'll showcase an N-mixture model, and we'll explore a case where marginalizing
-over a latent state can dramatically improve computation time.
+Stay tuned for two follow up posts. In the first, I'll discuss easy ways
+to extend the occupancy model in NIMBLE to showcase the flexibility of
+this tool. Then, I'll showcase an N-mixture model, and we'll explore a
+case where marginalizing over a latent state can dramatically improve
+computation time.
 
-Thanks for reading! Hit the "contact me" button at the top of the page if you 
-have any questions or feedback.
+Thanks for reading! Hit the "contact me" button at the top of the page
+if you have any questions or feedback.
 
 # Citations and additional reading
 
-All the code in this exercise is available in the Github repository for this blog, specifically here. Please feel free to download and play around with this .Rmd file, and to copy and use this code freely.
+All the code in this exercise is available in the Github repository for
+this blog, specifically here. Please feel free to download and play
+around with this .Rmd file, and to copy and use this code freely.
 
-Relevant papers:
+Relevant papers and books:
 
-* Original Royle paper on occupancy
-* Ponisio et al.
-* Occupancy Estimation and Modeling book
-* AHMIE book
+-   [Original MacKenzie et al. 2002
+    paper](doi.org/10.1890/0012-9658(2002)083[2248:ESORWD]2.0.CO;2) on
+    site-occupancy model
+-   [Ponisio et al. 2020](doi.org/10.1002/ece3.6053) paper marginalizing
+    distributions in NIMBLE
+-   [Occupancy Estimation and Modeling
+    textbook](https://www.sciencedirect.com/book/9780124071971/occupancy-estimation-and-modeling)
+    by MacKenzie et al.
 
-As always, check out the NIMBLE User Manual and the NIMBLE examples page for more NIMBLE stuff.
-
-
-
+As always, check out the [NIMBLE User
+Manual](https://r-nimble.org/manuals/NimbleUserManual.pdf) and the
+[NIMBLE examples page](https://r-nimble.org/examples) for more NIMBLE
+stuff.
