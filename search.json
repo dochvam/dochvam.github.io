@@ -5,21 +5,21 @@
       "title": "Blog",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-02-04T13:25:57-08:00"
+      "last_modified": "2022-02-07T13:53:20-08:00"
     },
     {
       "path": "contact.html",
       "title": "Contact Me",
       "author": [],
       "contents": "\r\nIf you have any questions about my research, something I’ve written on the blog, how to access full text of articles, or collaborating, please shoot me an email:\r\nben.goldstein@berkeley.edu\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-02-04T13:25:58-08:00"
+      "last_modified": "2022-02-07T13:53:21-08:00"
     },
     {
       "path": "cv.html",
       "title": "Publications and CV",
       "author": [],
       "contents": "\r\nFind my academic CV below. Last updated February 2022.\r\nIf you have any questions about accessing the full text of a publication, please reach out via email.\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-02-04T13:25:58-08:00"
+      "last_modified": "2022-02-07T13:53:21-08:00"
     },
     {
       "path": "index.html",
@@ -27,7 +27,7 @@
       "description": "Ecology PhD candidate at UC Berkeley\n",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n\r\nHello! I am a Ph.D. candidate in the Department of Environmental Science, Policy, and Management (ESPM) at UC Berkeley. I study quantitative ecology with a focus on species distribution modeling, developing and applying statistical methods to understand how wild animal populations vary over time and space. My advisor is Perry de Valpine.\r\nOn this website, you’ll find a description of my research interests, my CV, and a blog I’m hoping to update with species distribution model tutorials and interesting things I come across in my work.\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-02-04T13:25:59-08:00"
+      "last_modified": "2022-02-07T13:53:22-08:00"
     },
     {
       "path": "Research.html",
@@ -35,7 +35,7 @@
       "description": "An overview of my ecology research.\n",
       "author": [],
       "contents": "\r\nParticipatory science\r\nIn my doctoral research, I analyze biodiversity data from participatory science platforms (sometimes called “citizen science” or “community science”). Participatory science is a paradigm by which data are generated on a volunteer basis by anyone who wants to get involved in a decentralized manner. In ecology, participatory data are often opportunistic (meaning, unscheduled) observations of plants or animals. Prominent platforms of interest include iNaturalist and eBird.\r\nI am interested in these data along two dimensions. The first of these is: how can we make use of participatory observations of wildlife to better understand the distributions of those wildlife on the landscape? While data submitted to platforms like iNaturalist and eBird are tempting—there’s a ton of data, and it’s all free to access—the lack of a rigorous sampling structure means that understanding the wildlife without introducing human bias is a statistical challenge.\r\nThe second dimension is: what can we learn about human observers from the observations they submit? Participatory science records contain as much information about the people making them (in the aggregate) as they do about the species being observed. For example, we can work with eBird data to ask: when and where are people birding? Are people more likely to travel further from population centers in the summer? Do people prefer more colorful species and individuals, or are they more likely to record a rare species than a common one? Questions about observers’ behaviors and preferences seem disconnected from ecology, but in order to handle participatory data correctly we need to deeply understand the process by which they’re generated.\r\nSelect publication: Identifying engaging bird species and traits (preprint)\r\nIn this preprint, my colleagues and I estimate species-level bias in iNaturalist bird reports compared to eBird. We produce an “overreporting index” for each of 472 species in the United States and interpret that index as a measure of how “engaging” a species is. Colorful, rare, and large birds were more engaging, as epitomized by the overall most engaging bird: the feral Indian peafowl.\r\nSpecies distribution modeling\r\nUnderstanding how wildlife populations are arranged on the landscape is one of the main goals of wildlife research. “Species distribution modeling” is a term that encompasses research into how wild animals are distributed in space and time, and how those distributions relate to environmental characteristics like habitat type, temperature, and human impacts.\r\nGoing from data to inference–for example, from a series of surveys of animal counts to a statistical picture of how those animals use different habitat types–involves statistical modeling.\r\nIn my research, I develop statistical solutions for modeling species distributions with data generated in a variety of ways including camera trapping and participatory science. I’m interested in methodological questions about how models operate in general, as well as empirical applications of these models.\r\nCheck out the Blog page on this website for more info on species distribution modeling.\r\nSelect publication: Effects of wildfire diversity on California mammals\r\nIn this project, led by collaborator Dr. Brett Furnas at the California Department of Fish and Wildlife, we analyze a camera trap dataset to understand how mammalian carnivores respond to wildfire in California. I helped implement Dr. Furnas’ statistical models in a Bayesian framework to generate robust estimates of species’ occupancy distributions.\r\nCheck out this article in KQED covering the paper.\r\nSoftware development\r\nI worked as a member of the NIMBLE development team under my advisor and co-creator of NIMBLE, Dr. Perry de Valpine. NIMBLE is an R extension for building and estimating arbitrary statistical models.\r\nI wrote and maintain the nimbleEcology auxiliary package, which provides additional tools for implementing common models in ecology such as the N-mixture model, the site-occupancy model, and the hidden Markov distribution for multi-state models.\r\nAgroecology\r\nI’ve had the opportunity to collaborate with colleagues at UC Berkeley to apply my expertise in spatial statistics to a number of interest agricultural problems. As a statistical consultant with Land Core, I’m working to improve our understanding of the effect of conservation agricultural practices like low-intensity tillage and crop rotation on mitigating risk for farmers.\r\nSelect publication: Drivers of crop rotation in the Midwest\r\nIn this project, led by my colleague Yvonne Socolar, we look for patterns in where Midwestern famers do and don’t rotate their crops using a novel Rotational Complexity Index (RCI). The robustness of this study’s conclusions depended on a spatial block bootstrap for uncertainty quantification in the presence of spatial autocorrelation.\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-02-04T13:25:59-08:00"
+      "last_modified": "2022-02-07T13:53:23-08:00"
     }
   ],
   "collections": ["SDMs/SDMs.json"]

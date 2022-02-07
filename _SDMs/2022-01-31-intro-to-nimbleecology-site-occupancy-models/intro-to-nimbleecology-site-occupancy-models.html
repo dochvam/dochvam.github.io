@@ -1525,9 +1525,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><strong>Swap between MLE or Bayesian methodology</strong>. This maybe isn’t a <em>need</em> so much as an interesting feature, but with NIMBLE you have access to both maximum likelihood and Bayesian (MCMC) estimation with very few changes to the model code.</li>
 </ul>
 <h1 id="implementing-the-occupancy-model-with-nimbleecology">Implementing the occupancy model with nimbleEcology</h1>
-<figure>
-<img src="images/swift.png" alt="Swift photo (c) J Tanner 2022. https://macaulaylibrary.org/asset/409111121" /><figcaption aria-hidden="true">Swift photo (c) J Tanner 2022. <a href="https://macaulaylibrary.org/asset/409111121" class="uri">https://macaulaylibrary.org/asset/409111121</a></figcaption>
-</figure>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span style="display:block;" id="fig:swift"></span>
+<img src="images/swift.png" alt="Swift (c) J Tanner 2022. &lt;https://macaulaylibrary.org/asset/409111121&gt;" width="100%" data-distill-preview=1 />
+<p class="caption">
+Figure 1: Swift (c) J Tanner 2022. <a href="https://macaulaylibrary.org/asset/409111121" class="uri">https://macaulaylibrary.org/asset/409111121</a>
+</p>
+</div>
+</div>
+<!-- ![Swift photo (c) J Tanner 2022. -->
+<!-- <https://macaulaylibrary.org/asset/409111121>](images/swift.png) -->
 <p>In this section, I showcase the use of nimbleEcology for implementing an occupancy model with simulated data.</p>
 <p>Let’s say we have some data we collected in a study on how the occupancy of a bird, the white-throated swift. I have my detection/nondetection data in a matrix called “obs”. We surveyed 200 sites three times each, and recorded whether or not we observed swifts during those surveys.</p>
 <p>Here are the first six rows in the data:</p>

@@ -164,8 +164,15 @@ obsLevelData[, , "windLevel"] <- dat$wind
 
 ```
 
-![Swift photo (c) J Tanner 2022.
-<https://macaulaylibrary.org/asset/409111121>](images/swift.png)
+
+```{r swift, preview = TRUE, fig.cap="Swift (c) J Tanner 2022. <https://macaulaylibrary.org/asset/409111121>", echo = FALSE, out.width= "100%"}
+
+knitr::include_graphics("images/swift.png")
+
+```
+
+<!-- ![Swift photo (c) J Tanner 2022. -->
+<!-- <https://macaulaylibrary.org/asset/409111121>](images/swift.png) -->
 
 In this section, I showcase the use of nimbleEcology for implementing an
 occupancy model with simulated data.

@@ -87,26 +87,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Ben R. Goldstein: Blog</title>
+  <title>Ben R. Goldstein: Research</title>
 
+  <meta property="description" itemprop="description" content="An overview of my ecology research."/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Ben R. Goldstein: Blog"/>
+  <meta property="og:title" content="Ben R. Goldstein: Research"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="An overview of my ecology research."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Ben R. Goldstein"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Ben R. Goldstein: Blog"/>
+  <meta property="twitter:title" content="Ben R. Goldstein: Research"/>
+  <meta property="twitter:description" content="An overview of my ecology research."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","listing"]}},"value":[{"type":"character","attributes":{},"value":["Blog"]},{"type":"character","attributes":{},"value":["SDMs"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Research"]},{"type":"character","attributes":{},"value":["An overview of my ecology research.\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2345,26 +2348,18 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.11.15/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Blog","authors":[]}
+{"title":"Research","description":"An overview of my ecology research.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2394,175 +2389,37 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).on("load", function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      page_category = decodeURIComponent(page_category)
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-apply-limit l-page">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Blog">Blog</h1>
-<a href="SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 31, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Ben R Goldstein</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/images/swift.png"/>
-</div>
-<div class="description">
-<h2>Intro to nimbleEcology: site-occupancy models</h2>
-<div class="dt-tags"></div>
-<p>An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework.</p>
-</div>
-</a>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Blog</h1>
+<h1>Research</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p><p>An overview of my ecology research.</p></p>
 </div>
 
 
 <div class="d-article">
+<h2 id="participatory-science">Participatory science</h2>
+<p>In my doctoral research, I analyze biodiversity data from participatory science platforms (sometimes called “citizen science” or “community science”). Participatory science is a paradigm by which data are generated on a volunteer basis by anyone who wants to get involved in a decentralized manner. In ecology, participatory data are often opportunistic (meaning, unscheduled) observations of plants or animals. Prominent platforms of interest include <a href="inaturalist.org">iNaturalist</a> and <a href="eBird.org">eBird</a>.</p>
+<p>I am interested in these data along two dimensions. The first of these is: how can we make use of participatory observations of wildlife to better understand the distributions of those wildlife on the landscape? While data submitted to platforms like iNaturalist and eBird are tempting—there’s a ton of data, and it’s all free to access—the lack of a rigorous sampling structure means that understanding the wildlife without introducing human bias is a statistical challenge.</p>
+<p>The second dimension is: what can we learn about human observers from the observations they submit? Participatory science records contain as much information about the people making them (in the aggregate) as they do about the species being observed. For example, we can work with eBird data to ask: when and where are people birding? Are people more likely to travel further from population centers in the summer? Do people prefer more colorful species and individuals, or are they more likely to record a rare species than a common one? Questions about observers’ behaviors and preferences seem disconnected from ecology, but in order to handle participatory data correctly we need to deeply understand the process by which they’re generated.</p>
+<h4 id="select-publication-identifying-engaging-bird-species-and-traits-preprint">Select publication: Identifying engaging bird species and traits (preprint)</h4>
+<p><a href="https://www.biorxiv.org/content/10.1101/2021.06.05.446577v1">In this preprint</a>, my colleagues and I estimate species-level bias in iNaturalist bird reports compared to eBird. We produce an “overreporting index” for each of 472 species in the United States and interpret that index as a measure of how “engaging” a species is. Colorful, rare, and large birds were more engaging, as epitomized by the overall most engaging bird: the feral Indian peafowl.</p>
+<h2 id="species-distribution-modeling">Species distribution modeling</h2>
+<p>Understanding how wildlife populations are arranged on the landscape is one of the main goals of wildlife research. “Species distribution modeling” is a term that encompasses research into how wild animals are distributed in space and time, and how those distributions relate to environmental characteristics like habitat type, temperature, and human impacts.</p>
+<p>Going from data to inference–for example, from a series of surveys of animal counts to a statistical picture of how those animals use different habitat types–involves statistical modeling.</p>
+<p>In my research, I develop statistical solutions for modeling species distributions with data generated in a variety of ways including camera trapping and participatory science. I’m interested in methodological questions about how models operate in general, as well as empirical applications of these models.</p>
+<p>Check out the Blog page on this website for more info on species distribution modeling.</p>
+<h4 id="select-publication-effects-of-wildfire-diversity-on-california-mammals">Select publication: Effects of wildfire diversity on California mammals</h4>
+<p><a href="doi.org/10.1111/ddi.13374">In this project</a>, led by collaborator Dr. Brett Furnas at the California Department of Fish and Wildlife, we analyze a camera trap dataset to understand how mammalian carnivores respond to wildfire in California. I helped implement Dr. Furnas’ statistical models in a Bayesian framework to generate robust estimates of species’ occupancy distributions.</p>
+<p>Check out <a href="https://www.kqed.org/science/1978094/see-california-wildlife-return-to-hidden-cameras-courtesy-of-hidden-cameras">this article in KQED</a> covering the paper.</p>
+<h2 id="software-development">Software development</h2>
+<p>I worked as a member of the NIMBLE development team under my advisor and co-creator of NIMBLE, Dr. Perry de Valpine. <a href="r-nimble.org">NIMBLE</a> is an R extension for building and estimating arbitrary statistical models.</p>
+<p>I wrote and maintain the <a href="https://cran.r-project.org/web/packages/nimbleEcology/index.html">nimbleEcology</a> auxiliary package, which provides additional tools for implementing common models in ecology such as the N-mixture model, the site-occupancy model, and the hidden Markov distribution for multi-state models.</p>
+<h2 id="agroecology">Agroecology</h2>
+<p>I’ve had the opportunity to collaborate with colleagues at UC Berkeley to apply my expertise in spatial statistics to a number of interest agricultural problems. As a statistical consultant with <a href="https://landcore.org/">Land Core</a>, I’m working to improve our understanding of the effect of conservation agricultural practices like low-intensity tillage and crop rotation on mitigating risk for farmers.</p>
+<h4 id="select-publication-drivers-of-crop-rotation-in-the-midwest">Select publication: Drivers of crop rotation in the Midwest</h4>
+<p>In this project, led by my colleague Yvonne Socolar, we look for patterns in where Midwestern famers do and don’t rotate their crops using a novel Rotational Complexity Index (RCI). The robustness of this study’s conclusions depended on a spatial block bootstrap for uncertainty quantification in the presence of spatial autocorrelation.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
