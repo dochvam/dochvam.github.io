@@ -1,10 +1,10 @@
 ---
-title: "Intro to nimbleEcology: site-occupancy models"
+title: "Intro to nimbleEcology: Marginalization and the occupancy model"
 description: |
   An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework.
 author:
   - name: Ben R Goldstein
-date: 2022-01-31
+date: 2022-02-09
 output:
   distill::distill_article:
     self_contained: false
@@ -18,28 +18,135 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Overiview of the site-occupancy model
+# *This post is still in draft  form :)*
 
-*If you're here for the nimbleEcology implementation, and feel
-comfortable with occupancy models, you can skip ahead to the next
-section.*
+# What is nimbleEcology?
 
-In species distribuiton modeling, we're often interested in whether
-animals' presence on the landscape is influenced by or correlated with a
-spatiotemporal factor. For example, we might be interested in whether a
-species prefers dense or sparse tree cover, whether a species' range is
-growing or declining over time, or whether a management strategy is
-actually working to
+nimbleEcology is an R package that makes it easier to implement some
+common ecological models in the general statistical software NIMBLE.
+
+The package provides a series of distributions that you can use in
+NIMBLE models, similar to familiar distributions like `dpois()` or
+`dbinom()`. This will become clear with the example in this blog post,
+where I show how the entire occupancy hierarchical probability
+distribution for the occupancy model can be written with
+`y ~ dOcc_v(...)`.
+
+nimbleEcology distributions condense hierarchical model structure into a
+single line of code by a process called **marginalization**.
+
+### What is marginalization?
+
+Model fitting, whether working with Bayesian or maximum likelihood
+tools, always involves calculating the likelihood of a model. In MLE, we
+often calculate the likelihood of a set of parameters given our data and
+numerically optimizing those parameters to maximize the likelihood. This
+is how popular MLE packages for ecological models like `unmarked` work
+under the hood. In Bayesian statistics, we don't directly optimize the
+likelihood, so we can get away with sampling due to magic (WARNING: I am
+not )
+
+When we have latent states and random effects in our model, calculating
+the likelihood becomes more complicated. We don't include values for
+latent states in the total model likelihood, because by definition
+random effects and latent states are not technically parameters we're
+estimating--that's what differentiates them from fixed effects. Instead
+we want to know the likelihood of our parameters, given the data and a
+random effect/latent state structure with specific random effects/latent
+states *that could have any value* in their domain. To calculate the
+likelihood, you have to integrate over all possible values of each
+random effect.
+
+(A brief note here: I'm honestly not sure what the definition of "latent
+state" is. I believe you can usually think of latent states as a type of
+random effect.)
+
+The rapid expansion of Bayesian methods in ecology have both obscured
+and been spurred by the fact that writing explicit likelihoods that
+integrate over random effects / marginalize over latent states. In
+Bayesian statistics, it works out that you can sample the random effect
+without having to marginalize over it. This is nice in cases like
+continuous random effects where integrating would require complicated
+approximators, and also in cases like hierarchical modeling where it's
+intuitive to see the model structure written out.
+
+This idea still gives me a lot of trouble, so if you're stuck on it,
+that's okay--I'll try to contextualize the effects and advantages of
+marginalization in a way that doesn't rely on a nuanced statistical
+understanding.
+
+### Why should I use nimbleEcology marginalized distributions?
+
+Some advantages:
+
+-   **Simpler code**. We went ahead and implemented the occupancy
+    distribution so you don't have to. This saves lines of code and
+    hopefully reduces some of the headache that inevitably comes from
+    debugging a new model.
+-   **It's easily modifiable**. Implementing models in nimbleEcology,
+    compared to something like unmarked, makes it easier to modify and
+    customize your model when you're ready to get fancy.
+-   **It's fairly efficient**. nimbleEcology uses marginalized
+    distributions, saving memory and sometimes (but not always)
+    increasing computational efficiency.
+-   **Swap between MLE or Bayesian methodology**. This maybe isn't a
+    *need* so much as an interesting feature, but with NIMBLE you have
+    access to both maximum likelihood and Bayesian (MCMC) estimation
+    with very few changes to the model code.
+
+Some important disadvantages of using marginalized distributions:
+
+-   **No access to posterior distributions of latent states.** It's
+    fairly common now for ecologists to create derived products by
+    summarizing latent states, such as obtaining a posterior on the
+    total number of occupied sites. Because we aren't sampling the
+    latent state if we marginalize, we can't do this.
+
+-   **It's sometimes less efficient for MCMC.** The paper that generated
+    much of the code that eventually became nimbleEcology is Ponisio et
+    al. 2020, "One size does not fit all: Customizing MCMC methods for
+    hierarchical models using NIMBLE." The title does a great job of
+    summarizing their findings: Dr. Ponisio and colleagues found that
+    marginalizing over latent states sometimes, but not always,
+    improved MCMC.
+
+# Overview of the site-occupancy model
+
+Much has been written about the occupancy model, including entire
+textbooks and [other very nice blog
+posts](https://masonfidino.com/a_simple_static_occupancy_model/). I link
+to some of those at the bottom of the article. But here's a very brief
+overview of this model's structure.
+
+***If you feel comfortable implementing occupancy models, you can skip
+ahead to the next section: "Implementing the occupancy model with
+nimbleEcology"***
+
+In species distribution modeling, we often want to ask whether a
+species' presence on the landscape is correlated with a spatio-temporal
+variable. For example, we might be interested in whether a species
+prefers dense or sparse tree cover, whether a species' range is growing
+or declining over time, or whether a management strategy is actually
+working to attract a species.
+
+To answer the question, we go out and collect data. We visit a gradient
+of sites across the variable of interest (such as some densely forested
+sites and some sparsely forested sites) and write down when we do and
+don't detect the animal. We then often want to use statistical modeling
+to differentiate between the occupancy and detection processes--i.e.,
+whether we detected the species less because it was truly there less, or
+just because it was harder to detect.
 
 Site-occupancy models are a type of statistical structure that allow us
-to ask these questions when our detection process is imperfect.
+to ask these questions when our detection process is imperfect, so we
+can't be confident that a nondetection means the species wasn't there.
 
 ### Structure
 
 Let's start by putting down some statistical equations for the simplest
 hierarchical site-occupancy model.
 
-$$y_{ij} \sim \text{Bernoulli}(z_i * p_{ij})$$
+$$y_{ij} \sim \text{Bernoulli}(z_i \times p_{ij})$$
 $$z_i \sim \text{Bernoulli}(\psi_i)$$
 $$\text{logit}(\psi_{i}) = x_{i}^T\beta$$
 $$\text{logit}(p_{ij}) = w_{ij}^T\gamma$$
@@ -57,9 +164,10 @@ Phew. Let's break that down.
 
 In the **first equation**, we describe the probability distribution for
 our detection-nondetection observations, $y_{ij}$. We say that each data
-point is Bernoulli-distributed: we have a probability of $z_i * p_{ij}$
-of seeing the animal. Since we either see it or we don't, the
-probability of not seeing the animal is $1 - z_i * p_{ij}$.
+point is Bernoulli-distributed: we have a probability of
+$z_i \times p_{ij}$ of seeing the animal. Since we either see it or we
+don't, the probability of not seeing the animal is
+$1 - z_i \times p_{ij}$.
 
 In the occupancy model, we assume that each "site" is in fact occupied
 or unoccupied, but that we can't observe this condition perfectly. (I
@@ -81,47 +189,16 @@ probability of $\psi_i$.
 
 The **third equation** links our probability of occupancy, $\psi_i$, to
 covariates. We say that, on the logit scale (which is a popular but
-arbitrary transformation from $(-\infty, \infty)$ to $(0, 1)$), $\psi_i$
-is a linear combination of some observed data describing our site,
-$x_{i}$, with coefficients $\beta$. We want to estimate $\beta$ to get
-confidence or credible intervals on those effects.
+largely arbitrary transformation from $(-\infty, \infty)$ to $(0, 1)$),
+$\psi_i$ is a linear combination of some observed data describing our
+site, $x_{i}$, with coefficients $\beta$. We want to estimate $\beta$ to
+get confidence or credible intervals on those effects.
 
 The **fourth equation** replicates this logit-link structure for our
 detection probability, $p$, and some covariates $w$ with coefficients
 $\gamma$.
 
-There are many other, much more comprehensive explanations of the
-occupancy model out there, including entire textbooks. I link some of
-these at the end of the post.
-
-# What is nimbleEcology?
-
-nimbleEcology is an R package that makes it easier to implement some
-common ecological models in the general statistical software NIMBLE.
-
-The package provides a series of distributions that you can use in
-NIMBLE models, similar to familiar distributions like `dpois()` or
-`dbinom()`. This will become clear with the example in this blog post,
-where I show how the entire occupancy hierarchical probability
-distribution for the occupancy model can be written with
-`y ~ dOcc_v(...)`.
-
-### Why should I use it?
-
--   **Less risk of coding errors**. We went ahead and implemented the
-    occupancy distribution so you don't have to. This saves lines of
-    code and hopefully reduces some of the headache that inevitably
-    comes from debugging a new model.
--   **It's easily modifiable**. Implementing models in nimbleEcology,
-    compared to something like unmarked, makes it easier to modify and
-    customize your model when you're ready to get fancy.
--   **It's fairly efficient**. nimbleEcology uses marginalized
-    distributions, saving memory and sometimes (but not always)
-    increasing computational efficiency.
--   **Swap between MLE or Bayesian methodology**. This maybe isn't a
-    *need* so much as an interesting feature, but with NIMBLE you have
-    access to both maximum likelihood and Bayesian (MCMC) estimation
-    with very few changes to the model code.
+# A marginalized occupancy distribution, `dOcc`
 
 # Implementing the occupancy model with nimbleEcology
 
@@ -164,7 +241,6 @@ obsLevelData[, , "windLevel"] <- dat$wind
 
 ```
 
-
 ```{r swift, preview = TRUE, fig.cap="Swift (c) J Tanner 2022. <https://macaulaylibrary.org/asset/409111121>", echo = FALSE, out.width= "100%"}
 
 knitr::include_graphics("images/swift.png")
@@ -172,6 +248,7 @@ knitr::include_graphics("images/swift.png")
 ```
 
 <!-- ![Swift photo (c) J Tanner 2022. -->
+
 <!-- <https://macaulaylibrary.org/asset/409111121>](images/swift.png) -->
 
 In this section, I showcase the use of nimbleEcology for implementing an
@@ -188,7 +265,7 @@ Here are the first six rows in the data:
 head(obs)
 ```
 
-We detected the swift at four of the first six sites. Here are a few
+We detected the swift at three of the first six sites. Here are a few
 more summary statistics:
 
 ```{r}
@@ -244,9 +321,9 @@ code object uses a pseudo-code language, blending .
 NIMBLE uses a declarative language, meaning order doesn't matter. A
 consequence of this is that you can't overwrite values. Instead of
 stepping through lines of code, think of `nimbleCode` as defining
-relationships between variables (nodes).
-
-For a more in-depth overview of the NIMBLE code language
+relationships between variables (nodes). For a more in-depth overview of
+the NIMBLE code language check out the NIMBLE User Manual, which I link
+at the end of the post.
 
 Ok, enough stalling. Here's the NIMBLE code for our model, with
 comments.
@@ -260,7 +337,7 @@ occuCode <- nimbleCode({
     # This line of code says that our observations follow a probability
     #   distribution in the occupancy model, with a single occupancy probability
     #   and a vector of detection probabilities corresponding to each 
-    #   observation. Note that we wass a whole site's worth of data at once.
+    #   observation. Note that we pass a whole site's worth of data at once.
     # Try running ?nimbleEcology::dOcc in your R session for more info.
     obs[site, 1:nReps] ~ dOcc_v(
       probOcc = psi[site], 
@@ -268,12 +345,13 @@ occuCode <- nimbleCode({
       len = nReps
     )
     
-    # We define a logit-linear relationship between 
-    # inprod(x, y) is the same as x[1] * y[1] + x[2] * y[2] + ...
-    # Note that:
+    # We define a logit-linear relationship between occupancy probability
+    #   psi and some covariate data we'll provide.
+    # inprod(x, y) is the same as x[1] * y[1] + x[2] * y[2] + ... + x[n] * y[n]
+    #### Note that: ###
     # - We can put logit() on the left-hand side like a model equation
-    # - The data intercept is represented in model matrix notation inside occuCovars
-    #   (more on that in a second)
+    # - The data intercept is represented in model matrix notation inside 
+    #   occuCovars (more on that in a second)
     # - We need EXPLICIT INDEXING for our vectors (beta[1:nBeta], not just beta).
     #   This is an important difference between nimbleCode and base R
     logit(psi[site]) <- inprod(occuCovars[site, 1:nBeta], beta[1:nBeta])
@@ -443,6 +521,11 @@ if you have any questions or feedback.
 All the code in this exercise is available in the Github repository for
 this blog, specifically here. Please feel free to download and play
 around with this .Rmd file, and to copy and use this code freely.
+
+For a really helpful blog post on implementing the occupancy model in
+NIMBLE without marginalization, check out [Mason Fidino's writeup
+here](https://masonfidino.com/a_simple_static_occupancy_model/). Dr.
+Fidino's blog was a big inspiration in getting this one off the ground.
 
 Relevant papers and books:
 

@@ -11,7 +11,7 @@
 /* Optional: embed custom fonts here with `@import`          */
 /* This must remain at the top of this file.                 */
 
- @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab&family=Roboto:wght@300&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab&family=Roboto:wght@300&family=Atkinson+Hyperlegible&display=swap');
 
 html {
   /*-- Main font sizes --*/
@@ -29,7 +29,7 @@ html {
   /*-- Specify custom fonts ~~~ must be imported above   --*/
   --heading-font:    "Roboto Slab";
   --mono-font:       monospace;
-  --body-font:       sans-serif;
+  --body-font:       "Atkinson Hyperlegible"
   --navbar-font:     'Roboto', sans-serif;  /* websites + blogs only */
 }
 
