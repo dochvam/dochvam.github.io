@@ -591,7 +591,8 @@ around with this .Rmd file, and to copy and use this code freely.
 If you want to see the code underlying the occupancy distribution used,
 it's on [this GitHub
 page](https://github.com/nimble-dev/nimbleEcology/blob/master/R/dOcc.R).
-The nimbleEcology vignette is here.
+The nimbleEcology vignette is
+[here](https://cran.r-project.org/web/packages/nimbleEcology/vignettes/Introduction_to_nimbleEcology.html).
 
 For a really helpful blog post on implementing the occupancy model in
 NIMBLE without marginalization, check out [Mason Fidino's writeup
