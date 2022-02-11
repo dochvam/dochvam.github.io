@@ -18,33 +18,32 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# *This post is still in draft  form :)*
+# *This post is still in draft form :)*
 
 # What is nimbleEcology?
 
 nimbleEcology is an R package that makes it easier to implement some
 common ecological models in the general statistical software NIMBLE.
+Specifically, nimbleEcology provides marginalized distributions that
+turn hierarchical structures with latent states, such as the occupancy
+or N-mixture model, into one line distributions similar to familiar
+distributions like `dpois()` or `dbinom()`.
 
-The package provides a series of distributions that you can use in
-NIMBLE models, similar to familiar distributions like `dpois()` or
-`dbinom()`. This will become clear with the example in this blog post,
-where I show how the entire occupancy hierarchical probability
-distribution for the occupancy model can be written with
-`y ~ dOcc_v(...)`.
-
-nimbleEcology distributions condense hierarchical model structure into a
-single line of code by a process called **marginalization**.
+In this blog post, I show how the entire occupancy hierarchical
+probability distribution for the occupancy model can be written with
+`y ~ dOcc_v(...)` and provide a worked example.
 
 ### What is marginalization?
 
 Model fitting, whether working with Bayesian or maximum likelihood
 tools, always involves calculating the likelihood of a model. In MLE, we
 often calculate the likelihood of a set of parameters given our data and
-numerically optimizing those parameters to maximize the likelihood. This
-is how popular MLE packages for ecological models like `unmarked` work
-under the hood. In Bayesian statistics, we don't directly optimize the
-likelihood, so we can get away with sampling due to magic (WARNING: I am
-not )
+numerically optimize those parameters to estimate the maximum of the
+likelihood function (hence "maximum likelihood estimation"). This is how
+popular MLE packages for ecological models like `unmarked` work under
+the hood. In Bayesian statistics, we don't directly optimize the
+likelihood, but we do calculate it for a set of parameters when deciding
+whether to accept a newly sampled value during MCMC sampling.
 
 When we have latent states and random effects in our model, calculating
 the likelihood becomes more complicated. We don't include values for
@@ -53,27 +52,36 @@ random effects and latent states are not technically parameters we're
 estimating--that's what differentiates them from fixed effects. Instead
 we want to know the likelihood of our parameters, given the data and a
 random effect/latent state structure with specific random effects/latent
-states *that could have any value* in their domain. To calculate the
-likelihood, you have to integrate over all possible values of each
-random effect.
+states *that could have any value* in their domain. To optimize the
+likelihood without optimizing specific random effect values, you have to
+calculate and integrate over all possible values of each random effect.
 
-(A brief note here: I'm honestly not sure what the definition of "latent
-state" is. I believe you can usually think of latent states as a type of
-random effect.)
+(A brief note here on latent states: I'm honestly not sure what the
+definition of "latent state" is. In practice in ecology, a latent state
+is a piece of model structure that represents an unobserved part of the
+system, usually as part of a hierarchical structure. I believe you can
+usually think of latent states as a type of random effect.)
 
 The rapid expansion of Bayesian methods in ecology have both obscured
 and been spurred by the fact that writing explicit likelihoods that
-integrate over random effects / marginalize over latent states. In
-Bayesian statistics, it works out that you can sample the random effect
-without having to marginalize over it. This is nice in cases like
-continuous random effects where integrating would require complicated
-approximators, and also in cases like hierarchical modeling where it's
-intuitive to see the model structure written out.
+integrate over random effects / marginalize over latent states is often
+impossible. In Bayesian statistics, you can sample the random effect
+without having to marginalize over it due to ~~magic~~ math. This is
+nice in cases like continuous random effects where integrating would
+require complicated approximators, and also in cases like hierarchical
+modeling where it's intuitive to see the model structure written out.
+
+But if we want to use maximum likelihood, and for some Bayesian
+applications, it is sometimes possible to marginalize over or integrate
+over a latent state or random effect by hand. This means writing a
+likelihood function that considers all possible latent states and
+computes the likelihood as a weighted sum across those.
 
 This idea still gives me a lot of trouble, so if you're stuck on it,
 that's okay--I'll try to contextualize the effects and advantages of
 marginalization in a way that doesn't rely on a nuanced statistical
-understanding.
+understanding. In a later section, we'll look at the specific case of
+marginalizing the occupancy distribution as a specific example.
 
 ### Why should I use nimbleEcology marginalized distributions?
 
@@ -200,6 +208,61 @@ $\gamma$.
 
 # A marginalized occupancy distribution, `dOcc`
 
+Ignoring covariates, the non-marginalized occupancy distribution is
+written (in NIMBLE code) as
+
+```{r eval = FALSE}
+nimbleCode({
+  for (i in 1:nsite) {
+    z[i] ~ dbern(psi)
+    for (j in 1:nrep) {
+      y[i, j] ~ dbern(z[i] * p)
+    }
+  }
+})
+```
+
+In this setup we've coded a latent state, `z`, and defined it as
+following a Bernoulli distribution. Then we've said that our data, `y`,
+follow another Bernoulli distribution incorporating the state `z`.
+
+I want to marginalize over $z_i$ and completely eliminate it from my
+model. To do this, I consider that the Bernoulli distribution means $z$
+can actually only have two states: either $z_i=1$ with probability
+$\psi$ or $z_i=0$ with probability $1-\psi$ .
+
+Then, I notice that, if we know what $z_i$ is, the probability of
+$y_{ij}$ is easy
+
+But, recall that $z_i$ influences the likelihood of every $y_{ij}$. This
+means that our likelihood function needs to take into account all the
+observations in $y_{ij}$ simultaneously, because the probability is
+interdependent between them. For example, the likelihood of $\psi_i=0$
+will be exactly 0 for *all* observations $y_{ij}$ if *any* of them are
+nonzero, since an unoccupied site can't produce nonzero observations
+under this model.
+
+Thus, the marginalized likelihood of parameters given the observations
+at site i is
+
+$$L(\psi,p|y_{i.}) = \psi p^k (1-p)^{n-k} + (1-\psi)I(k = 0)$$
+
+where $n$ is the number of observations at site $i$, $k$ is the number
+of **nonzero** observations at site $i$, and $I(k=0)$ is an indicator
+that takes 1 if $k$ is 0 and 0 otherwise.
+
+In plain English: the likelihood of our parameters given our data is the
+probability that the site is occupied times the probability of the data
+given that the site is occupied, plus the probability that the site
+*isn't* occupied times the probability of the data given that it isn't
+(which is 1 if all observations are 0, and 0 otherwise). We sum the two
+probabilities because either one or the other is true, but not both.
+
+We've now marginalized over $z$ by literally writing the values it could
+take into a math and summing across them. Marginalizing isn't always
+this straightforward, because latent states can take many (or infinitely
+many) values. We'll explore harder contexts in future posts.
+
 # Implementing the occupancy model with nimbleEcology
 
 ```{r echo = F, include = F}
@@ -250,6 +313,9 @@ knitr::include_graphics("images/swift.png")
 <!-- ![Swift photo (c) J Tanner 2022. -->
 
 <!-- <https://macaulaylibrary.org/asset/409111121>](images/swift.png) -->
+
+You don't actually need to know any of that math for what follows,
+because we've coded it up for you.
 
 In this section, I showcase the use of nimbleEcology for implementing an
 occupancy model with simulated data.
@@ -521,6 +587,11 @@ if you have any questions or feedback.
 All the code in this exercise is available in the Github repository for
 this blog, specifically here. Please feel free to download and play
 around with this .Rmd file, and to copy and use this code freely.
+
+If you want to see the code underlying the occupancy distribution used,
+it's on [this GitHub
+page](https://github.com/nimble-dev/nimbleEcology/blob/master/R/dOcc.R).
+The nimbleEcology vignette is here.
 
 For a really helpful blog post on implementing the occupancy model in
 NIMBLE without marginalization, check out [Mason Fidino's writeup
