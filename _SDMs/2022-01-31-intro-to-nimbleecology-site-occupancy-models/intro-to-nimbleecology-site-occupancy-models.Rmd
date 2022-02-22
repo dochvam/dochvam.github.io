@@ -27,8 +27,8 @@ through the context of the occupancy model.
 I assume a basic familiarity with the occupancy model, which I define in
 the section "Overview of the site-occupancy model" below, and a basic
 familiarity with / exposure to Bayesian model estimation (MCMC). Neither
-of these is strictly necessary to get the main points, but two good
-places to get that background could be here and here.
+of these is strictly necessary to get the main points in this blog post.
+See "Citations and additional reading" for related materials.
 
 I focus on an R package I co-authored, `nimbleEcology`, in which we've
 implemented some marginalized distributions for common ecological
@@ -45,7 +45,7 @@ distributions like `dpois()` or `dbinom()`.
 
 In this blog post, I show how the entire occupancy hierarchical
 probability distribution for the occupancy model can be written with
-`y ~ dOcc_v(...)` and provide a worked example.
+`y ~ dOcc_v(...)` and provide a working example.
 
 ### What is marginalization?
 
@@ -132,8 +132,8 @@ Some important disadvantages of using marginalized distributions:
     al. 2020, "One size does not fit all: Customizing MCMC methods for
     hierarchical models using NIMBLE." The title does a great job of
     summarizing their findings: Dr. Ponisio and colleagues found that
-    marginalizing over latent states sometimes, but not always,
-    improved MCMC.
+    marginalizing over latent states sometimes, but not always, improved
+    MCMC efficiency.
 
 # Overview of the site-occupancy model
 
