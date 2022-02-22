@@ -3,8 +3,8 @@ title: "Intro to nimbleEcology: Marginalization and the occupancy model"
 description: |
   An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework.
 author:
-  - name: Ben R Goldstein
-date: 2022-02-09
+  - name: Ben R. Goldstein
+date: 2022-02-22
 output:
   distill::distill_article:
     self_contained: false
@@ -16,9 +16,23 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(digits = 2)
 ```
 
-# *This post is still in draft form :)*
+# In this post...
+
+I introduce the concept of "marginalization" in a hierarchical model
+through the context of the occupancy model.
+
+I assume a basic familiarity with the occupancy model, which I define in
+the section "Overview of the site-occupancy model" below, and a basic
+familiarity with / exposure to Bayesian model estimation (MCMC). Neither
+of these is strictly necessary to get the main points, but two good
+places to get that background could be here and here.
+
+I focus on an R package I co-authored, `nimbleEcology`, in which we've
+implemented some marginalized distributions for common ecological
+models.
 
 # What is nimbleEcology?
 
@@ -56,14 +70,17 @@ states *that could have any value* in their domain. To optimize the
 likelihood without optimizing specific random effect values, you have to
 calculate and integrate over all possible values of each random effect.
 
-(A brief note here on latent states: I'm honestly not sure what the
+(**A brief note here on latent states**. I'm honestly not sure what the
 definition of "latent state" is. In practice in ecology, a latent state
 is a piece of model structure that represents an unobserved part of the
 system, usually as part of a hierarchical structure. I believe you can
-usually think of latent states as a type of random effect.)
+usually think of latent states as a type of random effect. Latent states
+come up in species distribution modeling as underlying occupancy
+conditions or abundance conditions. They can also come up in multi-state
+models of animal movement or survival.)
 
-The rapid expansion of Bayesian methods in ecology have both obscured
-and been spurred by the fact that writing explicit likelihoods that
+The rapid expansion of Bayesian methods in ecology has both obscured and
+been spurred by the fact that writing explicit likelihoods that
 integrate over random effects / marginalize over latent states is often
 impossible. In Bayesian statistics, you can sample the random effect
 without having to marginalize over it due to ~~magic~~ math. This is
@@ -204,7 +221,9 @@ get confidence or credible intervals on those effects.
 
 The **fourth equation** replicates this logit-link structure for our
 detection probability, $p$, and some covariates $w$ with coefficients
-$\gamma$.
+$\gamma$. The detection probability gives the Bernoulli probability that
+you observe the animal in question on a visit to an occupied site, i.e.
+the probability that $y_{ij}=1$ given that $z_i = 1$.
 
 # A marginalized occupancy distribution, `dOcc`
 
@@ -259,9 +278,13 @@ given that the site is occupied, plus the probability that the site
 probabilities because either one or the other is true, but not both.
 
 We've now marginalized over $z$ by literally writing the values it could
-take into a math and summing across them. Marginalizing isn't always
-this straightforward, because latent states can take many (or infinitely
-many) values. We'll explore harder contexts in future posts.
+take and the associated probabilities of the data, then summing across
+them. Marginalizing isn't always this straightforward, because latent
+states can take many (or infinitely many) values. We'll explore harder
+contexts in future posts.
+
+**You don't actually need to know any of that math for what follows**,
+because we've coded it up for you.
 
 # Implementing the occupancy model with nimbleEcology
 
@@ -313,9 +336,6 @@ knitr::include_graphics("images/swift.png")
 <!-- ![Swift photo (c) J Tanner 2022. -->
 
 <!-- <https://macaulaylibrary.org/asset/409111121>](images/swift.png) -->
-
-You don't actually need to know any of that math for what follows,
-because we've coded it up for you.
 
 In this section, I showcase the use of nimbleEcology for implementing an
 occupancy model with simulated data.
@@ -522,9 +542,10 @@ If we wanted to, we could modify data or initial values at this stage,
 but not constants, which are "baked in" to the model when its built.
 
 I'll go quickly over this next part, since using MCMC with NIMBLE is
-better explained elsewhere. Briefly, we're going to build an MCMC object
-and then compile the whole thing so we're ready to do some MCMC
-sampling.
+better explained on the [NIMBLE examples
+page](https://r-nimble.org/examples) (see: "Creating a default MCMC").
+Briefly, we're going to build an MCMC object and then compile the whole
+thing so we're ready to do some MCMC sampling.
 
 ```{r}
 mcmc <- buildMCMC(occu_model)
@@ -559,7 +580,13 @@ plot(samples[, "beta[2]"])
 
 I like the package `MCMCvis` for MCMC summaries.
 
+```{r echo = FALSE}
+options(digits = 2)
+
+```
+
 ```{r}
+
 summary <- MCMCvis::MCMCsummary(samples)
 
 summary$param <- c("Intercept (occu)", "Elev (occu)", "Forest (occu)",
