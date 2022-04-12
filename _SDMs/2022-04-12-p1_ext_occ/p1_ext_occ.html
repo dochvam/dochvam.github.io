@@ -112,12 +112,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["(Part 1) Extending the occupancy model with nimbleEcology: random effects"]},{"type":"character","attributes":{},"value":["Putting group random effects into your models can be easy.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Ben R. Goldstein"]}]}]},{"type":"character","attributes":{},"value":["2022-04-12"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","slug"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["p1_occ_ext"]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["(Part 1) Extending the occupancy model with nimbleEcology: random effects"]},{"type":"character","attributes":{},"value":["Putting group random effects into your models can be easy."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Ben R. Goldstein"]}]}]},{"type":"character","attributes":{},"value":["2022-04-12"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["markdown"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["wrap"]}},"value":[{"type":"integer","attributes":{},"value":[72]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["p1_ext_occ_files/anchor-4.2.2/anchor.min.js","p1_ext_occ_files/bowser-1.9.3/bowser.min.js","p1_ext_occ_files/distill-2.2.21/template.v2.js","p1_ext_occ_files/header-attrs-2.11.15/header-attrs.js","p1_ext_occ_files/jquery-3.6.0/jquery-3.6.0.js","p1_ext_occ_files/jquery-3.6.0/jquery-3.6.0.min.js","p1_ext_occ_files/jquery-3.6.0/jquery-3.6.0.min.map","p1_ext_occ_files/popper-2.6.0/popper.min.js","p1_ext_occ_files/tippy-6.2.7/tippy-bundle.umd.min.js","p1_ext_occ_files/tippy-6.2.7/tippy-light-border.css","p1_ext_occ_files/tippy-6.2.7/tippy.css","p1_ext_occ_files/tippy-6.2.7/tippy.umd.min.js","p1_ext_occ_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["images/ranefvis.png","p1_ext_occ_files/anchor-4.2.2/anchor.min.js","p1_ext_occ_files/bowser-1.9.3/bowser.min.js","p1_ext_occ_files/distill-2.2.21/template.v2.js","p1_ext_occ_files/header-attrs-2.11.15/header-attrs.js","p1_ext_occ_files/jquery-3.6.0/jquery-3.6.0.js","p1_ext_occ_files/jquery-3.6.0/jquery-3.6.0.min.js","p1_ext_occ_files/jquery-3.6.0/jquery-3.6.0.min.map","p1_ext_occ_files/popper-2.6.0/popper.min.js","p1_ext_occ_files/tippy-6.2.7/tippy-bundle.umd.min.js","p1_ext_occ_files/tippy-6.2.7/tippy-light-border.css","p1_ext_occ_files/tippy-6.2.7/tippy.css","p1_ext_occ_files/tippy-6.2.7/tippy.umd.min.js","p1_ext_occ_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1472,12 +1472,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>(Part 1) Extending the occupancy model with nimbleEcology: random effects</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Putting group random effects into your models can be easy.</p></p>
+<p>Putting group random effects into your models can be easy.</p>
 </div>
 
 <div class="d-byline">
-  
-  Ben R. Goldstein
+  Ben R. Goldstein  
   
 <br/>2022-04-12
 </div>
@@ -1488,30 +1487,88 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#in-this-post">In this post…</a></li>
-<li><a href="#random-effects-in-occupancy-modeling">Random effects in occupancy modeling</a></li>
+<li><a href="#random-effects-in-occupancy-modeling">Random effects in
+occupancy modeling</a></li>
 <li><a href="#next-time">Next time…</a></li>
 </ul>
 </nav>
 </div>
 <h1 id="in-this-post">In this post…</h1>
-<p>I extend the occupancy model by modifying the standard occupancy NIMBLE model code to include a group random effect.</p>
-<p>This post is short, and is meant more to provide example code than to offer in-depth explanations of these concepts. It’s the first in a three-part series on some basic ways to do more with the occupancy model.</p>
-<p>I assume that you’ve read my earlier post, <a href="https://dochvam.github.io/SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/">Intro to nimbleEcology: Marginalization and the occupancy model</a>. I’ll be using code and data from this previous post.</p>
+<p>I extend the occupancy model by modifying the standard occupancy
+NIMBLE model code to include a group random effect.</p>
+<p>This post is short, and is meant more to provide example code than to
+offer in-depth explanations of these concepts. It’s the first in a
+three-part series on some basic ways to do more with the occupancy
+model.</p>
+<p>I assume that you’ve read my earlier post, <a
+href="https://dochvam.github.io/SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/">Intro
+to nimbleEcology: Marginalization and the occupancy model</a>. I’ll be
+using code and data from this previous post.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="images/ranef_vis.jpg" width="100%" data-distill-preview=1 /></p>
+<p><img src="images/ranefvis.png" width="100%" data-distill-preview=1 /></p>
 </div>
-<h1 id="random-effects-in-occupancy-modeling">Random effects in occupancy modeling</h1>
-<p>Random effects are an important concept I won’t cover fully here. In this example we’ll be thinking of random effects as a way to appropriately count for groupings or non-independence between observations in an occupancy model.</p>
-<p>Today’s hypothetical observation study starts out the same as in the last post. We’ve sampled a number of sites, and on each we recorded whether or not we detected white-throated swifts. However, there’s a twist: the sites we sampled were each in one of three regions that have different properties. In this case, we’ll say each region was associated with a different detection probability. We need to properly account for those differences using random effects.</p>
-<p>If we don’t account for this important driver of variation, a number of bad things could happen. For one, this would be an issue of pseudoreplication, meaning we have unaccounted-for non-independence between observations that will reduce the observed variance and make our estimated error overconfident. (Pseudoreplication in ecological field experiments was discussed in <a href="file:///C:/Users/Ben/Documents/mystuff/dochvam.github.io/SDMs/2022-03-17-part-1-extending-the-occupancy-model-with-nimbleecology-random-effects/doi.org/10.2307/1942661">this paper by Hurlburt in 1984.</a>) On top of that basic issue, our occupancy model makes an assumption that there isn’t extra variation in detection heterogeneity in order to partition variation between occupancy and detection processes. If the interdependence is in the detection process, that missing variation will show up as detection estimates that are biased upward and occupancy estimates that are biased downward.</p>
-<p>So, we want to implement random effects of group on detection in our model. Let’s start by writing out the occupancy model equations, this time with the inclusion of the random effect.</p>
-<p><span class="math display">\[y_{ij} \sim \text{Bernoulli}(z_i \times p_{ij})\]</span> <span class="math display">\[z_i \sim \text{Bernoulli}(\psi_i)\]</span> <span class="math display">\[\text{logit}(\psi_{i}) = x_{i}^T\beta\]</span> <span class="math display">\[\text{logit}(p_{ij}) = w_{ij}^T\gamma + \alpha_{R(i)}\]</span> <span class="math display">\[\alpha_r \sim \mathcal{N}(0, sigma_\alpha) \text{ for } r \text{ in } 1...R\]</span></p>
-<p>The only changes from our previous equations are the inclusion of the <span class="math inline">\(\alpha_{R(i)}\)</span> and fifth equation defining that element. The addition of <span class="math inline">\(\alpha_{R(i)}\)</span> to the linear combination in Equation 4 means that there’s some quantity that we’re adding to our (logit-scale) detection probability. The indexing <span class="math inline">\(R(i)\)</span> means that there are R elements (in our example, <span class="math inline">\(R=3\)</span> regions), and we’ll know which element we need as a function of site <span class="math inline">\(i\)</span>. For example, all observations at the <span class="math inline">\(i=5\)</span>th site are in Region 1 <span class="math inline">\((R(5)=1)\)</span>.</p>
-<p>The new fifth equation defines a distribution for these random effects. We say they’re normally distributed with mean 0 and a standard deviation parameter <span class="math inline">\(sigma_\alpha\)</span> that we’ll estimate. It’s normal to use Gaussian random effects. It’s important that the mean is 0 rather than a parameter as otherwise they’d be redundant with the intercept parameter we’re already estimating.</p>
+<h1 id="random-effects-in-occupancy-modeling">Random effects in
+occupancy modeling</h1>
+<p>Random effects are an important concept I won’t cover fully here. In
+this example we’ll be thinking of random effects as a way to
+appropriately count for groupings or non-independence between
+observations in an occupancy model.</p>
+<p>Today’s hypothetical observation study starts out the same as in the
+last post. We’ve sampled a number of sites, and on each we recorded
+whether or not we detected white-throated swifts. However, there’s a
+twist: the sites we sampled were each in one of three regions that have
+different properties. In this case, we’ll say each region was associated
+with a different detection probability. We need to properly account for
+those differences using random effects.</p>
+<p>If we don’t account for this important driver of variation, a number
+of bad things could happen. For one, this would be an issue of
+pseudoreplication, meaning we have unaccounted-for non-independence
+between observations that will reduce the observed variance and make our
+estimated error overconfident. (Pseudoreplication in ecological field
+experiments was discussed in <a
+href="file:///C:/Users/Ben/Documents/mystuff/dochvam.github.io/SDMs/2022-03-17-part-1-extending-the-occupancy-model-with-nimbleecology-random-effects/doi.org/10.2307/1942661">this
+paper by Hurlburt in 1984.</a>) On top of that basic issue, our
+occupancy model makes an assumption that there isn’t extra variation in
+detection heterogeneity in order to partition variation between
+occupancy and detection processes. If the interdependence is in the
+detection process, that missing variation will show up as detection
+estimates that are biased upward and occupancy estimates that are biased
+downward.</p>
+<p>So, we want to implement random effects of group on detection in our
+model. Let’s start by writing out the occupancy model equations, this
+time with the inclusion of the random effect.</p>
+<p><span class="math display">\[y_{ij} \sim \text{Bernoulli}(z_i \times
+p_{ij})\]</span> <span class="math display">\[z_i \sim
+\text{Bernoulli}(\psi_i)\]</span> <span
+class="math display">\[\text{logit}(\psi_{i}) = x_{i}^T\beta\]</span>
+<span class="math display">\[\text{logit}(p_{ij}) = w_{ij}^T\gamma +
+\alpha_{R(i)}\]</span> <span class="math display">\[\alpha_r \sim
+\mathcal{N}(0, sigma_\alpha) \text{ for } r \text{ in }
+1...R\]</span></p>
+<p>The only changes from our previous equations are the inclusion of the
+<span class="math inline">\(\alpha_{R(i)}\)</span> and fifth equation
+defining that element. The addition of <span
+class="math inline">\(\alpha_{R(i)}\)</span> to the linear combination
+in Equation 4 means that there’s some quantity that we’re adding to our
+(logit-scale) detection probability. The indexing <span
+class="math inline">\(R(i)\)</span> means that there are R elements (in
+our example, <span class="math inline">\(R=3\)</span> regions), and
+we’ll know which element we need as a function of site <span
+class="math inline">\(i\)</span>. For example, all observations at the
+<span class="math inline">\(i=5\)</span>th site are in Region 1 <span
+class="math inline">\((R(5)=1)\)</span>.</p>
+<p>The new fifth equation defines a distribution for these random
+effects. We say they’re normally distributed with mean 0 and a standard
+deviation parameter <span class="math inline">\(sigma_\alpha\)</span>
+that we’ll estimate. It’s normal to use Gaussian random effects. It’s
+important that the mean is 0 rather than a parameter as otherwise they’d
+be redundant with the intercept parameter we’re already estimating.</p>
 <p>Here is some NIMBLE code implementing the model.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Because this code is mostly copied from the previous post, I'll only put</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/nimble-dev/nimbleEcology'>nimbleEcology</a></span><span class='op'>)</span>
+
+<span class='co'># Because this code is mostly copied from the previous post, I'll only put</span>
 <span class='co'># comments on new features.</span>
 
 <span class='va'>occuCode_w_random_effects</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimbleCode.html'>nimbleCode</a></span><span class='op'>(</span><span class='op'>{</span>
@@ -1560,12 +1617,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Here is some NIMBLE code describing the same model.</p>
 <p>To recap, the steps we took in our code were:</p>
 <ol type="1">
-<li>Add a dynamically indexed vector to our logit-scale detection probability</li>
-<li>Loop over this vector and define each element as random normal with a common standard deviation</li>
+<li>Add a dynamically indexed vector to our logit-scale detection
+probability</li>
+<li>Loop over this vector and define each element as random normal with
+a common standard deviation</li>
 </ol>
 <p>These are the exact same changes we made to our model equations.</p>
-<p>You can use multiple random effects, added onto each other, and you can use random effects in the occupancy submodel (additive on <span class="math inline">\(\text{logit}(\psi)\)</span>). It’s also possible to use random effects in a standard NIMBLE occupancy model without the marginalized setup offered by nimbleEcology.</p>
-<p>Building the model will look pretty similar. We just need to provide the value <code>nRegion = 3</code> in constants, and a vector, <code>region</code>, where <code>region[i]</code> gives the numerical index of the <span class="math inline">\(i\)</span>th observation’s associated random effect (in this case either 1, 2, or 3.)</p>
+<p>You can use multiple random effects, added onto each other, and you
+can use random effects in the occupancy submodel (additive on <span
+class="math inline">\(\text{logit}(\psi)\)</span>). It’s also possible
+to use random effects in a standard NIMBLE occupancy model without the
+marginalized setup offered by nimbleEcology.</p>
+<p>Building the model will look pretty similar. We just need to provide
+the value <code>nRegion = 3</code> in constants, and a vector,
+<code>region</code>, where <code>region[i]</code> gives the numerical
+index of the <span class="math inline">\(i\)</span>th observation’s
+associated random effect (in this case either 1, 2, or 3.)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimDim.html'>dim</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span> <span class='co'># The data have 3 observations at each of 200 sites</span>
@@ -1585,7 +1652,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
  1  2  3 
 75 75 50 </code></pre>
 </div>
-<p>We also want to provide initial values for our new nodes–the parameter sigma_region and the random effects vector ranef. So with all that in mind, let’s jump in to building the model. I’ll flag the changes from last time with comments.</p>
+<p>We also want to provide initial values for our new nodes–the
+parameter sigma_region and the random effects vector ranef. So with all
+that in mind, let’s jump in to building the model. I’ll flag the changes
+from last time with comments.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>occu_model_w_random_effects</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimbleModel.html'>nimbleModel</a></span><span class='op'>(</span>
@@ -1617,12 +1687,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>[1] -331.1213</code></pre>
 </div>
-<p>Now we can proceed with compiling and running MCMC as usual. We’ll get a posterior distribution for the random effect standard deviation, sigma_region.</p>
-<p>All code used in this post, including hidden code used to generate the data, <a href="https://github.com/dochvam/dochvam.github.io/tree/main/_SDMs">can be found here</a>.</p>
+<p>Now we can proceed with compiling and running MCMC as usual. We’ll
+get a posterior distribution for the random effect standard deviation,
+sigma_region.</p>
+<p>All code used in this post, including hidden code used to generate
+the data, <a
+href="https://github.com/dochvam/dochvam.github.io/tree/main/_SDMs">can
+be found here</a>.</p>
 <h1 id="next-time">Next time…</h1>
-<p>This post will be followed by two similarly short posts providing more example code for fun things you can do with occupancy models using nimbleEcology. In those I’ll discuss maximum likelihood estimation with NIMBLE and give an example of a multispecies occupancy model.</p>
+<p>This post will be followed by two similarly short posts providing
+more example code for fun things you can do with occupancy models using
+nimbleEcology. In those I’ll discuss maximum likelihood estimation with
+NIMBLE and give an example of a multispecies occupancy model.</p>
 <p>If you have any requests for content, please reach out!</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -1,58 +1,105 @@
 ---
 title: "(Part 1) Extending the occupancy model with nimbleEcology: random effects"
-description: |
-  Putting group random effects into your models can be easy.
-author: Ben R. Goldstein
+description: Putting group random effects into your models can be easy.
+author: 
+  - name: Ben R. Goldstein
 date: 2022-04-12
 output:
   distill::distill_article:
     self_contained: false
     toc: true
-    slug: p1_occ_ext
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(digits = 2)
-
-library(nimbleEcology)
 ```
 
 # In this post...
 
-I extend the occupancy model by modifying the standard occupancy NIMBLE model code to include a group random effect.
+I extend the occupancy model by modifying the standard occupancy NIMBLE
+model code to include a group random effect.
 
-This post is short, and is meant more to provide example code than to offer in-depth explanations of these concepts. It's the first in a three-part series on some basic ways to do more with the occupancy model.
+This post is short, and is meant more to provide example code than to
+offer in-depth explanations of these concepts. It's the first in a
+three-part series on some basic ways to do more with the occupancy
+model.
 
-I assume that you've read my earlier post, [Intro to nimbleEcology: Marginalization and the occupancy model](https://dochvam.github.io/SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/). I'll be using code and data from this previous post.
-
+I assume that you've read my earlier post, [Intro to nimbleEcology:
+Marginalization and the occupancy
+model](https://dochvam.github.io/SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/).
+I'll be using code and data from this previous post.
 
 ```{r image, preview = TRUE, echo = FALSE, out.width= "100%"}
 
-knitr::include_graphics("images/ranef_vis.jpg")
+knitr::include_graphics(path = "images/ranefvis.png")
 
 ```
 
-
 # Random effects in occupancy modeling
 
-Random effects are an important concept I won't cover fully here. In this example we'll be thinking of random effects as a way to appropriately count for groupings or non-independence between observations in an occupancy model.
+Random effects are an important concept I won't cover fully here. In
+this example we'll be thinking of random effects as a way to
+appropriately count for groupings or non-independence between
+observations in an occupancy model.
 
-Today's hypothetical observation study starts out the same as in the last post. We've sampled a number of sites, and on each we recorded whether or not we detected white-throated swifts. However, there's a twist: the sites we sampled were each in one of three regions that have different properties. In this case, we'll say each region was associated with a different detection probability. We need to properly account for those differences using random effects.
+Today's hypothetical observation study starts out the same as in the
+last post. We've sampled a number of sites, and on each we recorded
+whether or not we detected white-throated swifts. However, there's a
+twist: the sites we sampled were each in one of three regions that have
+different properties. In this case, we'll say each region was associated
+with a different detection probability. We need to properly account for
+those differences using random effects.
 
-If we don't account for this important driver of variation, a number of bad things could happen. For one, this would be an issue of pseudoreplication, meaning we have unaccounted-for non-independence between observations that will reduce the observed variance and make our estimated error overconfident. (Pseudoreplication in ecological field experiments was discussed in [this paper by Hurlburt in 1984.](file:///C:/Users/Ben/Documents/mystuff/dochvam.github.io/SDMs/2022-03-17-part-1-extending-the-occupancy-model-with-nimbleecology-random-effects/doi.org/10.2307/1942661)) On top of that basic issue, our occupancy model makes an assumption that there isn't extra variation in detection heterogeneity in order to partition variation between occupancy and detection processes. If the interdependence is in the detection process, that missing variation will show up as detection estimates that are biased upward and occupancy estimates that are biased downward.
+If we don't account for this important driver of variation, a number of
+bad things could happen. For one, this would be an issue of
+pseudoreplication, meaning we have unaccounted-for non-independence
+between observations that will reduce the observed variance and make our
+estimated error overconfident. (Pseudoreplication in ecological field
+experiments was discussed in [this paper by Hurlburt in
+1984.](file:///C:/Users/Ben/Documents/mystuff/dochvam.github.io/SDMs/2022-03-17-part-1-extending-the-occupancy-model-with-nimbleecology-random-effects/doi.org/10.2307/1942661))
+On top of that basic issue, our occupancy model makes an assumption that
+there isn't extra variation in detection heterogeneity in order to
+partition variation between occupancy and detection processes. If the
+interdependence is in the detection process, that missing variation will
+show up as detection estimates that are biased upward and occupancy
+estimates that are biased downward.
 
-So, we want to implement random effects of group on detection in our model. Let's start by writing out the occupancy model equations, this time with the inclusion of the random effect.
+So, we want to implement random effects of group on detection in our
+model. Let's start by writing out the occupancy model equations, this
+time with the inclusion of the random effect.
 
-$$y_{ij} \sim \text{Bernoulli}(z_i \times p_{ij})$$ $$z_i \sim \text{Bernoulli}(\psi_i)$$ $$\text{logit}(\psi_{i}) = x_{i}^T\beta$$ $$\text{logit}(p_{ij}) = w_{ij}^T\gamma + \alpha_{R(i)}$$ $$\alpha_r \sim \mathcal{N}(0, sigma_\alpha) \text{ for } r \text{ in } 1...R$$
+$$y_{ij} \sim \text{Bernoulli}(z_i \times p_{ij})$$
+$$z_i \sim \text{Bernoulli}(\psi_i)$$
+$$\text{logit}(\psi_{i}) = x_{i}^T\beta$$
+$$\text{logit}(p_{ij}) = w_{ij}^T\gamma + \alpha_{R(i)}$$
+$$\alpha_r \sim \mathcal{N}(0, sigma_\alpha) \text{ for } r \text{ in } 1...R$$
 
-The only changes from our previous equations are the inclusion of the $\alpha_{R(i)}$ and fifth equation defining that element. The addition of $\alpha_{R(i)}$ to the linear combination in Equation 4 means that there's some quantity that we're adding to our (logit-scale) detection probability. The indexing $R(i)$ means that there are R elements (in our example, $R=3$ regions), and we'll know which element we need as a function of site $i$. For example, all observations at the $i=5$th site are in Region 1 $(R(5)=1)$.
+The only changes from our previous equations are the inclusion of the
+$\alpha_{R(i)}$ and fifth equation defining that element. The addition
+of $\alpha_{R(i)}$ to the linear combination in Equation 4 means that
+there's some quantity that we're adding to our (logit-scale) detection
+probability. The indexing $R(i)$ means that there are R elements (in our
+example, $R=3$ regions), and we'll know which element we need as a
+function of site $i$. For example, all observations at the $i=5$th site
+are in Region 1 $(R(5)=1)$.
 
-The new fifth equation defines a distribution for these random effects. We say they're normally distributed with mean 0 and a standard deviation parameter $sigma_\alpha$ that we'll estimate. It's normal to use Gaussian random effects. It's important that the mean is 0 rather than a parameter as otherwise they'd be redundant with the intercept parameter we're already estimating.
+The new fifth equation defines a distribution for these random effects.
+We say they're normally distributed with mean 0 and a standard deviation
+parameter $sigma_\alpha$ that we'll estimate. It's normal to use
+Gaussian random effects. It's important that the mean is 0 rather than a
+parameter as otherwise they'd be redundant with the intercept parameter
+we're already estimating.
 
 Here is some NIMBLE code implementing the model.
 
 ```{r}
+
+library(nimbleEcology)
+
 # Because this code is mostly copied from the previous post, I'll only put
 # comments on new features.
 
@@ -103,15 +150,23 @@ Here is some NIMBLE code describing the same model.
 
 To recap, the steps we took in our code were:
 
-1. Add a dynamically indexed vector to our logit-scale detection probability
-2. Loop over this vector and define each element as random normal with a common standard deviation
+1.  Add a dynamically indexed vector to our logit-scale detection
+    probability
+2.  Loop over this vector and define each element as random normal with
+    a common standard deviation
 
 These are the exact same changes we made to our model equations.
 
-You can use multiple random effects, added onto each other, and you can use random effects in the occupancy submodel (additive on $\text{logit}(\psi)$). It's also possible to use random effects in a standard NIMBLE occupancy model without the marginalized setup offered by nimbleEcology.
+You can use multiple random effects, added onto each other, and you can
+use random effects in the occupancy submodel (additive on
+$\text{logit}(\psi)$). It's also possible to use random effects in a
+standard NIMBLE occupancy model without the marginalized setup offered
+by nimbleEcology.
 
-Building the model will look pretty similar. We just need to provide the value `nRegion = 3` in constants, and a vector, `region`, where `region[i]` gives the numerical index of the $i$th observation's associated random effect (in this case either 1, 2, or 3.)
-
+Building the model will look pretty similar. We just need to provide the
+value `nRegion = 3` in constants, and a vector, `region`, where
+`region[i]` gives the numerical index of the $i$th observation's
+associated random effect (in this case either 1, 2, or 3.)
 
 ```{r echo = F, include = F}
 # I use the R package "AHMbook" to quickly simulate some occupancy data
@@ -157,16 +212,16 @@ obsLevelData[,, "intercept"] <- 1
 
 ```
 
-
-
 ```{r}
 dim(obs) # The data have 3 observations at each of 200 sites
 length(region) # Each site has a region associated with it
 table(region) # 75 sites are in region 1, 75 are in region 2, and 50 are in 3
 ```
 
-We also want to provide initial values for our new nodes--the parameter sigma_region and the random effects vector ranef. So with all that in mind, let's jump in to building the model. I'll flag the changes from last time with comments.
-
+We also want to provide initial values for our new nodes--the parameter
+sigma_region and the random effects vector ranef. So with all that in
+mind, let's jump in to building the model. I'll flag the changes from
+last time with comments.
 
 ```{r}
 occu_model_w_random_effects <- nimbleModel(
@@ -196,13 +251,19 @@ occu_model_w_random_effects <- nimbleModel(
 occu_model_w_random_effects$calculate()
 ```
 
+Now we can proceed with compiling and running MCMC as usual. We'll get a
+posterior distribution for the random effect standard deviation,
+sigma_region.
 
-Now we can proceed with compiling and running MCMC as usual. We'll get a posterior distribution for the random effect standard deviation, sigma_region.
-
-All code used in this post, including hidden code used to generate the data, [can be found here](https://github.com/dochvam/dochvam.github.io/tree/main/_SDMs).
+All code used in this post, including hidden code used to generate the
+data, [can be found
+here](https://github.com/dochvam/dochvam.github.io/tree/main/_SDMs).
 
 # Next time...
 
-This post will be followed by two similarly short posts providing more example code for fun things you can do with occupancy models using nimbleEcology. In those I'll discuss maximum likelihood estimation with NIMBLE and give an example of a multispecies occupancy model.
+This post will be followed by two similarly short posts providing more
+example code for fun things you can do with occupancy models using
+nimbleEcology. In those I'll discuss maximum likelihood estimation with
+NIMBLE and give an example of a multispecies occupancy model.
 
 If you have any requests for content, please reach out!
