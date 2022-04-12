@@ -1,0 +1,34 @@
+---
+title: "(Part 2) Extending the occupancy model with nimbleEcology: maximum likelihood estimation"
+description: |
+  A short description of the post.
+author: Ben R. Goldstein
+date: 2022-03-17
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+# In this post...
+
+I take a different approach to occupancy model estimation, showing an alternate
+use of NIMBLE models for maximum likelihood estimation (MLE).
+
+I assume that you've read my earlier post, [Intro to nimbleEcology:
+Marginalization and the occupancy
+model](https://dochvam.github.io/SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/).
+
+This post is short, and is meant more to provide example code than to
+offer in-depth explanations of these concepts. It's the second in a three-part
+series on some basic ways to do more with the occupancy model.
+

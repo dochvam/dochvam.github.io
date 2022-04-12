@@ -1,0 +1,80 @@
+---
+title: "DEPRECATED"
+description: |
+  A follow-up post on using nimbleEcology for the occupancy model with random
+  effects, maximum likelihood, and more complex model structure.
+author:
+  - name: Ben R. Goldstein
+date: 2022-03-07
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+editor_options: 
+  markdown: 
+    wrap: 72
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(digits = 2)
+```
+
+# In this post...
+
+I showcase some different ways of extending the occupancy model by
+modifying the standard occupancy NIMBLE model code. In three case
+studies, I use nimbleEcology's marginalized `dOcc` distribution to (1)
+implement a an occupancy model with a group random effect, (2) use a
+`nimbleModel` for maximum likelihood estimation, and (3) implement a
+multispecies occupancy model with extra hierarchical structure.
+
+I assume that you've read my earlier post, [Intro to nimbleEcology:
+Marginalization and the occupancy
+model](https://dochvam.github.io/SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/).
+
+This post is short, and is meant more to provide example code than to
+offer in-depth explanations of these concepts.
+
+
+
+# Extension 2: maximum likelihood estimation (MLE) with NIMBLE
+
+So far we've been using Bayesian methods to estimate our
+models--specifically we've been using MCMC sampling. I talked a bit in
+the last post about the role of Bayesian estimation in ecology. There's
+another method we can use, called maximum likelihood estimation (MLE).
+Maximum likelihood estimation sort of says it all in the name--we're
+trying to identify the parameters .
+
+This is easiest to think about in two dimensions. Imagine we have two
+parameters that go into a function, and in that two-dimensional space
+there's a surface whose height represents the function's value at those
+parameter values. For example, the function $f(x, y) = 1 - (x + y)$
+would [have a
+surface](https://www.wolframalpha.com/input?i=1+-+%28x%5E2+%2B+y%5E2%29)
+whose highest point was at $x=0, \ y=0$. For the purposes of MLE, we
+think of the likelihood as an arbitrary function of parameters (not
+data; remember $L(\theta | y) = P(y|\theta)$) and we want to use
+computational methods to find its maximum.
+
+All we need to know for implementation is the general principle--that
+we're looking for parameter values that maximize the model's likelihood.
+
+This brings us to a unique feature of NIMBLE compared to other similar
+modeling software. When we create a NIMBLE model,
+
+-   AIC
+
+-   Residuals?
+
+-   Philosophical reasons
+
+Note that you **cannot** do MLE on every model. Specifically, you can't
+do MLE with NIMBLE models that have random effects or explicit latent
+states. In fact, you can't do this with an occupancy model that has $z$
+in it--you need the marginalized version (available in `nimbleEcology`)
+for that!
+
+# Extension 3: a multi-species occupancy model (MSOM)

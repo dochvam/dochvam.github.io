@@ -508,8 +508,8 @@ occu_model <- nimbleModel(
   ),
   data = list(
     obs = obs,
-    # I like indexing these here for two reasons: (1) I make sure they're going
-    #   into the model in order, and (2) 
+    # I like indexing these here so I make sure they're going
+    #   into the model in the right order
     detectionCovars = 
       obsLevelData[,, c("intercept", "elevation", "forestCover", "windLevel")],
     occuCovars = siteLevelData[, c("intercept", "elevation", "forestCover")]
@@ -612,7 +612,7 @@ if you have any questions or feedback.
 # Citations and additional reading
 
 All the code in this exercise is available in the Github repository for
-this blog, specifically here. Please feel free to download and play
+this blog, specifically [here](https://github.com/dochvam/dochvam.github.io/blob/main/_SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/intro-to-nimbleecology-site-occupancy-models.Rmd). Please feel free to download and play
 around with this .Rmd file, and to copy and use this code freely.
 
 If you want to see the code underlying the occupancy distribution used,

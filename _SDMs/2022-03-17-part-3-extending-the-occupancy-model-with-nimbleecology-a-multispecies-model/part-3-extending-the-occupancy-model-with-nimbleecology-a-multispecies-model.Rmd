@@ -1,0 +1,66 @@
+---
+title: "(Part 3) Extending the occupancy model with nimbleEcology: a multispecies model"
+description: |
+  A short description of the post.
+author: Ben R. Goldstein
+date: 2022-03-17
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+# In this post...
+
+I extend the occupancy model to account for species whose relationships to
+covariates randomly deviate from a community mean.
+
+I assume that you've read my earlier post, [Intro to nimbleEcology:
+Marginalization and the occupancy
+model](https://dochvam.github.io/SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/).
+
+This post is short, and is meant more to provide example code than to
+offer in-depth explanations of these concepts. It's the first in a three-part
+series on some basic ways to do more with the occupancy model.
+
+
+# The multispecies occupancy model (MSOM)
+
+The multispecies occupancy model is an occupancy model extension that 
+hierarchically relates occupancy models for a number of species
+
+
+
+
+# Advice on when to avoid the multispecies occupancy model
+
+My understanding is that the MSOM was developed for a 
+specific context: for improving inference when trying to model the occupancy of
+a rare species whose covariates are assumed.
+
+Since its development, it's become normal to use the MSOM for inference on
+multispecies detection/nondetection data when it's reasonable to assume that
+species share responses. This choice is most reasonable when the primary
+inferential question is about community-level responses rather than 
+species-specific responses.
+
+You should **not** use the MSOM if you're interested in how species' responses
+vary from one another (for example, the question "which species are declining?")
+as the MSOM implicitly assumes that responses are related.
+
+(The caveat to the above warning is that if you have multiple groups of
+species, you can structure relatedness within each group and compare across 
+groups.)
+
+
+
+

@@ -87,38 +87,38 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-<title>Ben R. Goldstein: Intro to nimbleEcology: Marginalization and the occupancy model</title>
+<title>Ben R. Goldstein: (Part 1) Extending the occupancy model with nimbleEcology: random effects</title>
 
-<meta property="description" itemprop="description" content="An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework."/>
+<meta property="description" itemprop="description" content="Putting group random effects into your models can be easy."/>
 
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2022-02-22"/>
-<meta property="article:created" itemprop="dateCreated" content="2022-02-22"/>
+<meta property="article:published" itemprop="datePublished" content="2022-04-12"/>
+<meta property="article:created" itemprop="dateCreated" content="2022-04-12"/>
 <meta name="article:author" content="Ben R. Goldstein"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Ben R. Goldstein: Intro to nimbleEcology: Marginalization and the occupancy model"/>
+<meta property="og:title" content="Ben R. Goldstein: (Part 1) Extending the occupancy model with nimbleEcology: random effects"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework."/>
+<meta property="og:description" content="Putting group random effects into your models can be easy."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Ben R. Goldstein"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="Ben R. Goldstein: Intro to nimbleEcology: Marginalization and the occupancy model"/>
-<meta property="twitter:description" content="An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework."/>
+<meta property="twitter:title" content="Ben R. Goldstein: (Part 1) Extending the occupancy model with nimbleEcology: random effects"/>
+<meta property="twitter:description" content="Putting group random effects into your models can be easy."/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Intro to nimbleEcology: Marginalization and the occupancy model"]},{"type":"character","attributes":{},"value":["An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Ben R. Goldstein"]}]}]},{"type":"character","attributes":{},"value":["2022-02-22"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["markdown"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["wrap"]}},"value":[{"type":"integer","attributes":{},"value":[72]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["(Part 1) Extending the occupancy model with nimbleEcology: random effects"]},{"type":"character","attributes":{},"value":["Putting group random effects into your models can be easy."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Ben R. Goldstein"]}]}]},{"type":"character","attributes":{},"value":["2022-04-12"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","slug"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["p1_occ_ext"]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["images/swift.png","intro-to-nimbleecology-site-occupancy-models_files/anchor-4.2.2/anchor.min.js","intro-to-nimbleecology-site-occupancy-models_files/bowser-1.9.3/bowser.min.js","intro-to-nimbleecology-site-occupancy-models_files/distill-2.2.21/template.v2.js","intro-to-nimbleecology-site-occupancy-models_files/figure-html5/unnamed-chunk-13-1.png","intro-to-nimbleecology-site-occupancy-models_files/figure-html5/unnamed-chunk-14-1.png","intro-to-nimbleecology-site-occupancy-models_files/header-attrs-2.11.15/header-attrs.js","intro-to-nimbleecology-site-occupancy-models_files/jquery-3.6.0/jquery-3.6.0.js","intro-to-nimbleecology-site-occupancy-models_files/jquery-3.6.0/jquery-3.6.0.min.js","intro-to-nimbleecology-site-occupancy-models_files/jquery-3.6.0/jquery-3.6.0.min.map","intro-to-nimbleecology-site-occupancy-models_files/popper-2.6.0/popper.min.js","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy-bundle.umd.min.js","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy-light-border.css","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy.css","intro-to-nimbleecology-site-occupancy-models_files/tippy-6.2.7/tippy.umd.min.js","intro-to-nimbleecology-site-occupancy-models_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["p1_ext_occ_files/anchor-4.2.2/anchor.min.js","p1_ext_occ_files/bowser-1.9.3/bowser.min.js","p1_ext_occ_files/distill-2.2.21/template.v2.js","p1_ext_occ_files/header-attrs-2.11.15/header-attrs.js","p1_ext_occ_files/jquery-3.6.0/jquery-3.6.0.js","p1_ext_occ_files/jquery-3.6.0/jquery-3.6.0.min.js","p1_ext_occ_files/jquery-3.6.0/jquery-3.6.0.min.map","p1_ext_occ_files/popper-2.6.0/popper.min.js","p1_ext_occ_files/tippy-6.2.7/tippy-bundle.umd.min.js","p1_ext_occ_files/tippy-6.2.7/tippy-light-border.css","p1_ext_occ_files/tippy-6.2.7/tippy.css","p1_ext_occ_files/tippy-6.2.7/tippy.umd.min.js","p1_ext_occ_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2376,7 +2376,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Intro to nimbleEcology: Marginalization and the occupancy model","description":"An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework.","authors":[{"author":"Ben R. Goldstein","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-02-22T00:00:00.000-08:00","citationText":"Goldstein, 2022"}
+{"title":"(Part 1) Extending the occupancy model with nimbleEcology: random effects","description":"Putting group random effects into your models can be easy.","authors":[{"author":"Ben R. Goldstein","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-04-12T00:00:00.000-07:00","citationText":"Goldstein, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2408,16 +2408,17 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Intro to nimbleEcology: Marginalization and the occupancy model</h1>
+<h1>(Part 1) Extending the occupancy model with nimbleEcology: random effects</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>An introductory guide to estimating site-occupancy models in a Bayesian or maximum likelihood framework.</p></p>
+<p><p>Putting group random effects into your models can be easy.</p></p>
 </div>
 
 <div class="d-byline">
-  Ben R. Goldstein  
   
-<br/>2022-02-22
+  Ben R. Goldstein
+  
+<br/>2022-04-12
 </div>
 
 <div class="d-article">
@@ -2426,234 +2427,56 @@ d-appendix d-footnote-list a.footnote-backlink {
 <h3>Contents</h3>
 <ul>
 <li><a href="#in-this-post">In this post…</a></li>
-<li><a href="#what-is-nimbleecology">What is nimbleEcology?</a>
-<ul>
-<li><a href="#what-is-marginalization">What is marginalization?</a></li>
-<li><a href="#why-should-i-use-nimbleecology-marginalized-distributions">Why should I use nimbleEcology marginalized distributions?</a></li>
-</ul></li>
-<li><a href="#overview-of-the-site-occupancy-model">Overview of the site-occupancy model</a>
-<ul>
-<li><a href="#structure">Structure</a></li>
-</ul></li>
-<li><a href="#a-marginalized-occupancy-distribution-docc">A marginalized occupancy distribution, <code>dOcc</code></a></li>
-<li><a href="#implementing-the-occupancy-model-with-nimbleecology">Implementing the occupancy model with nimbleEcology</a></li>
+<li><a href="#random-effects-in-occupancy-modeling">Random effects in occupancy modeling</a></li>
 <li><a href="#next-time">Next time…</a></li>
-<li><a href="#citations-and-additional-reading">Citations and additional reading</a></li>
 </ul>
 </nav>
 </div>
 <h1 id="in-this-post">In this post…</h1>
-<p>I introduce the concept of “marginalization” in a hierarchical model through the context of the occupancy model.</p>
-<p>I assume a basic familiarity with the occupancy model, which I define in the section “Overview of the site-occupancy model” below, and a basic familiarity with / exposure to Bayesian model estimation (MCMC). Neither of these is strictly necessary to get the main points in this blog post. See “Citations and additional reading” for related materials.</p>
-<p>I focus on an R package I co-authored, <code>nimbleEcology</code>, in which we’ve implemented some marginalized distributions for common ecological models.</p>
-<h1 id="what-is-nimbleecology">What is nimbleEcology?</h1>
-<p>nimbleEcology is an R package that makes it easier to implement some common ecological models in the general statistical software NIMBLE. Specifically, nimbleEcology provides marginalized distributions that turn hierarchical structures with latent states, such as the occupancy or N-mixture model, into one line distributions similar to familiar distributions like <code>dpois()</code> or <code>dbinom()</code>.</p>
-<p>In this blog post, I show how the entire occupancy hierarchical probability distribution for the occupancy model can be written with <code>y ~ dOcc_v(...)</code> and provide a working example.</p>
-<h3 id="what-is-marginalization">What is marginalization?</h3>
-<p>Model fitting, whether working with Bayesian or maximum likelihood tools, always involves calculating the likelihood of a model. In MLE, we often calculate the likelihood of a set of parameters given our data and numerically optimize those parameters to estimate the maximum of the likelihood function (hence “maximum likelihood estimation”). This is how popular MLE packages for ecological models like <code>unmarked</code> work under the hood. In Bayesian statistics, we don’t directly optimize the likelihood, but we do calculate it for a set of parameters when deciding whether to accept a newly sampled value during MCMC sampling.</p>
-<p>When we have latent states and random effects in our model, calculating the likelihood becomes more complicated. We don’t include values for latent states in the total model likelihood, because by definition random effects and latent states are not technically parameters we’re estimating–that’s what differentiates them from fixed effects. Instead we want to know the likelihood of our parameters, given the data and a random effect/latent state structure with specific random effects/latent states <em>that could have any value</em> in their domain. To optimize the likelihood without optimizing specific random effect values, you have to calculate and integrate over all possible values of each random effect.</p>
-<p>(<strong>A brief note here on latent states</strong>. I’m honestly not sure what the definition of “latent state” is. In practice in ecology, a latent state is a piece of model structure that represents an unobserved part of the system, usually as part of a hierarchical structure. I believe you can usually think of latent states as a type of random effect. Latent states come up in species distribution modeling as underlying occupancy conditions or abundance conditions. They can also come up in multi-state models of animal movement or survival.)</p>
-<p>The rapid expansion of Bayesian methods in ecology has both obscured and been spurred by the fact that writing explicit likelihoods that integrate over random effects / marginalize over latent states is often impossible. In Bayesian statistics, you can sample the random effect without having to marginalize over it due to <del>magic</del> math. This is nice in cases like continuous random effects where integrating would require complicated approximators, and also in cases like hierarchical modeling where it’s intuitive to see the model structure written out.</p>
-<p>But if we want to use maximum likelihood, and for some Bayesian applications, it is sometimes possible to marginalize over or integrate over a latent state or random effect by hand. This means writing a likelihood function that considers all possible latent states and computes the likelihood as a weighted sum across those.</p>
-<p>This idea still gives me a lot of trouble, so if you’re stuck on it, that’s okay–I’ll try to contextualize the effects and advantages of marginalization in a way that doesn’t rely on a nuanced statistical understanding. In a later section, we’ll look at the specific case of marginalizing the occupancy distribution as a specific example.</p>
-<h3 id="why-should-i-use-nimbleecology-marginalized-distributions">Why should I use nimbleEcology marginalized distributions?</h3>
-<p>Some advantages:</p>
-<ul>
-<li><strong>Simpler code</strong>. We went ahead and implemented the occupancy distribution so you don’t have to. This saves lines of code and hopefully reduces some of the headache that inevitably comes from debugging a new model.</li>
-<li><strong>It’s easily modifiable</strong>. Implementing models in nimbleEcology, compared to something like unmarked, makes it easier to modify and customize your model when you’re ready to get fancy.</li>
-<li><strong>It’s fairly efficient</strong>. nimbleEcology uses marginalized distributions, saving memory and sometimes (but not always) increasing computational efficiency.</li>
-<li><strong>Swap between MLE or Bayesian methodology</strong>. This maybe isn’t a <em>need</em> so much as an interesting feature, but with NIMBLE you have access to both maximum likelihood and Bayesian (MCMC) estimation with very few changes to the model code.</li>
-</ul>
-<p>Some important disadvantages of using marginalized distributions:</p>
-<ul>
-<li><p><strong>No access to posterior distributions of latent states.</strong> It’s fairly common now for ecologists to create derived products by summarizing latent states, such as obtaining a posterior on the total number of occupied sites. Because we aren’t sampling the latent state if we marginalize, we can’t do this.</p></li>
-<li><p><strong>It’s sometimes less efficient for MCMC.</strong> The paper that generated much of the code that eventually became nimbleEcology is Ponisio et al. 2020, “One size does not fit all: Customizing MCMC methods for hierarchical models using NIMBLE.” The title does a great job of summarizing their findings: Dr. Ponisio and colleagues found that marginalizing over latent states sometimes, but not always, improved MCMC efficiency.</p></li>
-</ul>
-<h1 id="overview-of-the-site-occupancy-model">Overview of the site-occupancy model</h1>
-<p>Much has been written about the occupancy model, including entire textbooks and <a href="https://masonfidino.com/a_simple_static_occupancy_model/">other very nice blog posts</a>. I link to some of those at the bottom of the article. But here’s a very brief overview of this model’s structure.</p>
-<p><strong><em>If you feel comfortable implementing occupancy models, you can skip ahead to the next section: “Implementing the occupancy model with nimbleEcology”</em></strong></p>
-<p>In species distribution modeling, we often want to ask whether a species’ presence on the landscape is correlated with a spatio-temporal variable. For example, we might be interested in whether a species prefers dense or sparse tree cover, whether a species’ range is growing or declining over time, or whether a management strategy is actually working to attract a species.</p>
-<p>To answer the question, we go out and collect data. We visit a gradient of sites across the variable of interest (such as some densely forested sites and some sparsely forested sites) and write down when we do and don’t detect the animal. We then often want to use statistical modeling to differentiate between the occupancy and detection processes–i.e., whether we detected the species less because it was truly there less, or just because it was harder to detect.</p>
-<p>Site-occupancy models are a type of statistical structure that allow us to ask these questions when our detection process is imperfect, so we can’t be confident that a nondetection means the species wasn’t there.</p>
-<h3 id="structure">Structure</h3>
-<p>Let’s start by putting down some statistical equations for the simplest hierarchical site-occupancy model.</p>
-<p><span class="math display">\[y_{ij} \sim \text{Bernoulli}(z_i \times p_{ij})\]</span> <span class="math display">\[z_i \sim \text{Bernoulli}(\psi_i)\]</span> <span class="math display">\[\text{logit}(\psi_{i}) = x_{i}^T\beta\]</span> <span class="math display">\[\text{logit}(p_{ij}) = w_{ij}^T\gamma\]</span></p>
-<p>where <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> index site and replicate visit, respectively; <span class="math inline">\(y_{ij}\)</span> is a single detection or nondetection (1 or 0) at site <span class="math inline">\(i\)</span>, replicate <span class="math inline">\(j\)</span>; <span class="math inline">\(z_i\)</span> is a latent state representing occupancy; <span class="math inline">\(\psi_i\)</span> is the probability that site <span class="math inline">\(i\)</span> is occupied; <span class="math inline">\(p_{ij}\)</span> is an observation-specific conditional detection probability; <span class="math inline">\(x_i\)</span> and <span class="math inline">\(w_{ij}\)</span> are vectors of covariates of interest; and <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span> are vectors of coefficients representing the effect of covariates on occupancy and detection, respectively.</p>
-<p>Phew. Let’s break that down.</p>
-<p>In the <strong>first equation</strong>, we describe the probability distribution for our detection-nondetection observations, <span class="math inline">\(y_{ij}\)</span>. We say that each data point is Bernoulli-distributed: we have a probability of <span class="math inline">\(z_i \times p_{ij}\)</span> of seeing the animal. Since we either see it or we don’t, the probability of not seeing the animal is <span class="math inline">\(1 - z_i \times p_{ij}\)</span>.</p>
-<p>In the occupancy model, we assume that each “site” is in fact occupied or unoccupied, but that we can’t observe this condition perfectly. (I put “site” in quotation marks because the “site” need not be strictly spatial–for example, we could treat the occupancy status of a single location in different years as independent. Because the assumption that occupancy status doesn’t change is called “closure,” we can also call this unit a “unit of closure.”) In our <strong>second equation</strong>, we represent this with the latent state <span class="math inline">\(z_i\)</span>, which has a value of 1 if site <span class="math inline">\(i\)</span> is occupied and 0 if it is not. If the site is unoccupied, we have no chance of seeing the animal. In that case, <span class="math inline">\(z_i = 0\)</span> and the probability of <span class="math inline">\(y_ij = 1\)</span> is also 0. Think of <span class="math inline">\(z_i\)</span> as a switch that turns the probability of seeing the animal on or off. The “conditional probability of detection,” i.e. the probability that we see the animal when it’s present on a given observation, is <span class="math inline">\(p_ij\)</span>. It’s conditional because it only affects the data likelihood when <span class="math inline">\(z_i =1\)</span>. In the second equation, we define the distribution for the latent state <span class="math inline">\(z_i\)</span>, which has a probability of <span class="math inline">\(\psi_i\)</span>.</p>
-<p>The <strong>third equation</strong> links our probability of occupancy, <span class="math inline">\(\psi_i\)</span>, to covariates. We say that, on the logit scale (which is a popular but largely arbitrary transformation from <span class="math inline">\((-\infty, \infty)\)</span> to <span class="math inline">\((0, 1)\)</span>), <span class="math inline">\(\psi_i\)</span> is a linear combination of some observed data describing our site, <span class="math inline">\(x_{i}\)</span>, with coefficients <span class="math inline">\(\beta\)</span>. We want to estimate <span class="math inline">\(\beta\)</span> to get confidence or credible intervals on those effects.</p>
-<p>The <strong>fourth equation</strong> replicates this logit-link structure for our detection probability, <span class="math inline">\(p\)</span>, and some covariates <span class="math inline">\(w\)</span> with coefficients <span class="math inline">\(\gamma\)</span>. The detection probability gives the Bernoulli probability that you observe the animal in question on a visit to an occupied site, i.e. the probability that <span class="math inline">\(y_{ij}=1\)</span> given that <span class="math inline">\(z_i = 1\)</span>.</p>
-<h1 id="a-marginalized-occupancy-distribution-docc">A marginalized occupancy distribution, <code>dOcc</code></h1>
-<p>Ignoring covariates, the non-marginalized occupancy distribution is written (in NIMBLE code) as</p>
+<p>I extend the occupancy model by modifying the standard occupancy NIMBLE model code to include a group random effect.</p>
+<p>This post is short, and is meant more to provide example code than to offer in-depth explanations of these concepts. It’s the first in a three-part series on some basic ways to do more with the occupancy model.</p>
+<p>I assume that you’ve read my earlier post, <a href="https://dochvam.github.io/SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/">Intro to nimbleEcology: Marginalization and the occupancy model</a>. I’ll be using code and data from this previous post.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="images/ranef_vis.jpg" width="100%" data-distill-preview=1 /></p>
+</div>
+<h1 id="random-effects-in-occupancy-modeling">Random effects in occupancy modeling</h1>
+<p>Random effects are an important concept I won’t cover fully here. In this example we’ll be thinking of random effects as a way to appropriately count for groupings or non-independence between observations in an occupancy model.</p>
+<p>Today’s hypothetical observation study starts out the same as in the last post. We’ve sampled a number of sites, and on each we recorded whether or not we detected white-throated swifts. However, there’s a twist: the sites we sampled were each in one of three regions that have different properties. In this case, we’ll say each region was associated with a different detection probability. We need to properly account for those differences using random effects.</p>
+<p>If we don’t account for this important driver of variation, a number of bad things could happen. For one, this would be an issue of pseudoreplication, meaning we have unaccounted-for non-independence between observations that will reduce the observed variance and make our estimated error overconfident. (Pseudoreplication in ecological field experiments was discussed in <a href="file:///C:/Users/Ben/Documents/mystuff/dochvam.github.io/SDMs/2022-03-17-part-1-extending-the-occupancy-model-with-nimbleecology-random-effects/doi.org/10.2307/1942661">this paper by Hurlburt in 1984.</a>) On top of that basic issue, our occupancy model makes an assumption that there isn’t extra variation in detection heterogeneity in order to partition variation between occupancy and detection processes. If the interdependence is in the detection process, that missing variation will show up as detection estimates that are biased upward and occupancy estimates that are biased downward.</p>
+<p>So, we want to implement random effects of group on detection in our model. Let’s start by writing out the occupancy model equations, this time with the inclusion of the random effect.</p>
+<p><span class="math display">\[y_{ij} \sim \text{Bernoulli}(z_i \times p_{ij})\]</span> <span class="math display">\[z_i \sim \text{Bernoulli}(\psi_i)\]</span> <span class="math display">\[\text{logit}(\psi_{i}) = x_{i}^T\beta\]</span> <span class="math display">\[\text{logit}(p_{ij}) = w_{ij}^T\gamma + \alpha_{R(i)}\]</span> <span class="math display">\[\alpha_r \sim \mathcal{N}(0, sigma_\alpha) \text{ for } r \text{ in } 1...R\]</span></p>
+<p>The only changes from our previous equations are the inclusion of the <span class="math inline">\(\alpha_{R(i)}\)</span> and fifth equation defining that element. The addition of <span class="math inline">\(\alpha_{R(i)}\)</span> to the linear combination in Equation 4 means that there’s some quantity that we’re adding to our (logit-scale) detection probability. The indexing <span class="math inline">\(R(i)\)</span> means that there are R elements (in our example, <span class="math inline">\(R=3\)</span> regions), and we’ll know which element we need as a function of site <span class="math inline">\(i\)</span>. For example, all observations at the <span class="math inline">\(i=5\)</span>th site are in Region 1 <span class="math inline">\((R(5)=1)\)</span>.</p>
+<p>The new fifth equation defines a distribution for these random effects. We say they’re normally distributed with mean 0 and a standard deviation parameter <span class="math inline">\(sigma_\alpha\)</span> that we’ll estimate. It’s normal to use Gaussian random effects. It’s important that the mean is 0 rather than a parameter as otherwise they’d be redundant with the intercept parameter we’re already estimating.</p>
+<p>Here is some NIMBLE code implementing the model.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>nimbleCode</span><span class='op'>(</span><span class='op'>{</span>
-  <span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>nsite</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='va'>z</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>~</span> <span class='fu'>dbern</span><span class='op'>(</span><span class='va'>psi</span><span class='op'>)</span>
-    <span class='kw'>for</span> <span class='op'>(</span><span class='va'>j</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>nrep</span><span class='op'>)</span> <span class='op'>{</span>
-      <span class='va'>y</span><span class='op'>[</span><span class='va'>i</span>, <span class='va'>j</span><span class='op'>]</span> <span class='op'>~</span> <span class='fu'>dbern</span><span class='op'>(</span><span class='va'>z</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>*</span> <span class='va'>p</span><span class='op'>)</span>
-    <span class='op'>}</span>
-  <span class='op'>}</span>
-<span class='op'>}</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>In this setup we’ve coded a latent state, <code>z</code>, and defined it as following a Bernoulli distribution. Then we’ve said that our data, <code>y</code>, follow another Bernoulli distribution incorporating the state <code>z</code>.</p>
-<p>I want to marginalize over <span class="math inline">\(z_i\)</span> and completely eliminate it from my model. To do this, I consider that the Bernoulli distribution means <span class="math inline">\(z\)</span> can actually only have two states: either <span class="math inline">\(z_i=1\)</span> with probability <span class="math inline">\(\psi\)</span> or <span class="math inline">\(z_i=0\)</span> with probability <span class="math inline">\(1-\psi\)</span> .</p>
-<p>Then, I notice that, if we know what <span class="math inline">\(z_i\)</span> is, the probability of <span class="math inline">\(y_{ij}\)</span> is easy</p>
-<p>But, recall that <span class="math inline">\(z_i\)</span> influences the likelihood of every <span class="math inline">\(y_{ij}\)</span>. This means that our likelihood function needs to take into account all the observations in <span class="math inline">\(y_{ij}\)</span> simultaneously, because the probability is interdependent between them. For example, the likelihood of <span class="math inline">\(\psi_i=0\)</span> will be exactly 0 for <em>all</em> observations <span class="math inline">\(y_{ij}\)</span> if <em>any</em> of them are nonzero, since an unoccupied site can’t produce nonzero observations under this model.</p>
-<p>Thus, the marginalized likelihood of parameters given the observations at site i is</p>
-<p><span class="math display">\[L(\psi,p|y_{i.}) = \psi p^k (1-p)^{n-k} + (1-\psi)I(k = 0)\]</span></p>
-<p>where <span class="math inline">\(n\)</span> is the number of observations at site <span class="math inline">\(i\)</span>, <span class="math inline">\(k\)</span> is the number of <strong>nonzero</strong> observations at site <span class="math inline">\(i\)</span>, and <span class="math inline">\(I(k=0)\)</span> is an indicator that takes 1 if <span class="math inline">\(k\)</span> is 0 and 0 otherwise.</p>
-<p>In plain English: the likelihood of our parameters given our data is the probability that the site is occupied times the probability of the data given that the site is occupied, plus the probability that the site <em>isn’t</em> occupied times the probability of the data given that it isn’t (which is 1 if all observations are 0, and 0 otherwise). We sum the two probabilities because either one or the other is true, but not both.</p>
-<p>We’ve now marginalized over <span class="math inline">\(z\)</span> by literally writing the values it could take and the associated probabilities of the data, then summing across them. Marginalizing isn’t always this straightforward, because latent states can take many (or infinitely many) values. We’ll explore harder contexts in future posts.</p>
-<p><strong>You don’t actually need to know any of that math for what follows</strong>, because we’ve coded it up for you.</p>
-<h1 id="implementing-the-occupancy-model-with-nimbleecology">Implementing the occupancy model with nimbleEcology</h1>
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span style="display:block;" id="fig:swift"></span>
-<img src="images/swift.png" alt="Swift (c) J Tanner 2022. &lt;https://macaulaylibrary.org/asset/409111121&gt;" width="100%" data-distill-preview=1 />
-<p class="caption">
-Figure 1: Swift (c) J Tanner 2022. <a href="https://macaulaylibrary.org/asset/409111121" class="uri">https://macaulaylibrary.org/asset/409111121</a>
-</p>
-</div>
-</div>
-<!-- ![Swift photo (c) J Tanner 2022. -->
-<!-- <https://macaulaylibrary.org/asset/409111121>](images/swift.png) -->
-<p>In this section, I showcase the use of nimbleEcology for implementing an occupancy model with simulated data.</p>
-<p>Let’s say we have some data we collected in a study on how the occupancy of a bird, the white-throated swift. I have my detection/nondetection data in a matrix called “obs”. We surveyed 200 sites three times each, and recorded whether or not we observed swifts during those surveys.</p>
-<p>Here are the first six rows in the data:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>     [,1] [,2] [,3]
-[1,]    0    0    0
-[2,]    0    0    0
-[3,]    1    1    0
-[4,]    0    0    1
-[5,]    1    0    1
-[6,]    0    0    0</code></pre>
-</div>
-<p>We detected the swift at three of the first six sites. Here are a few more summary statistics:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Total number of sites with detections ("naive occupancy")</span>
-<span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 69</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Average number of observations per occupied site</span>
-<span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span>, <span class='op'>]</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 0.4879227</code></pre>
-</div>
-<p>We want to know how the elevation and amount of forest cover impact the occupancy of our swifts in the study area. We measured elevation and forest cover at each of our sites. Here’s the first six sites’ data:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>siteLevelData</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>   elevation forestCover
-1 -0.9559221  0.37841493
-2 -0.9790799 -0.01406795
-3  0.4368064  0.17601854
-4 -0.7193709 -0.92947860
-5 -0.2721558 -0.43107788
-6  0.0428613  0.49594396</code></pre>
-</div>
-<p>(In the previous section, each row of these data are an <span class="math inline">\(x_i\)</span>.)</p>
-<p>We’re using an occupancy model because we think our data contains false negatives–i.e., sometimes we didn’t see a swift at an occupied site. We think that sometimes, high wind conditions could reduce our ability to see swifts. And we also don’t want to rule out the possibility that detection probabilities vary with elevation or tree cover. Disambiguating the effects of a single variable on <strong>both</strong> detection and probability is one of the main benefits of th occupancy model.</p>
-<p>Here’s data from the first six sites for our three detection variables.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>obsLevelData</span><span class='op'>[</span>,,<span class='st'>"elevation"</span><span class='op'>]</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>           [,1]       [,2]       [,3]
-[1,] -0.9559221 -0.9559221 -0.9559221
-[2,] -0.9790799 -0.9790799 -0.9790799
-[3,]  0.4368064  0.4368064  0.4368064
-[4,] -0.7193709 -0.7193709 -0.7193709
-[5,] -0.2721558 -0.2721558 -0.2721558
-[6,]  0.0428613  0.0428613  0.0428613</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>obsLevelData</span><span class='op'>[</span>,,<span class='st'>"forestCover"</span><span class='op'>]</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>            [,1]        [,2]        [,3]
-[1,]  0.37841493  0.37841493  0.37841493
-[2,] -0.01406795 -0.01406795 -0.01406795
-[3,]  0.17601854  0.17601854  0.17601854
-[4,] -0.92947860 -0.92947860 -0.92947860
-[5,] -0.43107788 -0.43107788 -0.43107788
-[6,]  0.49594396  0.49594396  0.49594396</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>obsLevelData</span><span class='op'>[</span>,,<span class='st'>"windLevel"</span><span class='op'>]</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>          [,1]       [,2]       [,3]
-[1,] 0.5818751  0.6126206 -0.7922553
-[2,] 0.2276861  0.7952973 -0.6619532
-[3,] 0.9545355 -0.6955473 -0.6014542
-[4,] 0.8137390  0.4535272  0.6110631
-[5,] 0.5897824 -0.3132945  0.1687786
-[6,] 0.3905541  0.3720862 -0.2839954</code></pre>
-</div>
-<p>For the sake of simplicity, we’ll assume that our sites are random and representative of the study area, that we have good reason to believe we aren’t recording false positive observations, and that we don’t think our detection process is variable except due to the factors we’re considering (wind, forest cover, and elevation).</p>
-<p>Let’s get to modeling!</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-nimble.org'>nimble</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/nimble-dev/nimbleEcology'>nimbleEcology</a></span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>First, to use NIMBLE, we’re going to define a <code>nimbleCode</code> object. This code object uses a pseudo-code language, blending .</p>
-<p>NIMBLE uses a declarative language, meaning order doesn’t matter. A consequence of this is that you can’t overwrite values. Instead of stepping through lines of code, think of <code>nimbleCode</code> as defining relationships between variables (nodes). For a more in-depth overview of the NIMBLE code language check out the NIMBLE User Manual, which I link at the end of the post.</p>
-<p>Ok, enough stalling. Here’s the NIMBLE code for our model, with comments.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>occuCode</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimbleCode.html'>nimbleCode</a></span><span class='op'>(</span><span class='op'>{</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Because this code is mostly copied from the previous post, I'll only put</span>
+<span class='co'># comments on new features.</span>
+
+<span class='va'>occuCode_w_random_effects</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimbleCode.html'>nimbleCode</a></span><span class='op'>(</span><span class='op'>{</span>
   <span class='co'># Loop over sites</span>
   <span class='kw'>for</span> <span class='op'>(</span><span class='va'>site</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>nSites</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='co'># Here's the nimbleEcology magic: the dOcc_* distribution.</span>
-    <span class='co'># This line of code says that our observations follow a probability</span>
-    <span class='co'>#   distribution in the occupancy model, with a single occupancy probability</span>
-    <span class='co'>#   and a vector of detection probabilities corresponding to each </span>
-    <span class='co'>#   observation. Note that we pass a whole site's worth of data at once.</span>
-    <span class='co'># Try running ?nimbleEcology::dOcc in your R session for more info.</span>
     <span class='va'>obs</span><span class='op'>[</span><span class='va'>site</span>, <span class='fl'>1</span><span class='op'>:</span><span class='va'>nReps</span><span class='op'>]</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/pkg/nimbleEcology/man/dOcc.html'>dOcc_v</a></span><span class='op'>(</span>
       probOcc <span class='op'>=</span> <span class='va'>psi</span><span class='op'>[</span><span class='va'>site</span><span class='op'>]</span>, 
       probDetect <span class='op'>=</span> <span class='va'>p</span><span class='op'>[</span><span class='va'>site</span>, <span class='fl'>1</span><span class='op'>:</span><span class='va'>nReps</span><span class='op'>]</span>,
       len <span class='op'>=</span> <span class='va'>nReps</span>
     <span class='op'>)</span>
-    
-    <span class='co'># We define a logit-linear relationship between occupancy probability</span>
-    <span class='co'>#   psi and some covariate data we'll provide.</span>
-    <span class='co'># inprod(x, y) is the same as x[1] * y[1] + x[2] * y[2] + ... + x[n] * y[n]</span>
-    <span class='co'>#### Note that: ###</span>
-    <span class='co'># - We can put logit() on the left-hand side like a model equation</span>
-    <span class='co'># - The data intercept is represented in model matrix notation inside </span>
-    <span class='co'>#   occuCovars (more on that in a second)</span>
-    <span class='co'># - We need EXPLICIT INDEXING for our vectors (beta[1:nBeta], not just beta).</span>
-    <span class='co'>#   This is an important difference between nimbleCode and base R</span>
     <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-math.html'>logit</a></span><span class='op'>(</span><span class='va'>psi</span><span class='op'>[</span><span class='va'>site</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-math.html'>inprod</a></span><span class='op'>(</span><span class='va'>occuCovars</span><span class='op'>[</span><span class='va'>site</span>, <span class='fl'>1</span><span class='op'>:</span><span class='va'>nBeta</span><span class='op'>]</span>, <span class='va'>beta</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='va'>nBeta</span><span class='op'>]</span><span class='op'>)</span>
     
     <span class='co'># Loop over reps</span>
     <span class='kw'>for</span> <span class='op'>(</span><span class='va'>rep</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>nReps</span><span class='op'>)</span> <span class='op'>{</span>
-      <span class='co'># Do this again for each detection probability. Only difference is that</span>
-      <span class='co'># p is now two-dimensional and detectionCovars is three-dimensional.</span>
       <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-math.html'>logit</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>[</span><span class='va'>site</span>, <span class='va'>rep</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-math.html'>inprod</a></span><span class='op'>(</span><span class='va'>detectionCovars</span><span class='op'>[</span><span class='va'>site</span>, <span class='va'>rep</span>, <span class='fl'>1</span><span class='op'>:</span><span class='va'>nGamma</span><span class='op'>]</span>,
-                                    <span class='va'>gamma</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='va'>nGamma</span><span class='op'>]</span><span class='op'>)</span>
+                                    <span class='va'>gamma</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='va'>nGamma</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span>
+                             <span class='va'>ranef</span><span class='op'>[</span><span class='va'>region</span><span class='op'>[</span><span class='va'>site</span><span class='op'>]</span><span class='op'>]</span>
+      <span class='co'># Above, we added an additive random effect to each obs's detection</span>
+      <span class='co'># probability. "ranef" is a vector of length nRegion, each value of which</span>
+      <span class='co'># is the shared random effect. We used nested indexing by providing a</span>
+      <span class='co'># vector "region" with values 1, 2,...nRegion. region[i] tells us which</span>
+      <span class='co'># region the ith site belongs to. This effect is additive on logit(p).</span>
+      
     <span class='op'>}</span> <span class='co'># END reps loop</span>
   <span class='op'>}</span> <span class='co'># END site loop</span>
-  
-  <span class='co'># Priors. We need these in order to do MCMC sampling. I'm going to choose some</span>
-  <span class='co'># arbitrary, mostly uninformative priors.</span>
+
   <span class='co'># Priors on each covariate on occupancy:</span>
   <span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>nBeta</span><span class='op'>)</span> <span class='op'>{</span>
     <span class='va'>beta</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>2.5</span><span class='op'>)</span>
@@ -2662,157 +2485,83 @@ Figure 1: Swift (c) J Tanner 2022. <a href="https://macaulaylibrary.org/asset/40
   <span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>nGamma</span><span class='op'>)</span> <span class='op'>{</span>
     <span class='va'>gamma</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>2.5</span><span class='op'>)</span>
   <span class='op'>}</span>
+  
+  <span class='co'># We need to add the distribution for the random effects.</span>
+  <span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>nRegion</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>ranef</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='va'>sigma_region</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='co'># Finally, we need a prior on our new parameter, sigma_region</span>
+  
 <span class='op'>}</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>Some of this code might look unfamiliar to folks who have done Bayesian occupancy modeling before. I’ve gone out of my way to make things generalizable, using <code>inprod()</code> over, for example, <code>intercept + elev[i] * b1 + forest[i] * b2</code>. My motivation for doing this is that it’s super generalizable, and I’ll be able to add or remove covariates without making any changes to my code.</p>
-<p>Note that because we’re using nimbleEcology, we’ve “marginalized over” the latent state <span class="math inline">\(z\)</span> and it’s not in the model. This is a good thing for a couple reasons: it reduces the amount of RAM needed, which can be important for large datasets; it slightly speeds up mixing time in some cases; and it saves some lines of code. However, there are often cases where we <strong>want</strong> <span class="math inline">\(z\)</span>, such as if we want a posterior distribution on the number of occupied sites. In that case we shouldn’t use nimbleEcology (but NIMBLE will do fine).</p>
-<p>The next step in the NIMBLE workflow is to define a NIMBLE model object. This turns our code, which describes a series of nodes and the relationships between them, into an actual object composed of that structure.</p>
-<p>All the data wrangling I have to do is just to get my inputs in the same form as I’ve described them.</p>
-<p>Because I’m using <code>inprod()</code> I need to make sure my data have intercept columns first.</p>
+<p>Here is some NIMBLE code describing the same model.</p>
+<p>To recap, the steps we took in our code were:</p>
+<ol type="1">
+<li>Add a dynamically indexed vector to our logit-scale detection probability</li>
+<li>Loop over this vector and define each element as random normal with a common standard deviation</li>
+</ol>
+<p>These are the exact same changes we made to our model equations.</p>
+<p>You can use multiple random effects, added onto each other, and you can use random effects in the occupancy submodel (additive on <span class="math inline">\(\text{logit}(\psi)\)</span>). It’s also possible to use random effects in a standard NIMBLE occupancy model without the marginalized setup offered by nimbleEcology.</p>
+<p>Building the model will look pretty similar. We just need to provide the value <code>nRegion = 3</code> in constants, and a vector, <code>region</code>, where <code>region[i]</code> gives the numerical index of the <span class="math inline">\(i\)</span>th observation’s associated random effect (in this case either 1, 2, or 3.)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>siteLevelData</span><span class='op'>$</span><span class='va'>intercept</span> <span class='op'>&lt;-</span> <span class='fl'>1</span>
-<span class='va'>obsLevelData</span><span class='op'>[</span>,, <span class='st'>"intercept"</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>1</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimDim.html'>dim</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span> <span class='co'># The data have 3 observations at each of 200 sites</span>
 </code></pre>
 </div>
+<pre><code>[1] 200   3</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-R-functions.html'>length</a></span><span class='op'>(</span><span class='va'>region</span><span class='op'>)</span> <span class='co'># Each site has a region associated with it</span>
+</code></pre>
 </div>
+<pre><code>[1] 200</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>region</span><span class='op'>)</span> <span class='co'># 75 sites are in region 1, 75 are in region 2, and 50 are in 3</span>
+</code></pre>
+</div>
+<pre><code>region
+ 1  2  3 
+75 75 50 </code></pre>
+</div>
+<p>We also want to provide initial values for our new nodes–the parameter sigma_region and the random effects vector ranef. So with all that in mind, let’s jump in to building the model. I’ll flag the changes from last time with comments.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>occu_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimbleModel.html'>nimbleModel</a></span><span class='op'>(</span>
-  code <span class='op'>=</span> <span class='va'>occuCode</span>,
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>occu_model_w_random_effects</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimbleModel.html'>nimbleModel</a></span><span class='op'>(</span>
+  code <span class='op'>=</span> <span class='va'>occuCode_w_random_effects</span>,
   constants <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
     nBeta <span class='op'>=</span> <span class='fl'>3</span>,
     nGamma <span class='op'>=</span> <span class='fl'>4</span>,
     nSites <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span>,
-    nReps <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span>
+    nReps <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span>,
+    nRegion <span class='op'>=</span> <span class='fl'>3</span>, <span class='co'># New!</span>
+    region <span class='op'>=</span> <span class='va'>region</span> <span class='co'># New!</span>
   <span class='op'>)</span>,
   data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
     obs <span class='op'>=</span> <span class='va'>obs</span>,
-    <span class='co'># I like indexing these here so I make sure they're going</span>
-    <span class='co'>#   into the model in the right order</span>
     detectionCovars <span class='op'>=</span> 
       <span class='va'>obsLevelData</span><span class='op'>[</span>,, <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-R-functions.html'>c</a></span><span class='op'>(</span><span class='st'>"intercept"</span>, <span class='st'>"elevation"</span>, <span class='st'>"forestCover"</span>, <span class='st'>"windLevel"</span><span class='op'>)</span><span class='op'>]</span>,
     occuCovars <span class='op'>=</span> <span class='va'>siteLevelData</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-R-functions.html'>c</a></span><span class='op'>(</span><span class='st'>"intercept"</span>, <span class='st'>"elevation"</span>, <span class='st'>"forestCover"</span><span class='op'>)</span><span class='op'>]</span>
   <span class='op'>)</span>,
   inits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
     beta <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>,
-    gamma <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>4</span><span class='op'>)</span>
+    gamma <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>4</span><span class='op'>)</span>,
+    ranef <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>, <span class='co'># New!</span>
+    sigma_region <span class='op'>=</span> <span class='fl'>1.2</span> <span class='co'># New!</span>
   <span class='op'>)</span>
 <span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>That’s it! We now have a nimbleModel object.</p>
-<p>One of my favorite things about working in NIMBLE is that we can play with and query the nimbleModel.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Peek inside the model: what are the data values for the 22nd site?</span>
-<span class='va'>occu_model</span><span class='op'>$</span><span class='va'>obs</span><span class='op'>[</span><span class='fl'>22</span>,<span class='op'>]</span>
-</code></pre>
-</div>
-<pre><code>[1] 0 0 0</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># What's the corresponding site-level data at this site?</span>
-<span class='va'>occu_model</span><span class='op'>$</span><span class='va'>occuCovars</span><span class='op'>[</span><span class='fl'>22</span>,<span class='op'>]</span> <span class='co'># Intercept, elevation, tree cover</span>
-</code></pre>
-</div>
-<pre><code>[1]  1.0000000  0.2463764 -0.1503483</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># What's the log-likelihood of the model given initial values?</span>
-<span class='co'># (If this is non-NA, that means our model is initialized properly)</span>
-<span class='va'>occu_model</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] -303.6887</code></pre>
-</div>
-<p>If we wanted to, we could modify data or initial values at this stage, but not constants, which are “baked in” to the model when its built.</p>
-<p>I’ll go quickly over this next part, since using MCMC with NIMBLE is better explained on the <a href="https://r-nimble.org/examples">NIMBLE examples page</a> (see: “Creating a default MCMC”). Briefly, we’re going to build an MCMC object and then compile the whole thing so we’re ready to do some MCMC sampling.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mcmc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/buildMCMC.html'>buildMCMC</a></span><span class='op'>(</span><span class='va'>occu_model</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>===== Monitors =====
-thin = 1: beta, gamma
-===== Samplers =====
-RW sampler (7)
-  - beta[]  (3 elements)
-  - gamma[]  (4 elements)</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compile to C++. This takes a second, but it's worth it!</span>
-<span class='va'>complist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/compileNimble.html'>compileNimble</a></span><span class='op'>(</span><span class='va'>occu_model</span>, <span class='va'>mcmc</span><span class='op'>)</span>
 
-<span class='co'># We can still query / modify the compiled model</span>
-<span class='va'>complist</span><span class='op'>$</span><span class='va'>occu_model</span><span class='op'>$</span><span class='va'>obs</span><span class='op'>[</span><span class='fl'>22</span>,<span class='op'>]</span>
+<span class='va'>occu_model_w_random_effects</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 0 0 0</code></pre>
+<pre><code>[1] -331.1213</code></pre>
 </div>
-<p>Now let’s do some MCMC sampling. 10,000 MCMC samples on 2 chains is a bit overkill for this model, but it’s quick–this takes about 20 seconds to run on my machine.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>samples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/runMCMC.html'>runMCMC</a></span><span class='op'>(</span><span class='va'>complist</span><span class='op'>$</span><span class='va'>mcmc</span>, 
-                   niter <span class='op'>=</span> <span class='fl'>10000</span>,
-                   nburnin <span class='op'>=</span> <span class='fl'>1000</span>,
-                   nchains <span class='op'>=</span> <span class='fl'>2</span>,
-                   thin <span class='op'>=</span> <span class='fl'>1</span>,
-                   samplesAsCodaMCMC <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>|-------------|-------------|-------------|-------------|
-|-------------------------------------------------------|
-|-------------|-------------|-------------|-------------|
-|-------------------------------------------------------|</code></pre>
-</div>
-<p>We can plot some of our chains to see how they mixed, for example the logit-scale effect of elevation on occupancy, which is <code>beta[2]</code> (because <code>beta[1]</code> is the intercept).</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>[</span>, <span class='st'>"beta[2]"</span><span class='op'>]</span><span class='op'>)</span>
-</code></pre>
-</div>
-<p><img src="intro-to-nimbleecology-site-occupancy-models_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
-</div>
-<p>I like the package <code>MCMCvis</code> for MCMC summaries.</p>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>summary</span> <span class='op'>&lt;-</span> <span class='fu'>MCMCvis</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/MCMCvis/man/MCMCsummary.html'>MCMCsummary</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span>
-
-<span class='va'>summary</span><span class='op'>$</span><span class='va'>param</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-R-functions.html'>c</a></span><span class='op'>(</span><span class='st'>"Intercept (occu)"</span>, <span class='st'>"Elev (occu)"</span>, <span class='st'>"Forest (occu)"</span>,
-                   <span class='st'>"Intercept (det)"</span>, <span class='st'>"Elev (det)"</span>, <span class='st'>"Forest (det)"</span>, <span class='st'>"Wind (det)"</span><span class='op'>)</span>
-
-<span class='va'>summary</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/pkg/nimble/man/nimble-R-functions.html'>c</a></span><span class='op'>(</span><span class='st'>"param"</span>, <span class='st'>"mean"</span>, <span class='st'>"2.5%"</span>, <span class='st'>"97.5%"</span><span class='op'>)</span><span class='op'>]</span>
-</code></pre>
-</div>
-<pre><code>                    param   mean  2.5%  97.5%
-beta[1]  Intercept (occu)  0.276 -0.40  1.428
-beta[2]       Elev (occu)  0.878 -0.41  2.239
-beta[3]     Forest (occu) -1.828 -3.48 -0.620
-gamma[1]  Intercept (det) -0.816 -1.31 -0.359
-gamma[2]       Elev (det)  0.506 -0.18  1.265
-gamma[3]     Forest (det)  0.037 -0.71  0.691
-gamma[4]       Wind (det) -0.503 -0.94 -0.078</code></pre>
-</div>
-<p>We found a negative effect of forest cover on occupancy, and a negative effect of wind speed on detection. Nice.</p>
+<p>Now we can proceed with compiling and running MCMC as usual. We’ll get a posterior distribution for the random effect standard deviation, sigma_region.</p>
+<p>All code used in this post, including hidden code used to generate the data, <a href="https://github.com/dochvam/dochvam.github.io/tree/main/_SDMs">can be found here</a>.</p>
 <h1 id="next-time">Next time…</h1>
-<p>Stay tuned for two follow up posts. In the first, I’ll discuss easy ways to extend the occupancy model in NIMBLE to showcase the flexibility of this tool. Then, I’ll showcase an N-mixture model, and we’ll explore a case where marginalizing over a latent state can dramatically improve computation time.</p>
-<p>Thanks for reading! Hit the “contact me” button at the top of the page if you have any questions or feedback.</p>
-<h1 id="citations-and-additional-reading">Citations and additional reading</h1>
-<p>All the code in this exercise is available in the Github repository for this blog, specifically <a href="https://github.com/dochvam/dochvam.github.io/blob/main/_SDMs/2022-01-31-intro-to-nimbleecology-site-occupancy-models/intro-to-nimbleecology-site-occupancy-models.Rmd">here</a>. Please feel free to download and play around with this .Rmd file, and to copy and use this code freely.</p>
-<p>If you want to see the code underlying the occupancy distribution used, it’s on <a href="https://github.com/nimble-dev/nimbleEcology/blob/master/R/dOcc.R">this GitHub page</a>. The nimbleEcology vignette is <a href="https://cran.r-project.org/web/packages/nimbleEcology/vignettes/Introduction_to_nimbleEcology.html">here</a>.</p>
-<p>For a really helpful blog post on implementing the occupancy model in NIMBLE without marginalization, check out <a href="https://masonfidino.com/a_simple_static_occupancy_model/">Mason Fidino’s writeup here</a>. Dr. Fidino’s blog was a big inspiration in getting this one off the ground.</p>
-<p>Relevant papers and books:</p>
-<ul>
-<li><a href="doi.org/10.1890/0012-9658(2002)083%5B2248:ESORWD%5D2.0.CO;2">Original MacKenzie et al. 2002 paper</a> on site-occupancy model</li>
-<li><a href="doi.org/10.1002/ece3.6053">Ponisio et al. 2020</a> paper marginalizing distributions in NIMBLE</li>
-<li><a href="https://www.sciencedirect.com/book/9780124071971/occupancy-estimation-and-modeling">Occupancy Estimation and Modeling textbook</a> by MacKenzie et al.</li>
-</ul>
-<p>As always, check out the <a href="https://r-nimble.org/manuals/NimbleUserManual.pdf">NIMBLE User Manual</a> and the <a href="https://r-nimble.org/examples">NIMBLE examples page</a> for more NIMBLE stuff.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>This post will be followed by two similarly short posts providing more example code for fun things you can do with occupancy models using nimbleEcology. In those I’ll discuss maximum likelihood estimation with NIMBLE and give an example of a multispecies occupancy model.</p>
+<p>If you have any requests for content, please reach out!</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
