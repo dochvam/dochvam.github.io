@@ -13,5 +13,5 @@ If you have any questions about accessing the full text of a publication,
 please reach out via email.
 
 ```{r out.width="100%", out.height="500", echo=FALSE}
-knitr::include_graphics('images/cv_goldstein_2022-02.pdf')
+knitr::include_graphics('images/cv_resume_goldstein-07-2023.pdf')
 ```
