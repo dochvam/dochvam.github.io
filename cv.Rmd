@@ -7,11 +7,11 @@ site: distill::distill_website
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Find my academic CV below. Last updated February 2022.
+Find my academic CV below. Last updated February 2024.
 
 If you have any questions about accessing the full text of a publication,
 please reach out via email.
 
 ```{r out.width="100%", out.height="500", echo=FALSE}
-knitr::include_graphics('images/cv_resume_goldstein-07-2023.pdf')
+knitr::include_graphics('images/cv_resume_goldstein-02-2024.pdf')
 ```

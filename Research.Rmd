@@ -17,9 +17,9 @@ I am interested in these data along two dimensions. The first of these is: how c
 
 The second dimension is: what can we learn about human observers from the observations they submit? Participatory science records contain as much information about the people making them (in the aggregate) as they do about the species being observed. For example, we can work with eBird data to ask: when and where are people birding? Are people more likely to travel further from population centers in the summer? Do people prefer more colorful species and individuals, or are they more likely to record a rare species than a common one? Questions about observers' behaviors and preferences seem disconnected from ecology, but in order to handle participatory data correctly we need to deeply understand the process by which they're generated.
 
-#### Select publication: Identifying engaging bird species and traits (preprint)
+#### Select publication: Identifying engaging bird species and traits
 
-[In this preprint](https://www.biorxiv.org/content/10.1101/2021.06.05.446577v1), my colleagues and I estimate species-level bias in iNaturalist bird reports compared to eBird. We produce an "overreporting index" for each of 472 species in the United States and interpret that index as a measure of how "engaging" a species is. Colorful, rare, and large birds were more engaging, as epitomized by the overall most engaging bird: the feral Indian peafowl.
+[In this paper](doi.org/10.1073/pnas.2110156119), my colleagues and I estimate species-level bias in iNaturalist bird reports compared to eBird. We produce an "overreporting index" for each of 472 species in the United States and interpret that index as a measure of how "engaging" a species is. Colorful, rare, and large birds were more engaging, as epitomized by the overall most engaging bird: the feral Indian peafowl! 
 
 ## Species distribution modeling
 
@@ -29,7 +29,6 @@ Going from data to inference--for example, from a series of surveys of animal co
 
 In my research, I develop statistical solutions for modeling species distributions with data generated in a variety of ways including camera trapping and participatory science. I'm interested in methodological questions about how models operate in general, as well as empirical applications of these models.
 
-Check out the Blog page on this website for more info on species distribution modeling.
 
 #### Select publication: Effects of wildfire diversity on California mammals
 
@@ -39,14 +38,14 @@ Check out [this article in KQED](https://www.kqed.org/science/1978094/see-califo
 
 ## Software development
 
-I worked as a member of the NIMBLE development team under my advisor and co-creator of NIMBLE, Dr. Perry de Valpine. [NIMBLE](r-nimble.org) is an R extension for building and estimating arbitrary statistical models.
+During my Ph.D., I worked as a member of the NIMBLE development team under my advisor and co-creator of NIMBLE, Dr. Perry de Valpine. [NIMBLE](r-nimble.org) is an R extension for building and estimating arbitrary statistical models.
 
 I wrote and maintain the [nimbleEcology](https://cran.r-project.org/web/packages/nimbleEcology/index.html) auxiliary package, which provides additional tools for implementing common models in ecology such as the N-mixture model, the site-occupancy model, and the hidden Markov distribution for multi-state models.
 
-## Agroecology
+<!-- ## Agroecology -->
 
-I've had the opportunity to collaborate with colleagues at UC Berkeley to apply my expertise in spatial statistics to a number of interest agricultural problems. As a statistical consultant with [Land Core](https://landcore.org/), I'm working to improve our understanding of the effect of conservation agricultural practices like low-intensity tillage and crop rotation on mitigating risk for farmers.
+<!-- I've had the opportunity to collaborate with colleagues at UC Berkeley to apply my expertise in spatial statistics to a number of interest agricultural problems. As a statistical consultant with [Land Core](https://landcore.org/), I'm working to improve our understanding of the effect of conservation agricultural practices like low-intensity tillage and crop rotation on mitigating risk for farmers. -->
 
-#### Select publication: Drivers of crop rotation in the Midwest
+<!-- #### Select publication: Drivers of crop rotation in the Midwest -->
 
-In this project, led by my colleague Yvonne Socolar, we look for patterns in where Midwestern famers do and don't rotate their crops using a novel Rotational Complexity Index (RCI). The robustness of this study's conclusions depended on a spatial block bootstrap for uncertainty quantification in the presence of spatial autocorrelation.
+<!-- In this project, led by my colleague Yvonne Socolar, we look for patterns in where Midwestern famers do and don't rotate their crops using a novel Rotational Complexity Index (RCI). The robustness of this study's conclusions depended on a spatial block bootstrap for uncertainty quantification in the presence of spatial autocorrelation. -->
