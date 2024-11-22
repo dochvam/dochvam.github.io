@@ -1,7 +1,7 @@
 ---
-title: "Ben R. Goldstein"
+title: "Dr. Benjamin R. Goldstein"
 description: |
-  Ecology PhD candidate at UC Berkeley
+  Quantitative Ecologist
 site: distill::distill_website
 ---
 
@@ -21,7 +21,7 @@ knitr::include_graphics("images/BsxWU7Yi_400x400.jpg", dpi = 140)
 ```
 
 
-Hello! I am a postdoc in the Department of Forestry and Environmental Resources at North Carolina State University. I recently finished my Ph.D. in the Department of Environmental Science, Policy, and Management (ESPM) at UC Berkeley. I study quantitative ecology with a focus on species distribution modeling, developing and applying statistical methods to understand how wild animal populations vary over time and space. I specialize in drawing inference from large-scale, semi-structured or automated data collection protocols like camera traps and participatory science.
+Hello! I am a postdoc in the Department of Forestry and Environmental Resources at North Carolina State University. I got my Ph.D. in the Department of Environmental Science, Policy, and Management (ESPM) at UC Berkeley. I study quantitative ecology with a focus on species distribution modeling, developing and applying hierarchical statistical models to understand how wild animal populations vary over time and space. I specialize in drawing inference from large-scale, semi-structured or automated data collection protocols like camera traps and participatory science.
 
 
 :::

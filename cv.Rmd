@@ -7,11 +7,14 @@ site: distill::distill_website
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Find my academic CV below. Last updated February 2024.
+Find my academic CV below. Last updated February 2024. For the most up-to-date records,
+see my 
+[Google Scholar](https://scholar.google.com/citations?hl=en&pli=1&user=38VadywAAAAJ) 
+and [ORCID](https://orcid.org/0000-0001-8015-7494) profiles.
 
 If you have any questions about accessing the full text of a publication,
 please reach out via email.
 
 ```{r out.width="100%", out.height="500", echo=FALSE}
-knitr::include_graphics('images/cv_goldstein_2024-06.pdf.pdf')
+knitr::include_graphics('images/cv_goldstein_2024-11.pdf')
 ```
